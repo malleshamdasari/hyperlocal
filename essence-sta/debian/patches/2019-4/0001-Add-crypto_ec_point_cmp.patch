@@ -1,0 +1,54 @@
+From 4e7e68890a1a1eac34b70adf0c0c034b0e27810b Mon Sep 17 00:00:00 2001
+From: Jouni Malinen <j@w1.fi>
+Date: Tue, 23 Jun 2015 22:29:23 +0300
+Subject: [PATCH] Add crypto_ec_point_cmp()
+
+This is needed to allow SAE to check whether ECC elements are identical.
+
+Signed-off-by: Jouni Malinen <j@w1.fi>
+---
+ src/crypto/crypto.h         | 11 +++++++++++
+ src/crypto/crypto_openssl.c |  9 +++++++++
+ 2 files changed, 20 insertions(+)
+
+diff --git a/src/crypto/crypto.h b/src/crypto/crypto.h
+index f2d5662ff..5fd176858 100644
+--- a/src/crypto/crypto.h
++++ b/src/crypto/crypto.h
+@@ -776,4 +776,15 @@ int crypto_ec_point_is_at_infinity(struct crypto_ec *e,
+ int crypto_ec_point_is_on_curve(struct crypto_ec *e,
+ 				const struct crypto_ec_point *p);
+ 
++/**
++ * crypto_ec_point_cmp - Compare two EC points
++ * @e: EC context from crypto_ec_init()
++ * @a: EC point
++ * @b: EC point
++ * Returns: 0 on equal, non-zero otherwise
++ */
++int crypto_ec_point_cmp(const struct crypto_ec *e,
++			const struct crypto_ec_point *a,
++			const struct crypto_ec_point *b);
++
+ #endif /* CRYPTO_H */
+diff --git a/src/crypto/crypto_openssl.c b/src/crypto/crypto_openssl.c
+index 9834b25c6..33e3c4fd9 100644
+--- a/src/crypto/crypto_openssl.c
++++ b/src/crypto/crypto_openssl.c
+@@ -1326,4 +1326,13 @@ int crypto_ec_point_is_on_curve(struct crypto_ec *e,
+ 	return EC_POINT_is_on_curve(e->group, (const EC_POINT *) p, e->bnctx);
+ }
+ 
++
++int crypto_ec_point_cmp(const struct crypto_ec *e,
++			const struct crypto_ec_point *a,
++			const struct crypto_ec_point *b)
++{
++	return EC_POINT_cmp(e->group, (const EC_POINT *) a,
++			    (const EC_POINT *) b, e->bnctx);
++}
++
+ #endif /* CONFIG_ECC */
+-- 
+2.20.1
+

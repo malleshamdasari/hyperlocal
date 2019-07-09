@@ -1,0 +1,40 @@
+wpa (2:2.4-1+deb9u3) stretch-security; urgency=high
+
+  This release backports changes to help mitigate EAP-pwd security issues
+  (CVE-2019-9495, CVE-2019-9497, CVE-2019-9498, CVE-2019-9499).
+  Unfortunately, the complete fix heavily depends on the code added after
+  wpa 2.4 release, so porting it is not practical. Consider using strong
+  passwords to prevent dictionary attacks.
+
+  For more information about the issues and their impace, see the Debian
+  Security Advisory DSA-4430-1.
+  For even more details, please read the following documents:
+
+    - https://w1.fi/security/2019-2/eap-pwd-side-channel-attack.txt
+    - https://w1.fi/security/2019-4/eap-pwd-missing-commit-validation.txt
+
+  Should you need a more complete fix, please consider upgrading to a newer
+  version from stretch-backports when it becomes available.
+
+ -- Andrej Shadura <andrewsh@debian.org>  Wed, 10 Apr 2019 18:57:20 +0200
+
+wpasupplicant (0.6.2-1) unstable; urgency=low
+
+  The -w (wait for network interface to exist) command line option no longer
+  exists. If you have scripts that require this option, it is time to change
+  them, or use one of the two supported modes of operation explained at
+  /usr/share/doc/wpasupplicant/README.modes.gz.
+
+  ifupdown supports hot-plugged network devices via the "allow-hotplug" class
+  of operation. An example /etc/network/interfaces configuration stanza would
+  look like:
+
+  allow-hotplug wlan0
+  iface wlan0 inet dhcp
+          wpa-ssid myssid
+          wpa-psk mysecretpassphrase
+
+  network-manager is also able to handle hot-plugged network devices.
+
+ -- Kel Modderman <kel@otaku42.de>  Mon, 14 Jan 2008 18:02:17 +1000
+
