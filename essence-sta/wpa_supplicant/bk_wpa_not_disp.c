@@ -26,9 +26,10 @@ static const char WIPUSHSOCKNAME[] = "wpa_wipush";
 
 static int not_disp_attached = 0;
 static int ping_interval = 5;
+static int warning_displayed = 0;
 
 
-static int not_open_connection(void);
+static int not_disp_open_connection(void);
 static void not_disp_cleanup(void);
 
 struct wipush_not{
@@ -109,7 +110,7 @@ static void not_disp_close_connection(void) /* Mallesh: predicted the func name 
 static void not_disp_reconnect(void)
 {
 	not_disp_close_connection();
-	if (not_open_connection() < 0)
+	if (not_disp_open_connection() < 0)
 		return;
 	
 	edit_clear_line();
@@ -336,104 +337,45 @@ static void not_disp_mon_receive(int sock, void *eloop_ctx, void *sock_ctx)
 	not_disp_recv_pending(mon_conn);
 }
 
-static int wpa_not_cmd_prob_req(struct wpa_ctrl *ctrl, int argc,
-								char *argv[])
+static void not_disp_edit_cmd_cb(void *ctx, char *cmd)
 {
-	int i, len;
-	char cmd[1024];
-	char *pos, *end;
-	if (argc < 1)
-	{
-		printf("usage: probe_req message\n");
-		return -1;
+	char *buf;
+	int ret;
+	struct os_time t;
+	double now;
+
+	if(os_strncmp(cmd,"quit",4) == 0){
+		not_disp_cleanup();
+		eloop_terminate();
 	}
 
-	pos = cmd;
-	end = pos + 1024;
-
-	len = os_snprintf(pos, end - pos, "PUSH");
-	if (len < 0 || len >= end - pos)
-		return -1;
-	pos += len;
-
-	for (i = 0; i < argc; i++)
-	{
-		len = os_snprintf(pos, end - pos, " %s", argv[i]);
-		if (len < 0 || len >= end - pos)
-			return -1;
-		/*strcat(cmd, " ");
-		 strcat(cmd, argv[i]);*/
-		pos += len;
-	}
-
-	printf("cmd: %s (argc = %d)\n", cmd, argc);
-
-	return wpa_ctrl_command(ctrl, cmd);
-}
-
-struct not_cmd {
-	const char *cmd;
-	int (*handler)(struct wpa_ctrl *ctrl, int argc, char *argv[]);
-};
-
-static struct not_cmd not_commands[] = {
-	{ "prob_req" , wpa_not_cmd_prob_req },
-	{ NULL, NULL }
-};
-
-static void wpa_not_cmd_handler(int argc, char *argv[])
-{
-	struct wpa_ctrl *ctrl = mon_conn;
-	struct not_cmd *cmd, *match = NULL;
-	int count;
-
-	if (argc < 1 || argv == NULL){
-		printf("No message given\n ");
+	if(cur_mid == NULL)
 		return;
-	}
 
-	count = 0;
-	cmd = not_commands;
-	while (cmd->cmd) {
-		if (strncasecmp(cmd->cmd, argv[0], strlen(argv[0])) == 0) {
-			match = cmd;
-			if (os_strcasecmp(cmd->cmd, argv[0]) == 0) {
-				/* we have an exact match */
-				count = 1;
-				break;
-			}
-			count++;
-		}
-		cmd++;
-	}
+	buf = os_malloc(4096);
+
+	os_get_time(&t);
+
+	now = (double)t.sec + 1e-6*(double)t.usec;
+
+	printf("%.5f: Sending action a response frame now\n", now);
 	
-	if (count > 1) {
-		printf("Ambiguous command '%s'; possible commands:", argv[0]);
-		cmd = not_commands;
-		while (cmd->cmd) {
-			if (strncasecmp(cmd->cmd, argv[0], strlen(argv[0])) ==
-				0) {
-				printf(" %s", cmd->cmd);
-			}
-			cmd++;
-		}
-		printf("\n");
-	} else if (count == 0) {
-		printf("Unknown command '%s'\n", argv[0]);
-	} else {
-		match->handler(ctrl, argc - 1, &argv[1]);
+	ret = os_snprintf(buf, 4096, "ACTION %s %u %s", cur_addr, *cur_mid, cmd);
+	if (ret < 0 || ret >= 4096 ){
+		printf("Too long command\n");
+		goto finish;
 	}
+	not_disp_command(mon_conn, buf, 1);
+
+
+finish:
+	os_free(buf);
+	os_free(cur_addr);
+	os_free(cur_mid);
+	cur_mid=NULL;
 }
 
-int wpa_not_process_commands(char *msg)
-{
-	int argc = 2;
-	char *argv = NULL;
-
-	wpa_not_cmd_handler(argc, argv);
-}
-
-static int not_open_connection()
+static int not_disp_open_connection()
 {
 	char *cfile = NULL;
 	int flen, res;
@@ -481,6 +423,68 @@ static int not_open_connection()
 	return 0;
 }
 
+static void not_disp_edit_eof_cb(void *ctx)
+{
+	eloop_terminate();
+}
+
+static void not_disp_ping(void *eloop_ctx, void *timeout_ctx)
+{
+	if (mon_conn) {
+		int res;
+
+		res = not_disp_command(mon_conn, "PING", 0);
+
+		if (res) {
+			printf("Connection to wpa_supplicant lost - trying to "
+				   "reconnect\n");
+			not_disp_close_connection();
+		}
+	}
+	if (!mon_conn)
+		not_disp_reconnect();
+	eloop_register_timeout(ping_interval, 0, not_disp_ping, NULL, NULL);
+}
+
+static void start_edit(void)
+{
+	if (edit_init(not_disp_edit_cmd_cb, not_disp_edit_eof_cb,
+				  /*not_disp_edit_completion_cb*/ NULL, NULL, NULL, NULL) < 0) {
+		eloop_terminate();
+		return;
+	}
+	
+	eloop_register_timeout(ping_interval, 0, not_disp_ping, NULL, NULL);
+}
+
+static void try_connection(void *eloop_ctx, void *timeout_ctx)
+{
+	if (!not_disp_open_connection() == 0) {
+		if (!warning_displayed) {
+			printf("Could not connect to wpa_supplicant: "
+				   "- re-trying\n");
+			warning_displayed = 1;
+		}
+		eloop_register_timeout(1, 0, try_connection, NULL, NULL);
+		return;
+	}
+
+	if (warning_displayed)
+		printf("Connection established.\n");
+
+	start_edit();
+}
+
+
+static void not_disp(void)
+{
+	printf("\nDisplaying Notifications\n\n");
+
+	eloop_register_timeout(0, 0, try_connection, NULL, NULL);
+	eloop_run();
+	eloop_cancel_timeout(try_connection, NULL, NULL);
+}
+
 static void not_disp_terminate(int sig, void *ctx)
 {
 	eloop_terminate();
@@ -498,28 +502,10 @@ static void not_disp_end(void *eloop_ctx, void *timeout_ctx){
 	os_program_deinit();
 }
 
-static void try_connection(void *eloop_ctx, void *timeout_ctx)
+//int run_wpa_not(char *msg)
+int main(int argc, char *argv[])
 {
-	if (!not_open_connection() == 0) {
-		printf("Could not connect to wpa_supplicant: re-trying\n");
-		eloop_register_timeout(1, 0, try_connection, NULL, NULL);
-		return;
-	}
-
-	printf("Connection established.\n");
-}
-
-static void not_disp(void)
-{
-	printf("\nDisplaying Notifications\n\n");
-
-	eloop_register_timeout(0, 0, try_connection, NULL, NULL);
-	eloop_run();
-	eloop_cancel_timeout(try_connection, NULL, NULL);
-}
-
-int wpa_not_init(char *msg)
-{
+	//printf("%s\n",msg);
 	if (os_program_init())
 		return -1;
 
@@ -533,19 +519,18 @@ int wpa_not_init(char *msg)
 	eloop_register_signal_terminate(not_disp_terminate, NULL);
 	eloop_register_timeout(4000, 0, not_disp_end, NULL, NULL);
 
-	if (not_open_connection() < 0){
-		printf("Cannot start the connection\n");
-		return -1;
-	}
+	not_disp();
 
-	return 0;
-}
-
-int wpa_not_deinit()
-{
 	eloop_destroy();
 	not_disp_cleanup();
 	os_program_deinit();
 
 	return 0;
 }
+
+//int main(int argc, char *argv[])
+//{
+//	int ret = run_wpa_not();
+//
+//	return ret;
+//}
