@@ -336,6 +336,44 @@ static void not_disp_mon_receive(int sock, void *eloop_ctx, void *sock_ctx)
 	not_disp_recv_pending(mon_conn);
 }
 
+static void wpa_cli_msg_cb(char *msg, size_t len)
+{
+	printf("%s\n", msg);
+}
+
+static int _wpa_ctrl_command(struct wpa_ctrl *ctrl, char *cmd, int print)
+{
+	char buf[4096];
+	size_t len;
+	int ret;
+
+	if (ctrl == NULL) {
+		printf("Not connected to wpa_supplicant - command dropped.\n");
+		return -1;
+	}
+	
+	len = sizeof(buf) - 1;
+	ret = wpa_ctrl_request(ctrl, cmd, os_strlen(cmd), buf, &len,
+			       wpa_cli_msg_cb);
+	if (ret == -2) {
+		printf("'%s' command timed out.\n", cmd);
+		return -2;
+	} else if (ret < 0) {
+		printf("'%s' command failed.\n", cmd);
+		return -1;
+	}
+	if (print) {
+		buf[len] = '\0';
+		printf("%s", buf);
+	}
+	return 0;
+}
+
+static int wpa_ctrl_command(struct wpa_ctrl *ctrl, char *cmd)
+{
+	return _wpa_ctrl_command(ctrl, cmd, 1);
+}
+
 static int wpa_not_cmd_prob_req(struct wpa_ctrl *ctrl, int argc,
 								char *argv[])
 {
@@ -351,7 +389,7 @@ static int wpa_not_cmd_prob_req(struct wpa_ctrl *ctrl, int argc,
 	pos = cmd;
 	end = pos + 1024;
 
-	len = os_snprintf(pos, end - pos, "PUSH");
+	len = os_snprintf(pos, end - pos, "ACTION");
 	if (len < 0 || len >= end - pos)
 		return -1;
 	pos += len;
@@ -421,16 +459,17 @@ static void wpa_not_cmd_handler(int argc, char *argv[])
 	} else if (count == 0) {
 		printf("Unknown command '%s'\n", argv[0]);
 	} else {
-		match->handler(ctrl, argc - 1, &argv[1]);
+		char *tmsg = "b8:27:eb:1b:32:43 0 hello :ENDNOT:";
+		match->handler(ctrl, argc - 1, &tmsg);
+		//match->handler(ctrl, argc - 1, &argv[1]);
 	}
 }
 
-int wpa_not_process_commands(char *msg)
+int wpa_not_process_command(char *msg)
 {
 	int argc = 2;
-	char *argv = NULL;
 
-	wpa_not_cmd_handler(argc, argv);
+	wpa_not_cmd_handler(argc, &msg);
 }
 
 static int not_open_connection()

@@ -3,11 +3,13 @@ from ctypes import cdll
 
 lib = cdll.LoadLibrary('./wpa_not.so')
 
-message = "Hello. How are you?"
+message = "prob_req"
 
 print lib.wpa_not_init()
 
 time.sleep(1) 
+
+lib.wpa_not_process_command(message)
 
 lib.wpa_not_deinit()
 
