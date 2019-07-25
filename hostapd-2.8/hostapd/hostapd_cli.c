@@ -989,68 +989,6 @@ static void hostapd_cli_list_interfaces(struct wpa_ctrl *ctrl)
 }
 
 
-#ifdef CONFIG_ACTION_NOTIFICATION
-static int hostapd_cli_cmd_push(struct wpa_ctrl *ctrl, int argc,
-				char *argv[])
-{
-	int i, len;
-	char cmd[1024];
-	char pos, end;
-	if (argc < 1) {
-		printf("usage: push message\n");
-		return -1;
-	}
-	
-	pos = cmd;
-	end = pos + 1024;
-	
-	len = os_snprintf(pos, end-pos, "PUSH");
-	if(len < 0 || len >= end-pos)
-		return -1;
-	pos += len;
-	
-	for (i=0; i<argc; i++) {
-		len  = os_snprintf(pos, end-pos, " %s", argv[i]);
-		if(len < 0 || len >= end-pos)
-			return -1;
-		/*strcat(cmd, " ");
-		 strcat(cmd, argv[i]);*/
-		pos += len;
-    }
-    
-    printf("cmd: %s (argc = %d)\n", cmd, argc);
-    
-    return wpa_ctrl_command(ctrl, cmd);
-    
-}
-
-static int hostapd_cli_cmd_set_nottime(struct wpa_ctrl *ctrl, int argc,
-									   char *argv[])
-{
-	char cmd[256];
-	if(argc != 1){
-		return -1;
-	}
-	
-	os_snprintf(cmd, sizeof(cmd), "SETNOTTIME %s", argv[0]);
-	return wpa_ctrl_command(ctrl, cmd);
-	
-}
-
-static int hostapd_cli_delnot(struct wpa_ctrl *ctrl, int argc,
-							  char *argv[])
-{
-	char cmd[256];
-	if(argc != 1){
-		return -1;
-	}
-	
-	os_snprintf(cmd, sizeof(cmd), "DELNOT %s", argv[0]);
-	return wpa_ctrl_command(ctrl, cmd);
-	
-}
-#endif /* CONFIG_ACTION_NOTIFICATION */
-
 static int hostapd_cli_cmd_interface(struct wpa_ctrl *ctrl, int argc,
 				     char *argv[])
 {
@@ -1740,11 +1678,6 @@ static const struct hostapd_cli_cmd hostapd_cli_commands[] = {
 	  "<addr> [req_mode=] <measurement request hexdump>  = send a Beacon report request to a station" },
 	{ "reload_wpa_psk", hostapd_cli_cmd_reload_wpa_psk, NULL,
 	  "= reload wpa_psk_file only" },
-#ifdef CONFIG_ACTION_NOTIFICATION
-	{"push", hostapd_cli_cmd_push, NULL, "ToDo: help"},
-	{"setnottime", hostapd_cli_cmd_set_nottime, NULL, "ToDo: help"},
-	{"delnot", hostapd_cli_delnot, NULL, "ToDo: help"},
-#endif /* CONFIG_ACTION_NOTIFICATION */
 	{ NULL, NULL, NULL, NULL }
 };
 

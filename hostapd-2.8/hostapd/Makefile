@@ -1174,11 +1174,6 @@ CFLAGS += -DCONFIG_INTERWORKING
 NEED_GAS=y
 endif
 
-ifdef CONFIG_ACTION_NOTIFICATION
-CFLAGS += -DCONFIG_ACTION_NOTIFICATION
-OBJS += ../src/ap/ap_action.o
-endif
-
 ifdef NEED_GAS
 OBJS += ../src/common/gas.o
 OBJS += ../src/ap/gas_serv.o

@@ -61,9 +61,6 @@
 #include "config_file.h"
 #include "ctrl_iface.h"
 
-#ifdef CONFIG_ACTION_NOTIFICATION
-#include "ap/ap_action.h"
-#endif /* CONFIG_ACTION_NOTIFICATION */
 
 #define HOSTAPD_CLI_DUP_VALUE_MAX_LEN 256
 
@@ -3067,19 +3064,6 @@ static int hostapd_ctrl_iface_receive_process(struct hostapd_data *hapd,
 		if (hostapd_ctrl_iface_send_qos_map_conf(hapd, buf + 18))
 			reply_len = -1;
 #endif /* CONFIG_INTERWORKING */
-
-#ifdef CONFIG_ACTION_NOTIFICATION
-	} else if (os_strncmp(buf, "PUSH ", 5) == 0) {
-		reply_len = afn_pending_append(hapd, buf+5, reply,
-									   reply_size);
-	}else if(os_strncmp(buf, "SETNOTTIME ", 11) == 0){
-		reply_len = afn_set_timeout(hapd, buf + 11);
-	}else if (os_strncmp(buf, "DELNOT ", 7) == 0){
-		if (hapd_cmd_delete_brdcst_not(hapd, buf + 7)){
-			reply_len = -1;
-		}
-#endif /* CONFIG_ACTION_NOTIFICATION */
-
 #ifdef CONFIG_HS20
 	} else if (os_strncmp(buf, "HS20_WNM_NOTIF ", 15) == 0) {
 		if (hostapd_ctrl_iface_hs20_wnm_notif(hapd, buf + 15))
