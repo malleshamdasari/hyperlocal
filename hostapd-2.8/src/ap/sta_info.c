@@ -39,6 +39,9 @@
 #include "sta_info.h"
 #include "vlan.h"
 #include "wps_hostapd.h"
+#ifdef CONFIG_ACTION_NOTIFICATION
+#include "ap_action.h"
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 static void ap_sta_remove_in_other_bss(struct hostapd_data *hapd,
 				       struct sta_info *sta);
@@ -318,6 +321,9 @@ void ap_free_sta(struct hostapd_data *hapd, struct sta_info *sta)
 		os_free(sta->gas_dialog);
 	}
 #endif /* CONFIG_INTERWORKING */
+#ifdef CONFIG_ACTION_NOTIFICATION
+        hostapd_not_node_delete(hapd, sta->addr);
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 	wpabuf_free(sta->wps_ie);
 	wpabuf_free(sta->p2p_ie);

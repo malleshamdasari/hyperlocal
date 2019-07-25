@@ -21,7 +21,9 @@
 #include "hs20.h"
 #include "wpa_auth.h"
 #include "ap_drv_ops.h"
-
+#ifdef CONFIG_ACTION_NOTIFICATION
+#include "ap_action.h"
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 u32 hostapd_sta_flags_to_drv(u32 flags)
 {
@@ -174,6 +176,21 @@ int hostapd_build_ap_extra_ies(struct hostapd_data *hapd,
 	    add_buf_data(&proberesp, buf, pos - buf) < 0)
 		goto fail;
 #endif /* CONFIG_HS20 */
+
+#ifdef CONFIG_ACTION_NOTIFICATION
+        pos = buf;
+        pos = hostapd_eid_afn_indication(hapd, pos);
+        if (pos != buf)
+        {
+                if (wpabuf_resize(&beacon, pos - buf) != 0)
+                        goto fail;
+                wpabuf_put_data(beacon, buf, pos - buf);
+
+                if (wpabuf_resize(&proberesp, pos - buf) != 0)
+                        goto fail;
+                wpabuf_put_data(proberesp, buf, pos - buf);
+        }
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 #ifdef CONFIG_MBO
 	if (hapd->conf->mbo_enabled ||

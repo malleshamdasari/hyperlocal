@@ -453,6 +453,11 @@ ParseRes ieee802_11_parse_elems(const u8 *start, size_t len,
 			elems->ssid_list = pos;
 			elems->ssid_list_len = elen;
 			break;
+                //CONFIG_ACTION_NOTIFICATION
+                case WLAN_EID_NOT_INDICATOR:
+                        elems->afn = pos;
+                        elems->afn_len = elen;
+                        break;
 		case WLAN_EID_AMPE:
 			elems->ampe = pos;
 			elems->ampe_len = elen;

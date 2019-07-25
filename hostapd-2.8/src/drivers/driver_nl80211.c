@@ -2196,6 +2196,21 @@ static int nl80211_mgmt_subscribe_non_ap(struct i802_bss *bss)
 	if (nl80211_register_action_frame(bss, (u8 *) "\x01\x04", 2) < 0)
 		ret = -1;
 #endif /* CONFIG_INTERWORKING */
+#ifdef CONFIG_ACTION_NOTIFICATION
+        /* Public action frame notification */
+        if (nl80211_register_action_frame(bss, (u8 *)"\x04\x80", 2) < 0)
+                ret = -1;
+
+        if (nl80211_register_action_frame(bss, (u8 *)"\x04\x81", 2) < 0)
+                ret = -1;
+
+        if (nl80211_register_action_frame(bss, (u8 *)"\x04\x82", 2) < 0)
+                ret = -1;
+
+        if (nl80211_register_action_frame(bss, (u8 *)"\x04\x83", 2) < 0)
+                ret = -1;
+#endif /* CONFIG_ACTION_NOTIFICATION */
+
 #if defined(CONFIG_P2P) || defined(CONFIG_INTERWORKING) || defined(CONFIG_DPP)
 	/* GAS Initial Request */
 	if (nl80211_register_action_frame(bss, (u8 *) "\x04\x0a", 2) < 0)

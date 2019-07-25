@@ -32,7 +32,9 @@
 #include "dfs.h"
 #include "taxonomy.h"
 #include "ieee802_11_auth.h"
-
+#ifdef CONFIG_ACTION_NOTIFICATION
+#include "ap_action.h"
+#endif /*CONFIG_ACTION_NOTIFICATION*/
 
 #ifdef NEED_AP_MLME
 
@@ -562,6 +564,9 @@ static u8 * hostapd_gen_probe_resp(struct hostapd_data *hapd,
 			  wpabuf_len(hapd->conf->vendor_elements));
 		pos += wpabuf_len(hapd->conf->vendor_elements);
 	}
+#ifdef CONFIG_ACTION_NOTIFICATION
+        pos = hostapd_eid_afn_indication(hapd, pos);
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 	*resp_len = pos - (u8 *) resp;
 	return (u8 *) resp;
@@ -909,6 +914,15 @@ void handle_probe_req(struct hostapd_data *hapd,
 		}
 	}
 #endif /* CONFIG_INTERWORKING */
+#ifdef CONFIG_ACTION_NOTIFICATION
+
+        if (elems.afn && elems.afn_len)
+        {
+                u16 num = WPA_GET_LE16(elems.afn);
+                wpa_printf(MSG_DEBUG, MACSTR " is capable of notifications, sending messages now", MAC2STR(mgmt->sa));
+                send_buffered_push_messages(hapd, mgmt->sa, num);
+        }
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 #ifdef CONFIG_P2P
 	if ((hapd->conf->p2p & P2P_GROUP_OWNER) &&

@@ -33,6 +33,10 @@ union wps_event_data;
 #ifdef CONFIG_MESH
 struct mesh_conf;
 #endif /* CONFIG_MESH */
+#ifdef CONFIG_ACTION_NOTIFICATION
+struct afq;
+struct not_ctrl_dst;
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 struct hostapd_iface;
 
@@ -153,6 +157,16 @@ struct hostapd_data {
 #define STA_HASH_SIZE 256
 #define STA_HASH(sta) (sta[5])
 	struct sta_info *sta_hash[STA_HASH_SIZE];
+
+#ifdef CONFIG_ACTION_NOTIFICATION
+        struct afq *pend_list[STA_HASH_SIZE + 1];
+        u32 msg_id;
+        int not_sock;
+        struct not_ctrl_dst *not_dst;
+        int fastnot;
+        u16 mtout;
+        u32 ntout;
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 	/*
 	 * Bitfield for indicating which AIDs are allocated. Only AID values

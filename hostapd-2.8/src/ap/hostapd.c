@@ -50,7 +50,9 @@
 #include "fils_hlp.h"
 #include "acs.h"
 #include "hs20.h"
-
+#ifdef CONFIG_ACTION_NOTIFICATION
+#include "ap_action.h"
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 static int hostapd_flush_old_stations(struct hostapd_data *hapd, u16 reason);
 static int hostapd_setup_encryption(char *iface, struct hostapd_data *hapd);
@@ -398,6 +400,10 @@ static void hostapd_free_hapd_data(struct hostapd_data *hapd)
 #ifdef CONFIG_INTERWORKING
 	gas_serv_deinit(hapd);
 #endif /* CONFIG_INTERWORKING */
+
+#ifdef CONFIG_ACTION_NOTIFICATION
+        hostapd_deinit_notification(hapd);
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 	bss_load_update_deinit(hapd);
 	ndisc_snoop_deinit(hapd);
@@ -1253,6 +1259,13 @@ static int hostapd_setup_bss(struct hostapd_data *hapd, int first)
 		return -1;
 	}
 #endif /* CONFIG_INTERWORKING */
+#ifdef CONFIG_ACTION_NOTIFICATION
+        if (hostapd_init_notification(hapd))
+        {
+                wpa_printf(MSG_ERROR, "Notification server initialization failed");
+                return -1;
+        }
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 	if (conf->bss_load_update_period && bss_load_update_init(hapd)) {
 		wpa_printf(MSG_ERROR, "BSS Load initialization failed");
@@ -2170,6 +2183,9 @@ hostapd_alloc_bss_data(struct hostapd_iface *hapd_iface,
 #ifdef CONFIG_SAE
 	dl_list_init(&hapd->sae_commit_queue);
 #endif /* CONFIG_SAE */
+#ifdef CONFIG_ACTION_NOTIFICATION
+        hapd->not_sock = -1;
+#endif /* CONFIG_ACTION_NOTIFICATION */
 
 	return hapd;
 }
