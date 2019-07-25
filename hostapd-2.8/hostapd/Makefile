@@ -92,6 +92,8 @@ OBJS_c += ../src/common/wpa_ctrl.o
 OBJS_c += ../src/utils/os_$(CONFIG_OS).o
 OBJS_c += ../src/common/cli.o
 
+OBJS_n = notifier.o ../src/common/wpa_ctrl.o ../src/utils/os_$(CONFIG_OS).o
+
 NEED_RC4=y
 NEED_AES=y
 NEED_MD5=y
@@ -1179,6 +1181,11 @@ OBJS += ../src/common/gas.o
 OBJS += ../src/ap/gas_serv.o
 endif
 
+ifdef CONFIG_ACTION_NOTIFICATION
+OBJS += ../src/ap/ap_action.o
+CFLAGS += -DCONFIG_ACTION_NOTIFICATION
+endif
+
 ifdef CONFIG_PROXYARP
 CFLAGS += -DCONFIG_PROXYARP
 OBJS += ../src/ap/x_snoop.o
@@ -1239,7 +1246,7 @@ OBJS += ../src/fst/fst_ctrl_iface.o
 endif
 endif
 
-ALL=hostapd hostapd_cli
+ALL=hostapd hostapd_cli notifier
 
 all: verify_config $(ALL)
 
@@ -1296,6 +1303,9 @@ endif
 hostapd_cli: $(OBJS_c)
 	$(Q)$(CC) $(LDFLAGS) -o hostapd_cli $(OBJS_c) $(LIBS_c)
 	@$(E) "  LD " $@
+notifier: $(OBJS_n)
+        $(Q)$(CC) $(LDFLAGS) -shared -o notifier.so $(OBJS_n) $(LIBS_c)
+        @$(E) "  LD " $@
 
 NOBJS = nt_password_hash.o ../src/crypto/ms_funcs.o $(SHA1OBJS)
 NOBJS += ../src/utils/common.o
