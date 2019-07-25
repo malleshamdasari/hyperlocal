@@ -625,6 +625,10 @@
 #define WLAN_PA_NOTIFICATION_RESP 0x82
 #define WLAN_PA_NOTIFICATION_IND 0x83
 
+/*Wi-Push Message Types*/
+#define WLAN_PA_NO_RESP 0xc8
+#define WLAN_PA_WAIT_RESP 0xc9
+
 /* Protected Dual of Public Action frames (IEEE Std 802.11-2016, 9.6.11,
  * Table 9-332) */
 #define WLAN_PROT_DSE_ENABLEMENT 1
