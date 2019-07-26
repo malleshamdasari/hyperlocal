@@ -131,6 +131,7 @@ CONFIG_ELOOP=eloop
 endif
 OBJS += ../src/utils/$(CONFIG_ELOOP).o
 OBJS_c += ../src/utils/$(CONFIG_ELOOP).o
+OBJS_n += ../src/utils/$(CONFIG_ELOOP).o
 
 ifeq ($(CONFIG_ELOOP), eloop)
 # Using glibc < 2.17 requires -lrt for clock_gettime()
@@ -154,6 +155,8 @@ endif
 
 OBJS += ../src/utils/common.o
 OBJS_c += ../src/utils/common.o
+OBJS_n += ../src/utils/common.o
+OBJS_n += ../src/utils/wpa_debug.o
 OBJS += ../src/utils/wpa_debug.o
 OBJS_c += ../src/utils/wpa_debug.o
 OBJS += ../src/utils/wpabuf.o
@@ -1199,8 +1202,10 @@ OBJS += ../src/drivers/driver_common.o
 
 ifdef CONFIG_WPA_CLI_EDIT
 OBJS_c += ../src/utils/edit.o
+OBJS_n += ../src/utils/edit.o
 else
 OBJS_c += ../src/utils/edit_simple.o
+OBJS_n += ../src/utils/edit_simple.o
 endif
 
 ifdef CONFIG_ACS
@@ -1299,13 +1304,14 @@ hostapd: $(BCHECK) $(OBJS)
 
 ifdef CONFIG_WPA_TRACE
 OBJS_c += ../src/utils/trace.o
+OBJS_n += ../src/utils/trace.o
 endif
 hostapd_cli: $(OBJS_c)
 	$(Q)$(CC) $(LDFLAGS) -o hostapd_cli $(OBJS_c) $(LIBS_c)
 	@$(E) "  LD " $@
 notifier: $(OBJS_n)
-        $(Q)$(CC) $(LDFLAGS) -shared -o notifier.so $(OBJS_n) $(LIBS_c)
-        @$(E) "  LD " $@
+	$(Q)$(CC) $(LDFLAGS) -shared -o notifier.so $(OBJS_n) $(LIBS_c)
+	@$(E) "  LD " $@
 
 NOBJS = nt_password_hash.o ../src/crypto/ms_funcs.o $(SHA1OBJS)
 NOBJS += ../src/utils/common.o
