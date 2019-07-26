@@ -1,0 +1,100 @@
+wpa_supplicant v2.4
+random: Trying to read entropy from /dev/random
+Successfully initialized wpa_supplicant
+Initializing interface 'wlan0' conf '/etc/wpa_supplicant/wpa_supplicant.conf' driver 'default' ctrl_interface 'N/A' bridge 'N/A'
+Configuration file '/etc/wpa_supplicant/wpa_supplicant.conf' -> '/etc/wpa_supplicant/wpa_supplicant.conf'
+Reading configuration file '/etc/wpa_supplicant/wpa_supplicant.conf'
+ctrl_interface='/var/run/wpa_supplicant'
+country='GB'
+Line: 4 - start of a new network block
+ssid - hexdump_ascii(len=10):
+     4e 4f 4b 49 41 2d 42 59 4f 44                     NOKIA-BYOD      
+key_mgmt: 0x4
+Priority group 0
+   id=0 ssid='NOKIA-BYOD'
+rfkill: initial event: idx=0 type=1 op=0 soft=0 hard=0
+rfkill: initial event: idx=1 type=2 op=0 soft=0 hard=0
+nl80211: Supported cipher 00-0f-ac:1
+nl80211: Supported cipher 00-0f-ac:5
+nl80211: Supported cipher 00-0f-ac:2
+nl80211: Supported cipher 00-0f-ac:4
+nl80211: Supported vendor command: vendor_id=0x1a11 subcmd=4608
+nl80211: Supported vendor command: vendor_id=0x1a11 subcmd=4609
+nl80211: Supported vendor command: vendor_id=0x1a11 subcmd=4610
+nl80211: Supported vendor command: vendor_id=0x1a11 subcmd=4106
+nl80211: Supported vendor command: vendor_id=0x1a11 subcmd=4107
+nl80211: interface wlan0 in phy phy0
+nl80211: Set mode ifindex 3 iftype 2 (STATION)
+nl80211: Subscribe to mgmt frames with non-AP handle 0x6ed3d8
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0480
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0481
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0482
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0483
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=040a
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=040b
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=040c
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=040d
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=090a
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=090b
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=090c
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=090d
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0409506f9a09
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=7f506f9a09
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=06
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0a07
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0a11
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=1101
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=1102
+nl80211: Register frame type=0xd0 (WLAN_FC_STYPE_ACTION) nl_handle=0x6ed3d8 match=0505
+netlink: Operstate: ifindex=3 linkmode=1 (userspace-control), operstate=5 (IF_OPER_DORMANT)
+nl80211: driver param='(null)'
+Add interface wlan0 to a new radio phy0
+nl80211: Regulatory information - country=GB (DFS-ETSI)
+nl80211: 2402-2482 @ 40 MHz 20 mBm
+nl80211: 5170-5250 @ 80 MHz 20 mBm
+nl80211: 5250-5330 @ 80 MHz 20 mBm (DFS)
+nl80211: 5490-5710 @ 160 MHz 27 mBm (DFS)
+nl80211: 57000-66000 @ 2160 MHz 40 mBm
+nl80211: Added 802.11b mode based on 802.11g information
+wlan0: Own MAC address: 00:e0:4c:2c:f3:cc
+wpa_driver_nl80211_set_key: ifindex=3 (wlan0) alg=0 addr=(nil) key_idx=0 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=3 (wlan0) alg=0 addr=(nil) key_idx=1 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=3 (wlan0) alg=0 addr=(nil) key_idx=2 set_tx=0 seq_len=0 key_len=0
+wpa_driver_nl80211_set_key: ifindex=3 (wlan0) alg=0 addr=(nil) key_idx=3 set_tx=0 seq_len=0 key_len=0
+wlan0: RSN: flushing PMKID list in the driver
+nl80211: Flush PMKIDs
+wlan0: Setting scan request: 0.100000 sec
+wlan0: WPS: UUID based on MAC address: 292cd102-0c0c-5019-9f82-a4dfe675c3e4
+ENGINE: Loading dynamic engine
+ENGINE: Loading dynamic engine
+EAPOL: SUPP_PAE entering state DISCONNECTED
+EAPOL: Supplicant port status: Unauthorized
+nl80211: Skip set_supp_port(unauthorized) while not associated
+EAPOL: KEY_RX entering state NO_KEY_RECEIVE
+EAPOL: SUPP_BE entering state INITIALIZE
+EAP: EAP entering state DISABLED
+P2P: Add operating class 81
+P2P: Channels - hexdump(len=13): 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d
+P2P: Add operating class 115
+P2P: Channels - hexdump(len=4): 24 28 2c 30
+P2P: Add operating class 116
+P2P: Channels - hexdump(len=2): 24 2c
+P2P: Add operating class 117
+P2P: Channels - hexdump(len=2): 28 30
+P2P: Add operating class 128
+P2P: Channels - hexdump(len=4): 24 28 2c 30
+P2P: Own listen channel: 81:1
+P2P: Random operating channel: 81:11
+P2P: initialized
+P2P: channels: 81:1,2,3,4,5,6,7,8,9,10,11,12,13 115:36,40,44,48 116:36,44 117:40,48 128:36,40,44,48
+P2P: cli_channels:
+initializing action listener for wlan0
+initializing the socket
+Starting Notification Interface
+Name of the socket is /var/run/wpa_supplicant/wpa_wipush
+Socket binded
+wlan0: Added interface wlan0
+wlan0: State: DISCONNECTED -> DISCONNECTED
+nl80211: Set wlan0 operstate 0->0 (DORMANT)
+netlink: Operstate: ifindex=3 linkmode=-1 (no change), operstate=5 (IF_OPER_DORMANT)
+Daemonize..
