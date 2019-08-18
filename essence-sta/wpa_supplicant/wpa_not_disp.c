@@ -25,7 +25,6 @@ static const char WIPUSHSOCKNAME[] = "wpa_wipush";
 #endif /* ANDROID */
 
 static int not_disp_attached = 0;
-static int ping_interval = 5;
 
 
 static int not_open_connection(void);
@@ -54,39 +53,6 @@ static void clean_wipush_messages(){
 		os_free(t->payload);
 		os_free(t);
 	}
-}
-
-static void not_disp_msg_cb(char *msg, size_t len)
-{
-	printf("%s\n", msg);
-}
-
-static int not_disp_command(struct wpa_ctrl *ctrl, char *cmd, int print)
-{
-	char buf[4096];
-	size_t len;
-	int ret;
-
-	len = sizeof(buf) - 1;
-	ret = wpa_ctrl_request(ctrl, cmd, os_strlen(cmd), buf, &len,
-						   not_disp_msg_cb);
-
-	if (ret == -2) {
-		printf("'%s' command timed out.\n", cmd);
-		return -2;
-	} else if (ret < 0) {
-		printf("'%s' command failed.\n", cmd);
-		return -1;
-	}
-
-	if (print) {
-		buf[len] = '\0';
-		printf("%s", buf);
-		if (len > 0 && buf[len - 1] != '\n')
-			printf("\n");
-	}
-	return 0;
-
 }
 
 static void not_disp_close_connection(void) /* Mallesh: predicted the func name based on errors. */
@@ -249,12 +215,9 @@ fail:
 }
 
 static void announce(const char *buf){
-	int type = atoi(buf);
-
 	char line[1024];
 	char *pos = line;
 	char *end = pos + sizeof(line);
-	int res;
 
 	struct os_time t;
 	double now;
@@ -459,7 +422,7 @@ static void wpa_not_cmd_handler(int argc, char *argv[])
 	} else if (count == 0) {
 		printf("Unknown command '%s'\n", argv[0]);
 	} else {
-		char *tmsg = "00:e0:4c:6a:9c:c6 0 00000";
+		char *tmsg = "00:e0:4c:21:7f:c5 0 00000";
 		//char *tmsg = "ff:ff:ff:ff:ff:ff 0 00000";
 		match->handler(ctrl, argc - 1, &tmsg);
 		//match->handler(ctrl, argc - 1, &argv[1]);
@@ -536,26 +499,6 @@ static void not_disp_end(void *eloop_ctx, void *timeout_ctx){
 	not_disp_cleanup();
 	eloop_destroy();
 	os_program_deinit();
-}
-
-static void try_connection(void *eloop_ctx, void *timeout_ctx)
-{
-	if (!not_open_connection() == 0) {
-		printf("Could not connect to wpa_supplicant: re-trying\n");
-		eloop_register_timeout(1, 0, try_connection, NULL, NULL);
-		return;
-	}
-
-	printf("Connection established.\n");
-}
-
-static void not_disp(void)
-{
-	printf("\nDisplaying Notifications\n\n");
-
-	eloop_register_timeout(0, 0, try_connection, NULL, NULL);
-	eloop_run();
-	eloop_cancel_timeout(try_connection, NULL, NULL);
 }
 
 int wpa_not_init(char *msg)
