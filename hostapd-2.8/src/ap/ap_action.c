@@ -118,7 +118,7 @@ static struct wpabuf * hostapd_gen_action_resp(struct afq_mes *mes, const u16 nu
 	wpabuf_put_u8(buf, WLAN_PA_GAS_INITIAL_RESP);
 	wpabuf_put_u8(buf, 255);
 /*NEWANDROID*/
-	wpabuf_put_u8(buf, WLAN_PA_NOTIFICATION);
+	wpabuf_put_u8(buf, WLAN_PA_HYPERLOCAL_RESP);
 	wpabuf_put_u8(buf, mes->type);
 	wpabuf_put_le32(buf, mes->mid);
 	wpabuf_put_le16(buf, strlen(mes->payload));
@@ -206,7 +206,7 @@ static void hapd_not_indicate_tout(struct hostapd_data *hapd,
 	wpabuf_put_u8(buf, WLAN_PA_GAS_INITIAL_RESP);
 	wpabuf_put_u8(buf, 255);
 /*NEWANDROID*/
-	wpabuf_put_u8(buf, WLAN_PA_NOTIFICATION_IND);
+	wpabuf_put_u8(buf, WLAN_PA_HYPERLOCAL_TTF_REQ);
 
 	wpabuf_put_le16(buf, hapd->mtout);
 
@@ -299,7 +299,6 @@ static void send_node_messages(struct hostapd_data *hapd,
 		os_free(idx->payload);
 		os_free(idx);
 		os_free(actresp);
-
 	}
 }
 
@@ -329,6 +328,106 @@ static void send_new_broadcast_message(struct hostapd_data *hapd, struct afq_mes
 
 	os_free(actresp);
 
+}
+
+static void resolve_hyperlocal_query_for_sta(struct hostapd_data *hapd, const u8 *sa,
+								const u8 *data, size_t len)
+{
+	const u8 *pos = data;
+	const u8 *end = data + len;
+	u32 mid;
+	u16 slen;
+	int buflen;
+	char buf[4096];
+
+	int cmdlen = 256;
+	int res;
+
+	char cmd[cmdlen];
+
+	res = os_snprintf(cmd, cmdlen, "%s", "NOT_RESP");
+
+	if (len < 6)
+		return;
+
+	mid = WPA_GET_LE32(pos);
+	pos += 4;
+
+	slen = WPA_GET_LE16(pos);
+	pos += 2;
+
+	wpa_printf(MSG_DEBUG, "The message comes from " MACSTR " with id %u and payload len %u", MAC2STR(sa), mid, slen);
+
+	if (slen != len - 6){
+		return;
+	}
+
+	if (end - pos != slen)
+		return;
+
+
+	buflen = os_snprintf(buf, sizeof(buf), "Addr:" MACSTR "MID:%u-", MAC2STR(sa), mid);
+	if(slen + buflen > 4096)
+		return;
+
+	os_memcpy(buf+buflen, pos, slen);
+	buf[buflen + slen] = '\0';
+
+	wpa_printf(MSG_DEBUG, "Sending hyperlocal query for handling");
+
+	hapd_not_iface_send(hapd, cmd, res, buf, buflen+slen);
+
+}
+
+static void handle_hyperlocal_query(struct hostapd_data *hapd, const u8 *addr,
+						const u8 *data, size_t len){
+	struct afq *node;
+	struct sta_info *sta;
+
+	if(is_broadcast_ether_addr(addr))
+		return;
+
+	node = getNode(hapd, addr);
+
+	if (node == NULL){
+		wpa_printf(MSG_DEBUG, "First time for " MACSTR, MAC2STR(addr));
+		node = addNode(hapd, addr);
+	}
+
+	if(node == NULL){
+		return;
+	}
+
+	if (node->computed == 0){
+		hapd_not_indicate_tout(hapd, addr);
+		wpa_printf(MSG_DEBUG, "Computing notifications for " MACSTR, MAC2STR(addr));
+		resolve_hyperlocal_query_for_sta(hapd, addr, data, len);
+		node->computed = 1;
+	}
+
+	eloop_cancel_timeout(hapd_not_node_timeout, hapd, node);
+	if ((sta = ap_get_sta(hapd, addr)) == NULL){
+		eloop_register_timeout(hapd->ntout, 0, hapd_not_node_timeout,
+							   hapd, node);
+	}
+}
+
+void send_hyperlocal_response(struct hostapd_data *hapd, const u8 *addr){
+
+	struct afq *node;
+
+	if(is_broadcast_ether_addr(addr))
+		return;
+
+	node = getNode(hapd, addr);
+
+	if (node == NULL){
+		wpa_printf(MSG_DEBUG, "No pending query or such station exists " MACSTR, MAC2STR(addr));
+		return;
+	}
+
+	wpa_printf(MSG_DEBUG, "Sending directed hyperlocal information to " MACSTR, MAC2STR(addr));
+	send_node_messages(hapd, node);
 }
 
 void send_buffered_push_messages(struct hostapd_data *hapd,
@@ -509,11 +608,12 @@ int afn_pending_append(struct hostapd_data *hapd, const char *cmd,
 		send_new_broadcast_message(hapd, outgoing);
 	}else{
 		struct sta_info *sta = ap_get_sta(hapd, addr);
-		if (sta)
+		if (sta) {
 			wpa_printf(MSG_DEBUG, "This is a message for a node in the BSS. Sending now");
+			send_node_messages(hapd, node);
+		}	
 		else
-			wpa_printf(MSG_DEBUG, "This is a message for another node. Sending now");
-		send_node_messages(hapd, node);
+			wpa_printf(MSG_DEBUG, "This is a message for another node. We need to wait for activity from" MACSTR, MAC2STR(addr));
 	}
 
 	if(p2){
@@ -656,7 +756,6 @@ static void not_serv_rx_not_res(struct hostapd_data *hapd, const u8 *sa,
 
 }
 
-
 static void hostapd_recv_not_action_rx(void *ctx, const u8 *buf, size_t len, int freq)
 {
 	struct hostapd_data *hapd = ctx;
@@ -686,13 +785,19 @@ static void hostapd_recv_not_action_rx(void *ctx, const u8 *buf, size_t len, int
 /*NEWANDROID*/
 
 
-	if (data[0] == WLAN_PA_NOTIFICATION_RESP) {
-		wpa_printf(MSG_DEBUG, "It is a response to a former notification");
-		not_serv_rx_not_res(hapd, sa, data+1, len-1);
-	}else if(data[0] == WLAN_PA_NOTIFICATION_REQ){
-		wpa_printf(MSG_DEBUG, "It is a request for a notification");
-		send_buffered_push_messages(hapd, sa, 0);
-	}
+	if(data[0] == WLAN_PA_HYPERLOCAL_QUERY){
+		wpa_printf(MSG_DEBUG, "It is a request for hyperlocal information");
+		//send_buffered_push_messages(hapd, sa, 0);
+		handle_hyperlocal_query(hapd, sa, data+1, len-1);
+		char *tbuf = "00:e0:4c:04:af:01 1 I am good thank you :ENDNOT:";
+		char trep[200];
+		int trep_len=200;
+		afn_pending_append(hapd, tbuf, trep, trep_len); //Mallesh; just for testing purpose.
+	} else if (data[0] == WLAN_PA_HYPERLOCAL_TTF_RESP) {
+		wpa_printf(MSG_DEBUG, "It is a fetch response to previous hyperlocal query");
+		send_hyperlocal_response(hapd, sa);
+	} else
+		wpa_printf(MSG_DEBUG, "Invalid action frame from station " MACSTR, MAC2STR(sa));
 }
 
 

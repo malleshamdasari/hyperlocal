@@ -580,6 +580,7 @@ int not_process_command(char *msg)
 
 static void not_receive(int sock, void *eloop_ctx, void *sock_ctx)
 {
+	printf("NOT: not received from STA\n");
 	not_recv_pending(not_conn);
 }
 
@@ -635,7 +636,7 @@ static int not_open_connection(){
 									 not_receive, NULL, NULL);
 		} else {
 			printf("Warning: Failed to attach to "
-				   "wpa_supplicant.\n");
+				   "hostapd.\n");
 			not_close_connection();
 			return -1;
 		}
@@ -950,6 +951,8 @@ int wpa_not_init(char *msg)
 		printf("Cannot start the connection\n");
 		return -1;
 	}
+
+	printf("Connected hostapd successfully\n");
 
 	not_connect_pystub();
 
