@@ -217,7 +217,7 @@ static int _wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd, int print)
 
 static inline int wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd)
 {
-	//return _wpa_ctrl_command(ctrl, cmd, 1);
+	return _wpa_ctrl_command(ctrl, cmd, 1);
 }
 
 

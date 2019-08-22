@@ -37,7 +37,7 @@ static const char *client_socket_dir = NULL;
 static char *ctrl_ifname = NULL;
 static const char *pid_file = NULL;
 static const char *action_file = NULL;
-static int ping_interval = 5;
+static int ping_interval = 15;
 static int interactive = 0;
 static int event_handler_registered = 0;
 
@@ -241,6 +241,7 @@ static int _wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd, int print)
 		return -1;
 	}
 	len = sizeof(buf) - 1;
+	printf("Right before going into hostapd: %s\n",cmd);
 	ret = wpa_ctrl_request(ctrl, cmd, strlen(cmd), buf, &len,
 			       hostapd_cli_msg_cb);
 	if (ret == -2) {
@@ -260,7 +261,7 @@ static int _wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd, int print)
 
 static inline int wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd)
 {
-	//return _wpa_ctrl_command(ctrl, cmd, 1);
+	return _wpa_ctrl_command(ctrl, cmd, 1);
 }
 
 
@@ -1551,9 +1552,16 @@ struct hostapd_cli_cmd {
 	const char *usage;
 };
 
+static int not_push_cb(struct wpa_ctrl *ctrl, int argc, char *argv[])
+{
+	printf("Sending hyperlocal response from Pystub\n");
+	wpa_ctrl_command(ctrl, argv[0]);
+}
+
 static const struct hostapd_cli_cmd hostapd_cli_commands[] = {
 	{ "ping", hostapd_cli_cmd_ping, NULL,
 	  "= pings hostapd" },
+	{ "push" , not_push_cb },
 	{ "mib", hostapd_cli_cmd_mib, NULL,
 	  "= get MIB variables (dot1x, dot11, radius)" },
 	{ "relog", hostapd_cli_cmd_relog, NULL,
@@ -1796,7 +1804,52 @@ static void wpa_request(struct wpa_ctrl *ctrl, int argc, char *argv[])
 	}
 }
 
+// Handle the commands received from Pystub
+static void not_cmd_handler(struct wpa_ctrl *ctrl, int argc, char *argv[])
+{
+	const struct hostapd_cli_cmd *cmd, *match = NULL;
+	int count;
+	
+	count = 0;
+	cmd = hostapd_cli_commands;
+	while (cmd->cmd) {
+		//if (strncasecmp(cmd->cmd, argv[0], strlen(argv[0])) == 0) {
+		if (strncasecmp(cmd->cmd, argv[0], 4) == 0) {
+			match = cmd;
+			if (os_strcasecmp(cmd->cmd, argv[0]) == 0) {
+				/* we have an exact match */
+				count = 1;
+				break;
+			}
+			count++;
+		}
+		cmd++;
+	}
+	
+	if (count > 1) {
+		printf("Ambiguous command '%s'; possible commands:", argv[0]);
+		cmd = hostapd_cli_commands;
+		while (cmd->cmd) {
+			if (strncasecmp(cmd->cmd, argv[0], strlen(argv[0])) ==
+				0) {
+				printf(" %s", cmd->cmd);
+			}
+			cmd++;
+		}
+		printf("\n");
+	} else if (count == 0) {
+		printf("Unknown command '%s'\n", argv[0]);
+	} else {
+		match->handler(ctrl, argc, &argv[0]);
+	}
+}
 
+int not_process_command(char *msg)
+{
+	int argc = 2;
+
+	not_cmd_handler(ctrl_conn, argc, &msg);
+}
 static void cli_event(const char *str)
 {
 	const char *start, *s;
@@ -1831,7 +1884,6 @@ static void hostapd_cli_recv_pending(struct wpa_ctrl *ctrl, int in_read,
 	int first = 1;
 	if (ctrl_conn == NULL)
 		return;
-	printf("Received message from sta\n");
 	while (wpa_ctrl_pending(ctrl)) {
 		char buf[4096];
 		size_t len = sizeof(buf) - 1;

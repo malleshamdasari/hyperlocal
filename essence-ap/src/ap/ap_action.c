@@ -282,7 +282,7 @@ static void send_node_messages(struct hostapd_data *hapd,
 
 	mes = node->pending;
 	while (mes){
-
+		printf("Message available from Pystub\n");
 		actresp = hostapd_gen_action_resp(mes, 0);
 		if (actresp) {
 			wpa_printf(MSG_DEBUG, "Sending a directed notification %u to " MACSTR, mes->mid, MAC2STR(node->addr));
@@ -291,7 +291,7 @@ static void send_node_messages(struct hostapd_data *hapd,
 				wpa_printf(MSG_ERROR, "action frame notification not sent to " MACSTR, MAC2STR(node->addr));
 
 		}
-		notify(hapd, node->addr, mes->mid, 0);
+		//notify(hapd, node->addr, mes->mid, 0);
 		idx = mes;
 		mes = mes->next;
 		node->pending = mes;

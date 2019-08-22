@@ -6,7 +6,7 @@ from thread import *
 
 lib = cdll.LoadLibrary('./notifier.so')
 
-message = "PUSH ff:ff:ff:ff:ff:ff 0 00000 :ENDNOT:"
+message = "PUSH 00:e0:4c:b6:be:0d 0 I am good, thank you! :ENDNOT:"
 
 def start_pystub_listener(p):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,6 +23,8 @@ def start_pystub_listener(p):
         data = conn.recv(1024)
         if len(data) > 0:
             print "Data received: ", data
+            time.sleep(0.5)
+            lib.not_process_command(message)
 
 start_new_thread(start_pystub_listener, (0,))
 
