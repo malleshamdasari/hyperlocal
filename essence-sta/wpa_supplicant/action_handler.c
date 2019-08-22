@@ -118,7 +118,7 @@ static void delete_pending_action(struct action_pending *not){
 	os_free(not);
 }
 
-static int action_notification_dispatcher(struct wpa_supplicant *wpa_s, struct action_pending *not, const char *payload, size_t paylen)
+static int action_hyperlocal_query_dispatcher(struct wpa_supplicant *wpa_s, struct action_pending *not, const char *payload, size_t paylen)
 {
 	int res;
 
@@ -137,15 +137,17 @@ static int action_notification_dispatcher(struct wpa_supplicant *wpa_s, struct a
 
 	wpabuf_put_u8(buf, WLAN_ACTION_PUBLIC);
 /*NEWANDROID*/
-	wpabuf_put_u8(buf, WLAN_PA_GAS_INITIAL_RESP);
+	wpabuf_put_u8(buf, WLAN_PA_GAS_INITIAL_REQ);
 	wpabuf_put_u8(buf, 255);
 /*NEWANDROID*/
-	wpabuf_put_u8(buf, WLAN_PA_NOTIFICATION);
-	wpabuf_put_u8(buf, WLAN_PA_WAIT_RESP);
+	wpabuf_put_u8(buf, WLAN_PA_HYPERLOCAL_QUERY);
+	//wpabuf_put_u8(buf, WLAN_PA_WAIT_RESP);
 	wpabuf_put_le32(buf, 3);
 	wpabuf_put_le16(buf, paylen);
 	wpabuf_put_data(buf, payload, paylen);
 	wpabuf_put_le16(buf, 0);
+
+	printf("payload len: %d\n",paylen);
 
 	wpa_hexdump(MSG_DEBUG, "CPA: hexdump ", buf->buf, buf->used);
 
@@ -173,7 +175,6 @@ static int wpa_s_not_iface_process(struct wpa_supplicant *wpa_s, struct action_h
 		return -1;
 	}
 
-	printf("Received:%s\n",buf);
 	addr_len = hwaddr_aton2(buf, addr);
 
 	if(addr_len < 0){
@@ -216,7 +217,7 @@ static int wpa_s_not_iface_process(struct wpa_supplicant *wpa_s, struct action_h
 		//return -1;
 	}
 
-	return action_notification_dispatcher(wpa_s, pending, pos, os_strlen(pos));
+	return action_hyperlocal_query_dispatcher(wpa_s, pending, pos, os_strlen(pos));
 }
 
 static void wpa_s_not_iface_recv(int sock, void *eloop_ctx, void *sock_ctx){
@@ -421,8 +422,8 @@ int action_init(struct wpa_supplicant *wpa_s) {
 	 By default on an Android device with wpa_supplicant compiled with eg. P2P enabled
 	 a virtual p2p0 interface is generated. */
 
-	if (memcmp(wpa_s->ifname, "wlan0", 5)) {
-		wpa_printf(MSG_ERROR, "   -> not wlan0, no action");
+	if (memcmp(wpa_s->ifname, "wlan1", 5)) {
+		wpa_printf(MSG_ERROR, "   -> not wlan1, no action");
 		return 0;
 	}
 
@@ -561,7 +562,7 @@ static int send_notification_upstream(struct action_handle *act, u8 type,
 		}
 		ret = -1;
 	}else{
-		wpa_printf(MSG_DEBUG, "Notification sent upstream");
+		wpa_printf(MSG_DEBUG, "Notification sent upstream, called from deliver notification");
 		dst->errors = 0;
 		ret = 0;
 	}
@@ -628,7 +629,7 @@ static void wpa_action_req_not_ind(void *eloop_ctx, void *timeout_ctx){
 	wpa_printf(MSG_DEBUG, "Sending AF to " MACSTR " at %d MHz", MAC2STR(addr), freq);
 
 	action_notification_req_dispatcher(wpa_s, addr, freq);
-	wpa_action_notify_presence(wpa_s, 2);
+	//wpa_action_notify_presence(wpa_s, 2);
 	os_free(pos);
 
 }
@@ -641,7 +642,7 @@ static int schedule_req(struct wpa_supplicant *wpa_s, const u8 *sa, const u8 *pa
 	if(buf == NULL)
 		return -1;
 
-	wpa_printf(MSG_DEBUG, "Scheduling a action frame to signal to the AP that we are up");
+	wpa_printf(MSG_DEBUG, "Scheduling an action frame to signal to the AP that we are up");
 	wpa_printf(MSG_DEBUG, "The message will be sent in %u ms at freq %d", tout, freq);
 
 	os_memcpy(buf, sa, ETH_ALEN);
@@ -685,15 +686,15 @@ int action_rx(struct wpa_supplicant *wpa_s, const u8 *da, const u8 *sa,
 	wpa_printf(MSG_DEBUG, "Action frame type is %u, length is %zu", stype, len);
 
 	switch(stype){
-		case WLAN_PA_NOTIFICATION:
-			wpa_printf(MSG_DEBUG, "Notification is received");
+		case WLAN_PA_HYPERLOCAL_RESP:
+			wpa_printf(MSG_DEBUG, "Hyperlocal information is received");
 			if(len < 10)
 				ret = -1;
 			else
 				ret = deliver_notification(wpa_s, act, sa, pos, freq);
 			break;
-		case WLAN_PA_NOTIFICATION_IND:
-			wpa_printf(MSG_DEBUG, "Notification indicator is received");
+		case WLAN_PA_HYPERLOCAL_TTF_REQ:
+			wpa_printf(MSG_DEBUG, "A time to fetch response for your hyperlocal query is received");
 			if(len < 3)
 				ret = -1;
 			else{
@@ -713,26 +714,26 @@ static void action_notification_req_dispatcher(struct wpa_supplicant *wpa_s,
 	const u8 *src = wpa_s->own_addr;
 	struct wpabuf *buf;
 
-	buf = wpabuf_alloc(2);
+	buf = wpabuf_alloc(4);
 	if (buf == NULL){
 		return;
 	}
+
 
 	wpabuf_put_u8(buf, WLAN_ACTION_PUBLIC);
 /*NEWANDROID*/
 	wpabuf_put_u8(buf, WLAN_PA_GAS_INITIAL_REQ);
 	wpabuf_put_u8(buf, 255);
 /*NEWANDROID*/
-	wpabuf_put_u8(buf, WLAN_PA_NOTIFICATION_REQ);
+	wpabuf_put_u8(buf, WLAN_PA_HYPERLOCAL_TTF_RESP);
 
 	wpa_printf(MSG_DEBUG, "Notification request is being sent at frequency %d to " MACSTR, freq, MAC2STR(addr));
 
 	res =  offchannel_send_action(wpa_s, freq, addr, src, addr, wpabuf_head(buf), wpabuf_len(buf), 0, NULL, 0);
 	wpa_printf(MSG_DEBUG, "  offchannel_send_action res = %d", res);
 
-	os_free(buf);
 	wpa_printf(MSG_DEBUG, "Notification request is sent");
-
+	os_free(buf);
 }
  
 void wpa_action_req_not(void *eloop_ctx, void *timeout_ctx){
