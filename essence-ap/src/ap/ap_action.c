@@ -358,12 +358,15 @@ static void resolve_hyperlocal_query_for_sta(struct hostapd_data *hapd, const u8
 
 	wpa_printf(MSG_DEBUG, "The message comes from " MACSTR " with id %u and payload len %u", MAC2STR(sa), mid, slen);
 
-	if (slen != len - 6){
-		return;
-	}
+	//if (slen != len - 6){
+	//	printf("slen and len: %d and %d\n",slen, len);
+	//	return;
+	//}
 
-	if (end - pos != slen)
-		return;
+	//if (end - pos != slen) {
+	//	printf("end-pos: %d\n",end-pos);
+	//	return;
+	//}
 
 
 	buflen = os_snprintf(buf, sizeof(buf), "Addr:" MACSTR "MID:%u-", MAC2STR(sa), mid);
@@ -789,10 +792,11 @@ static void hostapd_recv_not_action_rx(void *ctx, const u8 *buf, size_t len, int
 		wpa_printf(MSG_DEBUG, "It is a request for hyperlocal information");
 		//send_buffered_push_messages(hapd, sa, 0);
 		handle_hyperlocal_query(hapd, sa, data+1, len-1);
-		char *tbuf = "00:e0:4c:04:af:01 1 I am good thank you :ENDNOT:";
-		char trep[200];
-		int trep_len=200;
-		afn_pending_append(hapd, tbuf, trep, trep_len); //Mallesh; just for testing purpose.
+		//not_serv_rx_not_res(hapd, sa, data+1, len-1);
+		//char *tbuf = "00:e0:4c:81:59:7e 1 I am good thank you :ENDNOT:";
+		//char trep[200];
+		//int trep_len=200;
+		//afn_pending_append(hapd, tbuf, trep, trep_len); //Mallesh; just for testing purpose.
 	} else if (data[0] == WLAN_PA_HYPERLOCAL_TTF_RESP) {
 		wpa_printf(MSG_DEBUG, "It is a fetch response to previous hyperlocal query");
 		send_hyperlocal_response(hapd, sa);

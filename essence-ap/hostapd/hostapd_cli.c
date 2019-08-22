@@ -19,11 +19,11 @@
 
 #ifndef CONFIG_NO_CTRL_IFACE
 
+static struct wpa_ctrl *ctrl_conn;
 static const char *const hostapd_cli_version =
 "hostapd_cli v" VERSION_STR "\n"
 "Copyright (c) 2004-2019, Jouni Malinen <j@w1.fi> and contributors";
 
-static struct wpa_ctrl *ctrl_conn;
 static int hostapd_cli_quit = 0;
 static int hostapd_cli_attached = 0;
 
@@ -217,7 +217,7 @@ static int _wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd, int print)
 
 static inline int wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd)
 {
-	return _wpa_ctrl_command(ctrl, cmd, 1);
+	//return _wpa_ctrl_command(ctrl, cmd, 1);
 }
 
 
@@ -239,7 +239,7 @@ static int hostapd_cli_cmd(struct wpa_ctrl *ctrl, const char *cmd,
 
 static int hostapd_cli_cmd_ping(struct wpa_ctrl *ctrl, int argc, char *argv[])
 {
-	return wpa_ctrl_command(ctrl, "PING");
+	//return wpa_ctrl_command(ctrl, "PING");
 }
 
 
@@ -1788,6 +1788,7 @@ static void hostapd_cli_recv_pending(struct wpa_ctrl *ctrl, int in_read,
 	int first = 1;
 	if (ctrl_conn == NULL)
 		return;
+	printf("Received message from sta\n");
 	while (wpa_ctrl_pending(ctrl)) {
 		char buf[4096];
 		size_t len = sizeof(buf) - 1;
@@ -1800,7 +1801,7 @@ static void hostapd_cli_recv_pending(struct wpa_ctrl *ctrl, int in_read,
 				if (in_read && first)
 					printf("\n");
 				first = 0;
-				printf("%s\n", buf);
+				printf("Hostapd_cli: %s\n", buf);
 			}
 		} else {
 			printf("Could not read pending message.\n");
@@ -1824,9 +1825,9 @@ static void hostapd_cli_ping(void *eloop_ctx, void *timeout_ctx)
 	}
 	if (!ctrl_conn && hostapd_cli_reconnect(ctrl_ifname) == 0)
 		printf("Connection to hostapd re-established\n");
-	if (ctrl_conn)
-		hostapd_cli_recv_pending(ctrl_conn, 1, 0);
-	eloop_register_timeout(ping_interval, 0, hostapd_cli_ping, NULL, NULL);
+	//if (ctrl_conn)
+	//	hostapd_cli_recv_pending(ctrl_conn, 1, 0);
+	//eloop_register_timeout(ping_interval, 0, hostapd_cli_ping, NULL, NULL);
 }
 
 

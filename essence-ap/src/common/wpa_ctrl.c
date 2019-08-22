@@ -631,6 +631,7 @@ int wpa_ctrl_pending(struct wpa_ctrl *ctrl)
 	tv.tv_usec = 0;
 	FD_ZERO(&rfds);
 	FD_SET(ctrl->s, &rfds);
+	printf("Mallesh: Before select\n");
 	select(ctrl->s + 1, &rfds, NULL, NULL, &tv);
 	return FD_ISSET(ctrl->s, &rfds);
 }
