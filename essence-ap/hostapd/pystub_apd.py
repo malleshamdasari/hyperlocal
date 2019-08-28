@@ -6,7 +6,7 @@ from thread import *
 
 lib = cdll.LoadLibrary('./notifier.so')
 
-message = "PUSH 00:e0:4c:b6:be:0d 0 I am good, thank you! :ENDNOT:"
+message = "PUSH a0:51:0b:ee:2c:4e 0 I am good, thank you! :ENDNOT:"
 
 def start_pystub_listener(p):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -29,6 +29,8 @@ def start_pystub_listener(p):
 start_new_thread(start_pystub_listener, (0,))
 
 lib.wpa_not_init(0, 0)
+
+time.sleep(1)
 
 while (1):
     time.sleep(10)

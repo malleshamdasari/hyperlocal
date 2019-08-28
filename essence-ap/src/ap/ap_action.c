@@ -282,7 +282,6 @@ static void send_node_messages(struct hostapd_data *hapd,
 
 	mes = node->pending;
 	while (mes){
-		printf("Message available from Pystub\n");
 		actresp = hostapd_gen_action_resp(mes, 0);
 		if (actresp) {
 			wpa_printf(MSG_DEBUG, "Sending a directed notification %u to " MACSTR, mes->mid, MAC2STR(node->addr));
@@ -401,12 +400,12 @@ static void handle_hyperlocal_query(struct hostapd_data *hapd, const u8 *addr,
 		return;
 	}
 
-	if (node->computed == 0){
+	//if (node->computed == 0){
 		hapd_not_indicate_tout(hapd, addr);
 		wpa_printf(MSG_DEBUG, "Computing notifications for " MACSTR, MAC2STR(addr));
 		resolve_hyperlocal_query_for_sta(hapd, addr, data, len);
 		node->computed = 1;
-	}
+	//}
 
 	eloop_cancel_timeout(hapd_not_node_timeout, hapd, node);
 	if ((sta = ap_get_sta(hapd, addr)) == NULL){
@@ -790,15 +789,11 @@ static void hostapd_recv_not_action_rx(void *ctx, const u8 *buf, size_t len, int
 
 	if(data[0] == WLAN_PA_HYPERLOCAL_QUERY){
 		wpa_printf(MSG_DEBUG, "It is a request for hyperlocal information");
-		//send_buffered_push_messages(hapd, sa, 0);
 		handle_hyperlocal_query(hapd, sa, data+1, len-1);
 		//not_serv_rx_not_res(hapd, sa, data+1, len-1);
-		//char *tbuf = "00:e0:4c:81:59:7e 1 I am good thank you :ENDNOT:";
-		//char trep[200];
-		//int trep_len=200;
-		//afn_pending_append(hapd, tbuf, trep, trep_len); //Mallesh; just for testing purpose.
 	} else if (data[0] == WLAN_PA_HYPERLOCAL_TTF_RESP) {
 		wpa_printf(MSG_DEBUG, "It is a fetch response to previous hyperlocal query");
+		//send_buffered_push_messages(hapd, sa, 0);
 		send_hyperlocal_response(hapd, sa);
 	} else
 		wpa_printf(MSG_DEBUG, "Invalid action frame from station " MACSTR, MAC2STR(sa));
