@@ -10,6 +10,7 @@
 #ifdef ANDROID
 #include <cutils/properties.h>
 #endif /* ANDROID */
+#include <netdb.h>
 
 static struct wpa_ctrl *mon_conn;
 #ifndef CONFIG_CTRL_IFACE_DIR
@@ -25,9 +26,11 @@ static const char WIPUSHSOCKNAME[] = "wpa_wipush";
 #endif /* ANDROID */
 
 static int not_disp_attached = 0;
+static int ping_interval = 5;
+static int warning_displayed = 0;
 
 
-static int not_open_connection(void);
+static int not_disp_open_connection(void);
 static void not_disp_cleanup(void);
 
 struct wipush_not{
@@ -55,7 +58,83 @@ static void clean_wipush_messages(){
 	}
 }
 
-static void not_disp_close_connection(void) /* Mallesh: predicted the func name based on errors. */
+int *pystub_sockfd;
+#define NOT_PYSTUB_PORT_NO 9998
+static int not_connect_pystub()
+{
+	int sockfd, portno, n;
+	
+	struct sockaddr_in serv_addr;
+	struct hostent *server;
+	
+	char buffer[256];
+
+	portno = NOT_PYSTUB_PORT_NO;
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd < 0){
+		printf("ERROR opening socket for pystub\n");
+		return -1;
+	}
+	server = gethostbyname("localhost");
+	if (server == NULL){
+		printf("ERROR, no such host\n");
+		return -1;
+	}
+	bzero((char *) &serv_addr, sizeof(serv_addr));
+	serv_addr.sin_family = AF_INET;
+	bcopy((char *)server->h_addr, 
+	     (char *)&serv_addr.sin_addr.s_addr,
+	     server->h_length);
+	serv_addr.sin_port = htons(portno);
+	if (connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0){ 
+		printf("ERROR connecting the pystub\n");
+		return -1;
+	}
+
+	printf("Successfully connected to pystub\n");	
+	pystub_sockfd = &sockfd;
+	return 0;
+}
+
+static int not_disconnect_pystub()
+{
+	close(*pystub_sockfd);
+}
+
+static void not_disp_msg_cb(char *msg, size_t len)
+{
+	printf("%s\n", msg);
+}
+
+static int not_disp_command(struct wpa_ctrl *ctrl, char *cmd, int print)
+{
+	char buf[4096];
+	size_t len;
+	int ret;
+
+	len = sizeof(buf) - 1;
+	ret = wpa_ctrl_request(ctrl, cmd, os_strlen(cmd), buf, &len,
+						   not_disp_msg_cb);
+
+	if (ret == -2) {
+		printf("'%s' command timed out.\n", cmd);
+		return -2;
+	} else if (ret < 0) {
+		printf("'%s' command failed.\n", cmd);
+		return -1;
+	}
+
+	if (print) {
+		buf[len] = '\0';
+		printf("%s", buf);
+		if (len > 0 && buf[len - 1] != '\n')
+			printf("\n");
+	}
+	return 0;
+
+}
+
+static void not_disp_close_connection(void)
 {
 	if (mon_conn == NULL)
 		return;
@@ -75,7 +154,7 @@ static void not_disp_close_connection(void) /* Mallesh: predicted the func name 
 static void not_disp_reconnect(void)
 {
 	not_disp_close_connection();
-	if (not_open_connection() < 0)
+	if (not_disp_open_connection() < 0)
 		return;
 	
 	edit_clear_line();
@@ -215,9 +294,12 @@ fail:
 }
 
 static void announce(const char *buf){
+	int type = atoi(buf);
+
 	char line[1024];
 	char *pos = line;
 	char *end = pos + sizeof(line);
+	int res;
 
 	struct os_time t;
 	double now;
@@ -256,7 +338,9 @@ static void not_event(const char *str){
 	const char *buf;
 	
 	buf = str;
-	
+
+	printf("WPA_CLI: message received from AP: %s\n",str);
+
 	if(os_strcmp(buf, "OK") == 0 || os_strcmp(buf, "FAIL") == 0){
 		display_not(buf);
 	}else if(os_strncmp(buf, "NOT:",4)==0){
@@ -280,6 +364,7 @@ static void not_disp_recv_pending(struct wpa_ctrl *ctrl)
 			buf[len] = '\0';
 			edit_clear_line();
 			not_event(buf);
+			write(*pystub_sockfd, buf, len);
 			edit_redraw();
 		} else {
 			printf("Could not read pending message.\n");
@@ -297,6 +382,92 @@ static void not_disp_recv_pending(struct wpa_ctrl *ctrl)
 static void not_disp_mon_receive(int sock, void *eloop_ctx, void *sock_ctx)
 {
 	not_disp_recv_pending(mon_conn);
+}
+
+static void not_disp_edit_cmd_cb(void *ctx, char *cmd)
+{
+	char *buf;
+	int ret;
+	struct os_time t;
+	double now;
+
+	if(os_strncmp(cmd,"quit",4) == 0){
+		not_disp_cleanup();
+		eloop_terminate();
+	}
+
+	if(cur_mid == NULL)
+		return;
+
+	buf = os_malloc(4096);
+
+	os_get_time(&t);
+
+	now = (double)t.sec + 1e-6*(double)t.usec;
+
+	printf("%.5f: Sending action a response frame now\n", now);
+	
+	ret = os_snprintf(buf, 4096, "ACTION %s %u %s", cur_addr, *cur_mid, cmd);
+	if (ret < 0 || ret >= 4096 ){
+		printf("Too long command\n");
+		goto finish;
+	}
+	not_disp_command(mon_conn, buf, 1);
+
+
+finish:
+	os_free(buf);
+	os_free(cur_addr);
+	os_free(cur_mid);
+	cur_mid=NULL;
+}
+
+static int not_disp_open_connection()
+{
+	char *cfile = NULL;
+	int flen, res;
+
+
+#ifdef ANDROID
+	cfile = os_strdup(WIPUSHSOCKNAME);
+#endif /* ANDROID */
+
+
+	if (cfile == NULL) {
+		flen = os_strlen(ctrl_iface_dir) + os_strlen(WIPUSHSOCKNAME) + 2;
+		cfile = os_malloc(flen);
+		if (cfile == NULL)
+			return -1;
+		res = os_snprintf(cfile, flen, "%s/%s", ctrl_iface_dir,
+						  WIPUSHSOCKNAME);
+
+
+		if (res < 0 || res >= flen) {
+			os_free(cfile);
+			return -1;
+		}
+	}
+
+	mon_conn = wpa_ctrl_open(cfile);
+
+	os_free(cfile);
+
+	if (mon_conn) {
+		if (wpa_ctrl_attach(mon_conn) == 0) {
+			not_disp_attached = 1;
+			eloop_register_read_sock(wpa_ctrl_get_fd(mon_conn),
+										 not_disp_mon_receive, NULL, NULL);
+		} else {
+			printf("Warning: Failed to attach to "
+				   "wpa_supplicant.\n");
+			not_disp_close_connection();
+			return -1;
+		}
+	}else{
+		return -1;
+	}
+
+	return 0;
 }
 
 static void wpa_cli_msg_cb(char *msg, size_t len)
@@ -336,6 +507,8 @@ static int wpa_ctrl_command(struct wpa_ctrl *ctrl, char *cmd)
 {
 	return _wpa_ctrl_command(ctrl, cmd, 1);
 }
+
+
 
 static int wpa_not_cmd_hl_query(struct wpa_ctrl *ctrl, int argc,
 								char *argv[])
@@ -422,8 +595,7 @@ static void wpa_not_cmd_handler(int argc, char *argv[])
 	} else if (count == 0) {
 		printf("Unknown command '%s'\n", argv[0]);
 	} else {
-		char *tmsg = "00:e0:4c:21:7f:c5 0 00000";
-		//char *tmsg = "ff:ff:ff:ff:ff:ff 0 00000";
+		char *tmsg = "00:e0:4c:33:0c:cd 0 Hello, how are you?";
 		match->handler(ctrl, argc - 1, &tmsg);
 		//match->handler(ctrl, argc - 1, &argv[1]);
 	}
@@ -436,52 +608,66 @@ int wpa_not_process_command(char *msg)
 	wpa_not_cmd_handler(argc, &msg);
 }
 
-static int not_open_connection()
+static void not_disp_edit_eof_cb(void *ctx)
 {
-	char *cfile = NULL;
-	int flen, res;
+	eloop_terminate();
+}
 
-
-#ifdef ANDROID
-	cfile = os_strdup(WIPUSHSOCKNAME);
-#endif /* ANDROID */
-
-
-	if (cfile == NULL) {
-		flen = os_strlen(ctrl_iface_dir) + os_strlen(WIPUSHSOCKNAME) + 2;
-		cfile = os_malloc(flen);
-		if (cfile == NULL)
-			return -1;
-		res = os_snprintf(cfile, flen, "%s/%s", ctrl_iface_dir,
-						  WIPUSHSOCKNAME);
-
-
-		if (res < 0 || res >= flen) {
-			os_free(cfile);
-			return -1;
-		}
-	}
-
-	mon_conn = wpa_ctrl_open(cfile);
-
-	os_free(cfile);
-
+static void not_disp_ping(void *eloop_ctx, void *timeout_ctx)
+{
 	if (mon_conn) {
-		if (wpa_ctrl_attach(mon_conn) == 0) {
-			not_disp_attached = 1;
-			eloop_register_read_sock(wpa_ctrl_get_fd(mon_conn),
-										 not_disp_mon_receive, NULL, NULL);
-		} else {
-			printf("Warning: Failed to attach to "
-				   "wpa_supplicant.\n");
+		int res;
+
+		res = not_disp_command(mon_conn, "PING", 0);
+
+		if (res) {
+			printf("Connection to wpa_supplicant lost - trying to "
+				   "reconnect\n");
 			not_disp_close_connection();
-			return -1;
 		}
-	}else{
-		return -1;
+	}
+	if (!mon_conn)
+		not_disp_reconnect();
+	eloop_register_timeout(ping_interval, 0, not_disp_ping, NULL, NULL);
+}
+
+static void start_edit(void)
+{
+	if (edit_init(not_disp_edit_cmd_cb, not_disp_edit_eof_cb,
+				  /*not_disp_edit_completion_cb*/ NULL, NULL, NULL, NULL) < 0) {
+		eloop_terminate();
+		return;
+	}
+	
+	eloop_register_timeout(ping_interval, 0, not_disp_ping, NULL, NULL);
+}
+
+static void try_connection(void *eloop_ctx, void *timeout_ctx)
+{
+	if (!not_disp_open_connection() == 0) {
+		if (!warning_displayed) {
+			printf("Could not connect to wpa_supplicant: "
+				   "- re-trying\n");
+			warning_displayed = 1;
+		}
+		eloop_register_timeout(1, 0, try_connection, NULL, NULL);
+		return;
 	}
 
-	return 0;
+	if (warning_displayed)
+		printf("Connection established.\n");
+
+	start_edit();
+}
+
+
+static void not_disp(void)
+{
+	printf("\nDisplaying Notifications\n\n");
+
+	eloop_register_timeout(0, 0, try_connection, NULL, NULL);
+	eloop_run();
+	eloop_cancel_timeout(try_connection, NULL, NULL);
 }
 
 static void not_disp_terminate(int sig, void *ctx)
@@ -501,7 +687,7 @@ static void not_disp_end(void *eloop_ctx, void *timeout_ctx){
 	os_program_deinit();
 }
 
-int wpa_not_init(char *msg)
+int wpa_not_init(int argc, char *argv[])
 {
 	if (os_program_init())
 		return -1;
@@ -515,19 +701,14 @@ int wpa_not_init(char *msg)
 
 	eloop_register_signal_terminate(not_disp_terminate, NULL);
 	eloop_register_timeout(4000, 0, not_disp_end, NULL, NULL);
+	
+	not_connect_pystub();
 
-	if (not_open_connection() < 0){
-		printf("Cannot start the connection\n");
-		return -1;
-	}
+	not_disp();
 
-	return 0;
-}
-
-int wpa_not_deinit()
-{
 	eloop_destroy();
 	not_disp_cleanup();
+	not_disconnect_pystub();
 	os_program_deinit();
 
 	return 0;

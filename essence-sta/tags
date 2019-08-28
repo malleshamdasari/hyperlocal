@@ -130,13 +130,13 @@ AP_STA_DISCONNECTED	src/common/wpa_ctrl.h	229;"	d
 ARG_IN	wpa_supplicant/dbus/dbus_new_helpers.h	/^enum dbus_arg_direction { ARG_IN, ARG_OUT };$/;"	e	enum:dbus_arg_direction
 ARG_OUT	wpa_supplicant/dbus/dbus_new_helpers.h	/^enum dbus_arg_direction { ARG_IN, ARG_OUT };$/;"	e	enum:dbus_arg_direction
 ARRAY_SIZE	src/utils/common.h	544;"	d
-ASEL_CAP_ANT_INDICES_FEEDBACK_BASED_TX_AS_CAP	src/common/ieee802_11_defs.h	767;"	d
-ASEL_CAP_ANT_INDICES_FEEDBACK_CAP	src/common/ieee802_11_defs.h	769;"	d
-ASEL_CAP_ASEL_CAPABLE	src/common/ieee802_11_defs.h	765;"	d
-ASEL_CAP_EXPLICIT_CSI_FEEDBACK_BASED_TX_AS_CAP	src/common/ieee802_11_defs.h	766;"	d
-ASEL_CAP_EXPLICIT_CSI_FEEDBACK_CAP	src/common/ieee802_11_defs.h	768;"	d
-ASEL_CAP_RX_AS_CAP	src/common/ieee802_11_defs.h	770;"	d
-ASEL_CAP_TX_SOUNDING_PPDUS_CAP	src/common/ieee802_11_defs.h	771;"	d
+ASEL_CAP_ANT_INDICES_FEEDBACK_BASED_TX_AS_CAP	src/common/ieee802_11_defs.h	772;"	d
+ASEL_CAP_ANT_INDICES_FEEDBACK_CAP	src/common/ieee802_11_defs.h	774;"	d
+ASEL_CAP_ASEL_CAPABLE	src/common/ieee802_11_defs.h	770;"	d
+ASEL_CAP_EXPLICIT_CSI_FEEDBACK_BASED_TX_AS_CAP	src/common/ieee802_11_defs.h	771;"	d
+ASEL_CAP_EXPLICIT_CSI_FEEDBACK_CAP	src/common/ieee802_11_defs.h	773;"	d
+ASEL_CAP_RX_AS_CAP	src/common/ieee802_11_defs.h	775;"	d
+ASEL_CAP_TX_SOUNDING_PPDUS_CAP	src/common/ieee802_11_defs.h	776;"	d
 ASN1_CLASS_APPLICATION	src/tls/asn1.h	41;"	d
 ASN1_CLASS_CONTEXT_SPECIFIC	src/tls/asn1.h	42;"	d
 ASN1_CLASS_PRIVATE	src/tls/asn1.h	43;"	d
@@ -373,8 +373,8 @@ BSSID_INFO	src/drivers/driver_ndis.c	/^typedef struct BSSID_INFO {$/;"	s	file:
 BSSID_INFO	src/drivers/driver_ndis.c	/^} BSSID_INFO;$/;"	t	typeref:struct:BSSID_INFO	file:
 BSS_H	wpa_supplicant/bss.h	10;"	d
 BSS_LOAD_UPDATE_H	src/ap/bss_load.h	10;"	d
-BSS_MEMBERSHIP_SELECTOR_HT_PHY	src/common/ieee802_11_defs.h	806;"	d
-BSS_MEMBERSHIP_SELECTOR_VHT_PHY	src/common/ieee802_11_defs.h	805;"	d
+BSS_MEMBERSHIP_SELECTOR_HT_PHY	src/common/ieee802_11_defs.h	811;"	d
+BSS_MEMBERSHIP_SELECTOR_VHT_PHY	src/common/ieee802_11_defs.h	810;"	d
 BSS_TM_RESP	src/common/wpa_ctrl.h	253;"	d
 BUILD_CONFIG_H	src/utils/build_config.h	16;"	d
 BW20	wpa_supplicant/p2p_supplicant.c	/^	enum { BW20, BW40PLUS, BW40MINUS, BW80, BW2160 } bw;$/;"	e	enum:p2p_oper_class_map::__anon9	file:
@@ -488,8 +488,8 @@ CHALLENGE_LEN	src/eap_server/eap_server_md5.c	17;"	d	file:
 CHALLENGE_LEN	src/eap_server/eap_server_mschapv2.c	44;"	d	file:
 CHANGE_CIPHER_SPEC	src/tls/tlsv1_client_i.h	/^		SERVER_HELLO_DONE, CLIENT_KEY_EXCHANGE, CHANGE_CIPHER_SPEC,$/;"	e	enum:tlsv1_client::__anon33
 CHANGE_CIPHER_SPEC	src/tls/tlsv1_server_i.h	/^		CERTIFICATE_VERIFY, CHANGE_CIPHER_SPEC, CLIENT_FINISHED,$/;"	e	enum:tlsv1_server::__anon21
-CHAN_SWITCH_MODE_ALLOW_TX	src/common/ieee802_11_defs.h	1338;"	d
-CHAN_SWITCH_MODE_BLOCK_TX	src/common/ieee802_11_defs.h	1339;"	d
+CHAN_SWITCH_MODE_ALLOW_TX	src/common/ieee802_11_defs.h	1343;"	d
+CHAN_SWITCH_MODE_BLOCK_TX	src/common/ieee802_11_defs.h	1344;"	d
 CHAN_WIDTH_160	src/drivers/driver.h	/^	CHAN_WIDTH_160,$/;"	e	enum:chan_width
 CHAN_WIDTH_20	src/drivers/driver.h	/^	CHAN_WIDTH_20,$/;"	e	enum:chan_width
 CHAN_WIDTH_20_NOHT	src/drivers/driver.h	/^	CHAN_WIDTH_20_NOHT,$/;"	e	enum:chan_width
@@ -1514,9 +1514,9 @@ END_ARGS	wpa_supplicant/dbus/dbus_new_helpers.h	50;"	d
 ENOTCONN	wpa_supplicant/wpa_supplicant.c	5378;"	d	file:
 EOPNOTSUPP	wpa_supplicant/wpa_supplicant.c	5379;"	d	file:
 EPOCHFILETIME	src/utils/os_win32.c	28;"	d	file:
-ERP_INFO_BARKER_PREAMBLE_MODE	src/common/ieee802_11_defs.h	702;"	d
-ERP_INFO_NON_ERP_PRESENT	src/common/ieee802_11_defs.h	700;"	d
-ERP_INFO_USE_PROTECTION	src/common/ieee802_11_defs.h	701;"	d
+ERP_INFO_BARKER_PREAMBLE_MODE	src/common/ieee802_11_defs.h	707;"	d
+ERP_INFO_NON_ERP_PRESENT	src/common/ieee802_11_defs.h	705;"	d
+ERP_INFO_USE_PROTECTION	src/common/ieee802_11_defs.h	706;"	d
 ERP_MAX_KEY_LEN	src/eap_common/eap_defs.h	116;"	d
 ERROR_ACCT_DISABLED	src/eap_peer/eap_mschapv2.c	68;"	d	file:
 ERROR_ACCT_DISABLED	src/eap_server/eap_server_mschapv2.c	34;"	d	file:
@@ -1616,13 +1616,13 @@ EVENT_WNM	src/drivers/driver.h	/^	EVENT_WNM,$/;"	e	enum:wpa_event_type
 EVENT_WPS_BUTTON_PUSHED	src/drivers/driver.h	/^	EVENT_WPS_BUTTON_PUSHED,$/;"	e	enum:wpa_event_type
 EXACT_SSID_MATCH	src/ap/beacon.c	/^	EXACT_SSID_MATCH,$/;"	e	enum:ssid_match_result	file:
 EXTRACT_LEN	src/crypto/random.c	43;"	d	file:
-EXT_HT_CAP_INFO_HTC_SUPPORT	src/common/ieee802_11_defs.h	735;"	d
-EXT_HT_CAP_INFO_MCS_FEEDBACK_MASK	src/common/ieee802_11_defs.h	733;"	d
-EXT_HT_CAP_INFO_MCS_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	734;"	d
-EXT_HT_CAP_INFO_PCO	src/common/ieee802_11_defs.h	729;"	d
-EXT_HT_CAP_INFO_PCO_TRANS_TIME_MASK	src/common/ieee802_11_defs.h	730;"	d
-EXT_HT_CAP_INFO_RD_RESPONDER	src/common/ieee802_11_defs.h	736;"	d
-EXT_HT_CAP_INFO_TRANS_TIME_OFFSET	src/common/ieee802_11_defs.h	731;"	d
+EXT_HT_CAP_INFO_HTC_SUPPORT	src/common/ieee802_11_defs.h	740;"	d
+EXT_HT_CAP_INFO_MCS_FEEDBACK_MASK	src/common/ieee802_11_defs.h	738;"	d
+EXT_HT_CAP_INFO_MCS_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	739;"	d
+EXT_HT_CAP_INFO_PCO	src/common/ieee802_11_defs.h	734;"	d
+EXT_HT_CAP_INFO_PCO_TRANS_TIME_MASK	src/common/ieee802_11_defs.h	735;"	d
+EXT_HT_CAP_INFO_RD_RESPONDER	src/common/ieee802_11_defs.h	741;"	d
+EXT_HT_CAP_INFO_TRANS_TIME_OFFSET	src/common/ieee802_11_defs.h	736;"	d
 EXT_PASSWORD_H	src/utils/ext_password.h	10;"	d
 EXT_PASSWORD_I_H	src/utils/ext_password_i.h	10;"	d
 EXT_RADIO_WORK_START	src/common/wpa_ctrl.h	214;"	d
@@ -1854,32 +1854,32 @@ HOSTAP_CRYPT_ERR_UNKNOWN_ALG	src/drivers/driver_hostap.h	203;"	d
 HOSTAP_CRYPT_FLAG_PERMANENT	src/drivers/driver_hostap.h	201;"	d
 HOSTAP_CRYPT_FLAG_SET_TX_KEY	src/drivers/driver_hostap.h	200;"	d
 HOSTAP_DRIVER_H	src/drivers/driver_hostap.h	10;"	d
-HS20_ANQP_DOMAIN_ID_PRESENT	src/common/ieee802_11_defs.h	1012;"	d
-HS20_ANQP_OUI_TYPE	src/common/ieee802_11_defs.h	997;"	d
+HS20_ANQP_DOMAIN_ID_PRESENT	src/common/ieee802_11_defs.h	1017;"	d
+HS20_ANQP_OUI_TYPE	src/common/ieee802_11_defs.h	1002;"	d
 HS20_DEAUTH_IMMINENT_NOTICE	src/common/wpa_ctrl.h	212;"	d
-HS20_DEAUTH_REASON_CODE_BSS	src/common/ieee802_11_defs.h	1019;"	d
-HS20_DEAUTH_REASON_CODE_ESS	src/common/ieee802_11_defs.h	1020;"	d
-HS20_DGAF_DISABLED	src/common/ieee802_11_defs.h	1010;"	d
+HS20_DEAUTH_REASON_CODE_BSS	src/common/ieee802_11_defs.h	1024;"	d
+HS20_DEAUTH_REASON_CODE_ESS	src/common/ieee802_11_defs.h	1025;"	d
+HS20_DGAF_DISABLED	src/common/ieee802_11_defs.h	1015;"	d
 HS20_H	src/ap/hs20.h	10;"	d
-HS20_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	878;"	d
-HS20_INDICATION_OUI_TYPE	src/common/ieee802_11_defs.h	996;"	d
-HS20_OSEN_OUI_TYPE	src/common/ieee802_11_defs.h	998;"	d
-HS20_PPS_MO_ID_PRESENT	src/common/ieee802_11_defs.h	1011;"	d
-HS20_STYPE_CAPABILITY_LIST	src/common/ieee802_11_defs.h	1000;"	d
-HS20_STYPE_CONNECTION_CAPABILITY	src/common/ieee802_11_defs.h	1003;"	d
-HS20_STYPE_ICON_BINARY_FILE	src/common/ieee802_11_defs.h	1008;"	d
-HS20_STYPE_ICON_REQUEST	src/common/ieee802_11_defs.h	1007;"	d
-HS20_STYPE_NAI_HOME_REALM_QUERY	src/common/ieee802_11_defs.h	1004;"	d
-HS20_STYPE_OPERATING_CLASS	src/common/ieee802_11_defs.h	1005;"	d
-HS20_STYPE_OPERATOR_FRIENDLY_NAME	src/common/ieee802_11_defs.h	1001;"	d
-HS20_STYPE_OSU_PROVIDERS_LIST	src/common/ieee802_11_defs.h	1006;"	d
-HS20_STYPE_QUERY_LIST	src/common/ieee802_11_defs.h	999;"	d
-HS20_STYPE_WAN_METRICS	src/common/ieee802_11_defs.h	1002;"	d
+HS20_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	883;"	d
+HS20_INDICATION_OUI_TYPE	src/common/ieee802_11_defs.h	1001;"	d
+HS20_OSEN_OUI_TYPE	src/common/ieee802_11_defs.h	1003;"	d
+HS20_PPS_MO_ID_PRESENT	src/common/ieee802_11_defs.h	1016;"	d
+HS20_STYPE_CAPABILITY_LIST	src/common/ieee802_11_defs.h	1005;"	d
+HS20_STYPE_CONNECTION_CAPABILITY	src/common/ieee802_11_defs.h	1008;"	d
+HS20_STYPE_ICON_BINARY_FILE	src/common/ieee802_11_defs.h	1013;"	d
+HS20_STYPE_ICON_REQUEST	src/common/ieee802_11_defs.h	1012;"	d
+HS20_STYPE_NAI_HOME_REALM_QUERY	src/common/ieee802_11_defs.h	1009;"	d
+HS20_STYPE_OPERATING_CLASS	src/common/ieee802_11_defs.h	1010;"	d
+HS20_STYPE_OPERATOR_FRIENDLY_NAME	src/common/ieee802_11_defs.h	1006;"	d
+HS20_STYPE_OSU_PROVIDERS_LIST	src/common/ieee802_11_defs.h	1011;"	d
+HS20_STYPE_QUERY_LIST	src/common/ieee802_11_defs.h	1004;"	d
+HS20_STYPE_WAN_METRICS	src/common/ieee802_11_defs.h	1007;"	d
 HS20_SUBSCRIPTION_REMEDIATION	src/common/wpa_ctrl.h	211;"	d
 HS20_SUPPLICANT_H	wpa_supplicant/hs20_supplicant.h	9;"	d
-HS20_VERSION	src/common/ieee802_11_defs.h	1013;"	d
-HS20_WNM_DEAUTH_IMMINENT_NOTICE	src/common/ieee802_11_defs.h	1017;"	d
-HS20_WNM_SUB_REM_NEEDED	src/common/ieee802_11_defs.h	1016;"	d
+HS20_VERSION	src/common/ieee802_11_defs.h	1018;"	d
+HS20_WNM_DEAUTH_IMMINENT_NOTICE	src/common/ieee802_11_defs.h	1022;"	d
+HS20_WNM_SUB_REM_NEEDED	src/common/ieee802_11_defs.h	1021;"	d
 HT2040_COEX_SCAN_RETRY	src/ap/hw_features.c	416;"	d	file:
 HTTPREAD_BODYBUF_DELTA	src/wps/httpread.c	45;"	d	file:
 HTTPREAD_EVENT_ERROR	src/wps/httpread.h	/^	HTTPREAD_EVENT_ERROR = 3      \/* misc. error, esp malloc error *\/$/;"	e	enum:httpread_event
@@ -1922,43 +1922,43 @@ HTTP_SERVER_MAX_REQ_LEN	src/wps/http_server.c	18;"	d	file:
 HTTP_SERVER_TIMEOUT	src/wps/http_server.c	17;"	d	file:
 HTTP_UNIMPLEMENTED	src/wps/http.h	/^	HTTP_UNIMPLEMENTED = 501,$/;"	e	enum:http_reply_code
 HTTP_UTILS_H	src/utils/http-utils.h	10;"	d
-HT_CAP_INFO_40MHZ_INTOLERANT	src/common/ieee802_11_defs.h	725;"	d
-HT_CAP_INFO_DELAYED_BA	src/common/ieee802_11_defs.h	721;"	d
-HT_CAP_INFO_DSSS_CCK40MHZ	src/common/ieee802_11_defs.h	723;"	d
-HT_CAP_INFO_GREEN_FIELD	src/common/ieee802_11_defs.h	713;"	d
-HT_CAP_INFO_LDPC_CODING_CAP	src/common/ieee802_11_defs.h	707;"	d
-HT_CAP_INFO_LSIG_TXOP_PROTECT_SUPPORT	src/common/ieee802_11_defs.h	726;"	d
-HT_CAP_INFO_MAX_AMSDU_SIZE	src/common/ieee802_11_defs.h	722;"	d
-HT_CAP_INFO_RX_STBC_1	src/common/ieee802_11_defs.h	718;"	d
-HT_CAP_INFO_RX_STBC_12	src/common/ieee802_11_defs.h	719;"	d
-HT_CAP_INFO_RX_STBC_123	src/common/ieee802_11_defs.h	720;"	d
-HT_CAP_INFO_RX_STBC_MASK	src/common/ieee802_11_defs.h	717;"	d
-HT_CAP_INFO_SHORT_GI20MHZ	src/common/ieee802_11_defs.h	714;"	d
-HT_CAP_INFO_SHORT_GI40MHZ	src/common/ieee802_11_defs.h	715;"	d
-HT_CAP_INFO_SMPS_DISABLED	src/common/ieee802_11_defs.h	712;"	d
-HT_CAP_INFO_SMPS_DYNAMIC	src/common/ieee802_11_defs.h	711;"	d
-HT_CAP_INFO_SMPS_MASK	src/common/ieee802_11_defs.h	709;"	d
-HT_CAP_INFO_SMPS_STATIC	src/common/ieee802_11_defs.h	710;"	d
-HT_CAP_INFO_SUPP_CHANNEL_WIDTH_SET	src/common/ieee802_11_defs.h	708;"	d
-HT_CAP_INFO_TX_STBC	src/common/ieee802_11_defs.h	716;"	d
-HT_INFO_HT_PARAM_RIFS_MODE	src/common/ieee802_11_defs.h	779;"	d
-HT_INFO_HT_PARAM_SECONDARY_CHNL_ABOVE	src/common/ieee802_11_defs.h	776;"	d
-HT_INFO_HT_PARAM_SECONDARY_CHNL_BELOW	src/common/ieee802_11_defs.h	777;"	d
-HT_INFO_HT_PARAM_SECONDARY_CHNL_OFF_MASK	src/common/ieee802_11_defs.h	775;"	d
-HT_INFO_HT_PARAM_STA_CHNL_WIDTH	src/common/ieee802_11_defs.h	778;"	d
-HT_OPER_OP_MODE_HT_PROT_MASK	src/common/ieee802_11_defs.h	789;"	d
-HT_OPER_OP_MODE_NON_GF_HT_STAS_PRESENT	src/common/ieee802_11_defs.h	790;"	d
-HT_OPER_OP_MODE_OBSS_NON_HT_STAS_PRESENT	src/common/ieee802_11_defs.h	792;"	d
-HT_OPER_PARAM_DUAL_BEACON	src/common/ieee802_11_defs.h	797;"	d
-HT_OPER_PARAM_DUAL_CTS_PROTECTION	src/common/ieee802_11_defs.h	798;"	d
-HT_OPER_PARAM_LSIG_TXOP_PROT_FULL_SUPP	src/common/ieee802_11_defs.h	800;"	d
-HT_OPER_PARAM_PCO_ACTIVE	src/common/ieee802_11_defs.h	801;"	d
-HT_OPER_PARAM_PCO_PHASE	src/common/ieee802_11_defs.h	802;"	d
-HT_OPER_PARAM_STBC_BEACON	src/common/ieee802_11_defs.h	799;"	d
-HT_PROT_20MHZ_PROTECTION	src/common/ieee802_11_defs.h	785;"	d
-HT_PROT_NONMEMBER_PROTECTION	src/common/ieee802_11_defs.h	784;"	d
-HT_PROT_NON_HT_MIXED	src/common/ieee802_11_defs.h	786;"	d
-HT_PROT_NO_PROTECTION	src/common/ieee802_11_defs.h	783;"	d
+HT_CAP_INFO_40MHZ_INTOLERANT	src/common/ieee802_11_defs.h	730;"	d
+HT_CAP_INFO_DELAYED_BA	src/common/ieee802_11_defs.h	726;"	d
+HT_CAP_INFO_DSSS_CCK40MHZ	src/common/ieee802_11_defs.h	728;"	d
+HT_CAP_INFO_GREEN_FIELD	src/common/ieee802_11_defs.h	718;"	d
+HT_CAP_INFO_LDPC_CODING_CAP	src/common/ieee802_11_defs.h	712;"	d
+HT_CAP_INFO_LSIG_TXOP_PROTECT_SUPPORT	src/common/ieee802_11_defs.h	731;"	d
+HT_CAP_INFO_MAX_AMSDU_SIZE	src/common/ieee802_11_defs.h	727;"	d
+HT_CAP_INFO_RX_STBC_1	src/common/ieee802_11_defs.h	723;"	d
+HT_CAP_INFO_RX_STBC_12	src/common/ieee802_11_defs.h	724;"	d
+HT_CAP_INFO_RX_STBC_123	src/common/ieee802_11_defs.h	725;"	d
+HT_CAP_INFO_RX_STBC_MASK	src/common/ieee802_11_defs.h	722;"	d
+HT_CAP_INFO_SHORT_GI20MHZ	src/common/ieee802_11_defs.h	719;"	d
+HT_CAP_INFO_SHORT_GI40MHZ	src/common/ieee802_11_defs.h	720;"	d
+HT_CAP_INFO_SMPS_DISABLED	src/common/ieee802_11_defs.h	717;"	d
+HT_CAP_INFO_SMPS_DYNAMIC	src/common/ieee802_11_defs.h	716;"	d
+HT_CAP_INFO_SMPS_MASK	src/common/ieee802_11_defs.h	714;"	d
+HT_CAP_INFO_SMPS_STATIC	src/common/ieee802_11_defs.h	715;"	d
+HT_CAP_INFO_SUPP_CHANNEL_WIDTH_SET	src/common/ieee802_11_defs.h	713;"	d
+HT_CAP_INFO_TX_STBC	src/common/ieee802_11_defs.h	721;"	d
+HT_INFO_HT_PARAM_RIFS_MODE	src/common/ieee802_11_defs.h	784;"	d
+HT_INFO_HT_PARAM_SECONDARY_CHNL_ABOVE	src/common/ieee802_11_defs.h	781;"	d
+HT_INFO_HT_PARAM_SECONDARY_CHNL_BELOW	src/common/ieee802_11_defs.h	782;"	d
+HT_INFO_HT_PARAM_SECONDARY_CHNL_OFF_MASK	src/common/ieee802_11_defs.h	780;"	d
+HT_INFO_HT_PARAM_STA_CHNL_WIDTH	src/common/ieee802_11_defs.h	783;"	d
+HT_OPER_OP_MODE_HT_PROT_MASK	src/common/ieee802_11_defs.h	794;"	d
+HT_OPER_OP_MODE_NON_GF_HT_STAS_PRESENT	src/common/ieee802_11_defs.h	795;"	d
+HT_OPER_OP_MODE_OBSS_NON_HT_STAS_PRESENT	src/common/ieee802_11_defs.h	797;"	d
+HT_OPER_PARAM_DUAL_BEACON	src/common/ieee802_11_defs.h	802;"	d
+HT_OPER_PARAM_DUAL_CTS_PROTECTION	src/common/ieee802_11_defs.h	803;"	d
+HT_OPER_PARAM_LSIG_TXOP_PROT_FULL_SUPP	src/common/ieee802_11_defs.h	805;"	d
+HT_OPER_PARAM_PCO_ACTIVE	src/common/ieee802_11_defs.h	806;"	d
+HT_OPER_PARAM_PCO_PHASE	src/common/ieee802_11_defs.h	807;"	d
+HT_OPER_PARAM_STBC_BEACON	src/common/ieee802_11_defs.h	804;"	d
+HT_PROT_20MHZ_PROTECTION	src/common/ieee802_11_defs.h	790;"	d
+HT_PROT_NONMEMBER_PROTECTION	src/common/ieee802_11_defs.h	789;"	d
+HT_PROT_NON_HT_MIXED	src/common/ieee802_11_defs.h	791;"	d
+HT_PROT_NO_PROTECTION	src/common/ieee802_11_defs.h	788;"	d
 HT_SEC_CHAN_ABOVE	wpa_supplicant/wpa_supplicant_i.h	/^		       HT_SEC_CHAN_ABOVE,$/;"	e	enum:wpa_supplicant::__anon4::__anon5
 HT_SEC_CHAN_BELOW	wpa_supplicant/wpa_supplicant_i.h	/^		       HT_SEC_CHAN_BELOW } ht_sec_chan;$/;"	e	enum:wpa_supplicant::__anon4::__anon5
 HT_SEC_CHAN_UNKNOWN	wpa_supplicant/wpa_supplicant_i.h	/^		enum { HT_SEC_CHAN_UNKNOWN,$/;"	e	enum:wpa_supplicant::__anon4::__anon5
@@ -2025,7 +2025,7 @@ IDr_len	src/eap_server/ikev2.h	/^	size_t IDr_len;$/;"	m	struct:ikev2_initiator_d
 IDr_type	src/eap_server/ikev2.h	/^	u8 IDr_type;$/;"	m	struct:ikev2_initiator_data
 IEEE80211RADIOTAP_H	src/utils/radiotap.h	36;"	d
 IEEE80211_APPIE_MAX	src/drivers/driver_atheros.c	1967;"	d	file:
-IEEE80211_BSSID_FROMDS	src/common/ieee802_11_defs.h	463;"	d
+IEEE80211_BSSID_FROMDS	src/common/ieee802_11_defs.h	468;"	d
 IEEE80211_CAP_DMG_AP	src/drivers/driver.h	195;"	d
 IEEE80211_CAP_DMG_IBSS	src/drivers/driver.h	193;"	d
 IEEE80211_CAP_DMG_MASK	src/drivers/driver.h	192;"	d
@@ -2060,10 +2060,10 @@ IEEE80211_C_WPA1	src/drivers/driver_bsd.c	1409;"	d	file:
 IEEE80211_C_WPA1	src/drivers/driver_bsd.c	1447;"	d	file:
 IEEE80211_C_WPA2	src/drivers/driver_bsd.c	1410;"	d	file:
 IEEE80211_C_WPA2	src/drivers/driver_bsd.c	1448;"	d	file:
-IEEE80211_DA_FROMDS	src/common/ieee802_11_defs.h	462;"	d
-IEEE80211_FC	src/common/ieee802_11_defs.h	468;"	d
-IEEE80211_HDRLEN	src/common/ieee802_11_defs.h	466;"	d
-IEEE80211_HT_MCS_MASK_LEN	src/common/ieee802_11_defs.h	633;"	d
+IEEE80211_DA_FROMDS	src/common/ieee802_11_defs.h	467;"	d
+IEEE80211_FC	src/common/ieee802_11_defs.h	473;"	d
+IEEE80211_HDRLEN	src/common/ieee802_11_defs.h	471;"	d
+IEEE80211_HT_MCS_MASK_LEN	src/common/ieee802_11_defs.h	638;"	d
 IEEE80211_MAX_SUPP_RATES	src/rsn_supp/tdls.c	92;"	d	file:
 IEEE80211_MODE_AP	src/drivers/driver.h	182;"	d
 IEEE80211_MODE_IBSS	src/drivers/driver.h	181;"	d
@@ -2132,7 +2132,7 @@ IEEE80211_RADIOTAP_TSFT	src/utils/radiotap.h	/^	IEEE80211_RADIOTAP_TSFT = 0,$/;"
 IEEE80211_RADIOTAP_TX_ATTENUATION	src/utils/radiotap.h	/^	IEEE80211_RADIOTAP_TX_ATTENUATION = 8,$/;"	e	enum:ieee80211_radiotap_type
 IEEE80211_RADIOTAP_TX_FLAGS	src/utils/radiotap.h	/^	IEEE80211_RADIOTAP_TX_FLAGS = 15,$/;"	e	enum:ieee80211_radiotap_type
 IEEE80211_RADIOTAP_VENDOR_NAMESPACE	src/utils/radiotap.h	/^	IEEE80211_RADIOTAP_VENDOR_NAMESPACE = 30,$/;"	e	enum:ieee80211_radiotap_type
-IEEE80211_SA_FROMDS	src/common/ieee802_11_defs.h	464;"	d
+IEEE80211_SA_FROMDS	src/common/ieee802_11_defs.h	469;"	d
 IEEE8021X_EAPOL	src/utils/build_config.h	24;"	d
 IEEE8021X_ENCR_KEY_LEN	src/eapol_supp/eapol_supp_sm.c	640;"	d	file:
 IEEE8021X_KEY_INDEX_FLAG	src/common/eapol_common.h	57;"	d
@@ -2249,19 +2249,19 @@ INTERWORKING_3GPP	wpa_supplicant/interworking.c	37;"	d	file:
 INTERWORKING_3GPP	wpa_supplicant/interworking.c	40;"	d	file:
 INTERWORKING_3GPP	wpa_supplicant/interworking.c	43;"	d	file:
 INTERWORKING_ALREADY_CONNECTED	src/common/wpa_ctrl.h	192;"	d
-INTERWORKING_ANO_ACCESS_NETWORK_MASK	src/common/ieee802_11_defs.h	372;"	d
-INTERWORKING_ANO_ASRA	src/common/ieee802_11_defs.h	374;"	d
-INTERWORKING_ANO_ESR	src/common/ieee802_11_defs.h	375;"	d
-INTERWORKING_ANO_INTERNET	src/common/ieee802_11_defs.h	373;"	d
-INTERWORKING_ANO_UESA	src/common/ieee802_11_defs.h	376;"	d
-INTERWORKING_ANT_CHARGEABLE_PUBLIC	src/common/ieee802_11_defs.h	380;"	d
-INTERWORKING_ANT_EMERGENCY_SERVICES	src/common/ieee802_11_defs.h	383;"	d
-INTERWORKING_ANT_FREE_PUBLIC	src/common/ieee802_11_defs.h	381;"	d
-INTERWORKING_ANT_PERSONAL_DEVICE	src/common/ieee802_11_defs.h	382;"	d
-INTERWORKING_ANT_PRIVATE	src/common/ieee802_11_defs.h	378;"	d
-INTERWORKING_ANT_PRIVATE_WITH_GUEST	src/common/ieee802_11_defs.h	379;"	d
-INTERWORKING_ANT_TEST	src/common/ieee802_11_defs.h	384;"	d
-INTERWORKING_ANT_WILDCARD	src/common/ieee802_11_defs.h	385;"	d
+INTERWORKING_ANO_ACCESS_NETWORK_MASK	src/common/ieee802_11_defs.h	377;"	d
+INTERWORKING_ANO_ASRA	src/common/ieee802_11_defs.h	379;"	d
+INTERWORKING_ANO_ESR	src/common/ieee802_11_defs.h	380;"	d
+INTERWORKING_ANO_INTERNET	src/common/ieee802_11_defs.h	378;"	d
+INTERWORKING_ANO_UESA	src/common/ieee802_11_defs.h	381;"	d
+INTERWORKING_ANT_CHARGEABLE_PUBLIC	src/common/ieee802_11_defs.h	385;"	d
+INTERWORKING_ANT_EMERGENCY_SERVICES	src/common/ieee802_11_defs.h	388;"	d
+INTERWORKING_ANT_FREE_PUBLIC	src/common/ieee802_11_defs.h	386;"	d
+INTERWORKING_ANT_PERSONAL_DEVICE	src/common/ieee802_11_defs.h	387;"	d
+INTERWORKING_ANT_PRIVATE	src/common/ieee802_11_defs.h	383;"	d
+INTERWORKING_ANT_PRIVATE_WITH_GUEST	src/common/ieee802_11_defs.h	384;"	d
+INTERWORKING_ANT_TEST	src/common/ieee802_11_defs.h	389;"	d
+INTERWORKING_ANT_WILDCARD	src/common/ieee802_11_defs.h	390;"	d
 INTERWORKING_AP	src/common/wpa_ctrl.h	189;"	d
 INTERWORKING_BLACKLISTED	src/common/wpa_ctrl.h	190;"	d
 INTERWORKING_H	wpa_supplicant/interworking.h	10;"	d
@@ -2537,17 +2537,17 @@ MESH_GROUP_REMOVED	src/common/wpa_ctrl.h	127;"	d
 MESH_GROUP_STARTED	src/common/wpa_ctrl.h	126;"	d
 MESH_H	wpa_supplicant/mesh.h	10;"	d
 MESH_MPM_H	wpa_supplicant/mesh_mpm.h	10;"	d
-MESH_PATH_METRIC_AIRTIME	src/common/ieee802_11_defs.h	1168;"	d
-MESH_PATH_METRIC_VENDOR	src/common/ieee802_11_defs.h	1169;"	d
-MESH_PATH_PROTOCOL_HWMP	src/common/ieee802_11_defs.h	1166;"	d
-MESH_PATH_PROTOCOL_VENDOR	src/common/ieee802_11_defs.h	1167;"	d
+MESH_PATH_METRIC_AIRTIME	src/common/ieee802_11_defs.h	1173;"	d
+MESH_PATH_METRIC_VENDOR	src/common/ieee802_11_defs.h	1174;"	d
+MESH_PATH_PROTOCOL_HWMP	src/common/ieee802_11_defs.h	1171;"	d
+MESH_PATH_PROTOCOL_VENDOR	src/common/ieee802_11_defs.h	1172;"	d
 MESH_PEER_CONNECTED	src/common/wpa_ctrl.h	128;"	d
 MESH_PEER_DISCONNECTED	src/common/wpa_ctrl.h	129;"	d
 MESH_RSN_H	wpa_supplicant/mesh_rsn.h	10;"	d
 MESH_SAE_AUTH_BLOCKED	src/common/wpa_ctrl.h	132;"	d
 MESH_SAE_AUTH_FAILURE	src/common/wpa_ctrl.h	131;"	d
-MESH_SYNC_METHOD_NEIGHBOR_OFFSET	src/common/ieee802_11_defs.h	1164;"	d
-MESH_SYNC_METHOD_VENDOR	src/common/ieee802_11_defs.h	1165;"	d
+MESH_SYNC_METHOD_NEIGHBOR_OFFSET	src/common/ieee802_11_defs.h	1169;"	d
+MESH_SYNC_METHOD_VENDOR	src/common/ieee802_11_defs.h	1170;"	d
 METHOD_CONT	src/eap_peer/eap_i.h	/^	METHOD_NONE, METHOD_INIT, METHOD_CONT, METHOD_MAY_CONT, METHOD_DONE$/;"	e	enum:__anon218
 METHOD_CONTINUE	src/eap_server/eap_i.h	/^		METHOD_PROPOSED, METHOD_CONTINUE, METHOD_END$/;"	e	enum:eap_sm::__anon190
 METHOD_DONE	src/eap_peer/eap_i.h	/^	METHOD_NONE, METHOD_INIT, METHOD_CONT, METHOD_MAY_CONT, METHOD_DONE$/;"	e	enum:__anon218
@@ -3890,15 +3890,15 @@ OPTIONAL_BINDING	src/eap_peer/eap_peap.c	/^	enum { NO_BINDING, OPTIONAL_BINDING,
 OPTIONAL_BINDING	src/eap_server/eap_server_peap.c	/^	enum { NO_BINDING, OPTIONAL_BINDING, REQUIRE_BINDING } crypto_binding;$/;"	e	enum:eap_peap_data::__anon180	file:
 OPTIONAL_OCSP	src/utils/http_curl.c	/^		NO_OCSP, OPTIONAL_OCSP, MANDATORY_OCSP$/;"	e	enum:http_ctx::__anon143	file:
 OPT_CAST	src/tls/libtommath.c	70;"	d	file:
-OSEN_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	879;"	d
+OSEN_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	884;"	d
 OSU_MAX_ITEMS	wpa_supplicant/hs20_supplicant.c	30;"	d	file:
 OS_H	src/utils/os.h	10;"	d
 OS_REJECT_C_LIB_FUNCTIONS	src/utils/os_internal.c	23;"	d	file:
-OUI_BROADCOM	src/common/ieee802_11_defs.h	1177;"	d
-OUI_MICROSOFT	src/common/ieee802_11_defs.h	869;"	d
+OUI_BROADCOM	src/common/ieee802_11_defs.h	1182;"	d
+OUI_MICROSOFT	src/common/ieee802_11_defs.h	874;"	d
 OUI_QCA	src/common/qca-vendor.h	19;"	d
-OUI_WFA	src/common/ieee802_11_defs.h	874;"	d
-OVERLAPPING_BSS_TRANS_DELAY_FACTOR	src/common/ieee802_11_defs.h	704;"	d
+OUI_WFA	src/common/ieee802_11_defs.h	879;"	d
+OVERLAPPING_BSS_TRANS_DELAY_FACTOR	src/common/ieee802_11_defs.h	709;"	d
 OVERRIDE_MCS	wpa_supplicant/wpa_supplicant.c	3521;"	d	file:
 OffsetRequestIEs	src/drivers/driver_ndis.c	/^	ULONG OffsetRequestIEs;$/;"	m	struct:NDIS_802_11_ASSOCIATION_INFORMATION	file:
 OffsetResponseIEs	src/drivers/driver_ndis.c	/^	ULONG OffsetResponseIEs;$/;"	m	struct:NDIS_802_11_ASSOCIATION_INFORMATION	file:
@@ -3951,12 +3951,12 @@ P2P_CONNECT	src/p2p/p2p_i.h	/^		P2P_CONNECT,$/;"	e	enum:p2p_data::p2p_state
 P2P_CONNECT_LISTEN	src/p2p/p2p_i.h	/^		P2P_CONNECT_LISTEN,$/;"	e	enum:p2p_data::p2p_state
 P2P_Connect	wpa_supplicant/examples/p2p/p2p_connect.py	/^class P2P_Connect():$/;"	c
 P2P_DEVICE_NOT_IN_GROUP	src/common/ieee802_11_defs.h	/^	P2P_DEVICE_NOT_IN_GROUP = 0x00,$/;"	e	enum:p2p_role_indication
-P2P_DEV_CAPAB_CLIENT_DISCOVERABILITY	src/common/ieee802_11_defs.h	1062;"	d
-P2P_DEV_CAPAB_CONCURRENT_OPER	src/common/ieee802_11_defs.h	1063;"	d
-P2P_DEV_CAPAB_DEVICE_LIMIT	src/common/ieee802_11_defs.h	1065;"	d
-P2P_DEV_CAPAB_INFRA_MANAGED	src/common/ieee802_11_defs.h	1064;"	d
-P2P_DEV_CAPAB_INVITATION_PROCEDURE	src/common/ieee802_11_defs.h	1066;"	d
-P2P_DEV_CAPAB_SERVICE_DISCOVERY	src/common/ieee802_11_defs.h	1061;"	d
+P2P_DEV_CAPAB_CLIENT_DISCOVERABILITY	src/common/ieee802_11_defs.h	1067;"	d
+P2P_DEV_CAPAB_CONCURRENT_OPER	src/common/ieee802_11_defs.h	1068;"	d
+P2P_DEV_CAPAB_DEVICE_LIMIT	src/common/ieee802_11_defs.h	1070;"	d
+P2P_DEV_CAPAB_INFRA_MANAGED	src/common/ieee802_11_defs.h	1069;"	d
+P2P_DEV_CAPAB_INVITATION_PROCEDURE	src/common/ieee802_11_defs.h	1071;"	d
+P2P_DEV_CAPAB_SERVICE_DISCOVERY	src/common/ieee802_11_defs.h	1066;"	d
 P2P_DEV_DISC_REQ	src/common/ieee802_11_defs.h	/^	P2P_DEV_DISC_REQ = 5,$/;"	e	enum:p2p_action_frame_type
 P2P_DEV_DISC_RESP	src/common/ieee802_11_defs.h	/^	P2P_DEV_DISC_RESP = 6,$/;"	e	enum:p2p_action_frame_type
 P2P_DEV_FORCE_FREQ	src/p2p/p2p_i.h	101;"	d
@@ -4025,14 +4025,14 @@ P2P_GO_NEG_CNF_MAX_RETRY_COUNT	src/p2p/p2p_i.h	15;"	d
 P2P_GO_NEG_CONF	src/common/ieee802_11_defs.h	/^	P2P_GO_NEG_CONF = 2,$/;"	e	enum:p2p_action_frame_type
 P2P_GO_NEG_REQ	src/common/ieee802_11_defs.h	/^	P2P_GO_NEG_REQ = 0,$/;"	e	enum:p2p_action_frame_type
 P2P_GO_NEG_RESP	src/common/ieee802_11_defs.h	/^	P2P_GO_NEG_RESP = 1,$/;"	e	enum:p2p_action_frame_type
-P2P_GROUP_CAPAB_CROSS_CONN	src/common/ieee802_11_defs.h	1073;"	d
-P2P_GROUP_CAPAB_GROUP_FORMATION	src/common/ieee802_11_defs.h	1075;"	d
-P2P_GROUP_CAPAB_GROUP_LIMIT	src/common/ieee802_11_defs.h	1071;"	d
-P2P_GROUP_CAPAB_GROUP_OWNER	src/common/ieee802_11_defs.h	1069;"	d
-P2P_GROUP_CAPAB_INTRA_BSS_DIST	src/common/ieee802_11_defs.h	1072;"	d
-P2P_GROUP_CAPAB_IP_ADDR_ALLOCATION	src/common/ieee802_11_defs.h	1076;"	d
-P2P_GROUP_CAPAB_PERSISTENT_GROUP	src/common/ieee802_11_defs.h	1070;"	d
-P2P_GROUP_CAPAB_PERSISTENT_RECONN	src/common/ieee802_11_defs.h	1074;"	d
+P2P_GROUP_CAPAB_CROSS_CONN	src/common/ieee802_11_defs.h	1078;"	d
+P2P_GROUP_CAPAB_GROUP_FORMATION	src/common/ieee802_11_defs.h	1080;"	d
+P2P_GROUP_CAPAB_GROUP_LIMIT	src/common/ieee802_11_defs.h	1076;"	d
+P2P_GROUP_CAPAB_GROUP_OWNER	src/common/ieee802_11_defs.h	1074;"	d
+P2P_GROUP_CAPAB_INTRA_BSS_DIST	src/common/ieee802_11_defs.h	1077;"	d
+P2P_GROUP_CAPAB_IP_ADDR_ALLOCATION	src/common/ieee802_11_defs.h	1081;"	d
+P2P_GROUP_CAPAB_PERSISTENT_GROUP	src/common/ieee802_11_defs.h	1075;"	d
+P2P_GROUP_CAPAB_PERSISTENT_RECONN	src/common/ieee802_11_defs.h	1079;"	d
 P2P_GROUP_FORMATION	src/ap/ap_config.h	420;"	d
 P2P_GROUP_INTERFACE_CLIENT	wpa_supplicant/wpa_supplicant_i.h	/^		P2P_GROUP_INTERFACE_CLIENT$/;"	e	enum:wpa_supplicant::__anon6
 P2P_GROUP_INTERFACE_GO	wpa_supplicant/wpa_supplicant_i.h	/^		P2P_GROUP_INTERFACE_GO,$/;"	e	enum:wpa_supplicant::__anon6
@@ -4051,8 +4051,8 @@ P2P_Group_Add	wpa_supplicant/examples/p2p/p2p_group_add.py	/^class P2P_Group_Add
 P2P_H	src/p2p/p2p.h	10;"	d
 P2P_HOSTAPD_H	src/ap/p2p_hostapd.h	10;"	d
 P2P_IDLE	src/p2p/p2p_i.h	/^		P2P_IDLE,$/;"	e	enum:p2p_data::p2p_state
-P2P_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	875;"	d
-P2P_INVITATION_FLAGS_TYPE	src/common/ieee802_11_defs.h	1079;"	d
+P2P_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	880;"	d
+P2P_INVITATION_FLAGS_TYPE	src/common/ieee802_11_defs.h	1084;"	d
 P2P_INVITATION_REQ	src/common/ieee802_11_defs.h	/^	P2P_INVITATION_REQ = 3,$/;"	e	enum:p2p_action_frame_type
 P2P_INVITATION_RESP	src/common/ieee802_11_defs.h	/^	P2P_INVITATION_RESP = 4,$/;"	e	enum:p2p_action_frame_type
 P2P_INVITE	src/p2p/p2p_i.h	/^		P2P_INVITE,$/;"	e	enum:p2p_data::p2p_state
@@ -4065,12 +4065,12 @@ P2P_Invite	wpa_supplicant/examples/p2p/p2p_invite.py	/^class P2P_Invite (threadi
 P2P_LISTEN_ONLY	src/p2p/p2p_i.h	/^		P2P_LISTEN_ONLY,$/;"	e	enum:p2p_data::p2p_state
 P2P_Listen	wpa_supplicant/examples/p2p/p2p_listen.py	/^class P2P_Listen(threading.Thread):$/;"	c
 P2P_MANAGE	src/ap/ap_config.h	421;"	d
-P2P_MAN_COEXISTENCE_OPTIONAL	src/common/ieee802_11_defs.h	1084;"	d
-P2P_MAN_CROSS_CONNECTION_PERMITTED	src/common/ieee802_11_defs.h	1083;"	d
-P2P_MAN_DEVICE_MANAGEMENT	src/common/ieee802_11_defs.h	1082;"	d
+P2P_MAN_COEXISTENCE_OPTIONAL	src/common/ieee802_11_defs.h	1089;"	d
+P2P_MAN_CROSS_CONNECTION_PERMITTED	src/common/ieee802_11_defs.h	1088;"	d
+P2P_MAN_DEVICE_MANAGEMENT	src/common/ieee802_11_defs.h	1087;"	d
 P2P_MAX_CHANNELS	src/p2p/p2p.h	135;"	d
 P2P_MAX_CLIENT_IDLE	wpa_supplicant/p2p_supplicant.c	55;"	d	file:
-P2P_MAX_GO_INTENT	src/common/ieee802_11_defs.h	1058;"	d
+P2P_MAX_GO_INTENT	src/common/ieee802_11_defs.h	1063;"	d
 P2P_MAX_GROUP_ENTRIES	src/p2p/p2p_i.h	637;"	d
 P2P_MAX_INITIAL_CONN_WAIT	wpa_supplicant/p2p_supplicant.c	64;"	d	file:
 P2P_MAX_INITIAL_CONN_WAIT_GO	wpa_supplicant/p2p_supplicant.c	74;"	d	file:
@@ -4084,7 +4084,7 @@ P2P_MAX_WPS_VENDOR_EXT	src/p2p/p2p.h	252;"	d
 P2P_MGMT_DEVICE_PREFIX	wpa_supplicant/p2p_supplicant.c	86;"	d	file:
 P2P_NOA	src/common/ieee802_11_defs.h	/^	P2P_NOA = 0,$/;"	e	enum:p2p_act_frame_type
 P2P_NO_PENDING_ACTION	src/p2p/p2p_i.h	/^		P2P_NO_PENDING_ACTION,$/;"	e	enum:p2p_data::p2p_pending_action_state
-P2P_OUI_TYPE	src/common/ieee802_11_defs.h	1024;"	d
+P2P_OUI_TYPE	src/common/ieee802_11_defs.h	1029;"	d
 P2P_PD_DURING_FIND	src/p2p/p2p_i.h	/^		P2P_PD_DURING_FIND,$/;"	e	enum:p2p_data::p2p_state
 P2P_PEER_EXPIRATION_AGE	src/p2p/p2p.c	48;"	d	file:
 P2P_PEER_EXPIRATION_INTERVAL	src/p2p/p2p.c	51;"	d	file:
@@ -4155,8 +4155,8 @@ P2P_SUPPLICANT_H	wpa_supplicant/p2p_supplicant.h	10;"	d
 P2P_Stop_Find	wpa_supplicant/examples/p2p/p2p_stop_find.py	/^class P2P_Stop_Find (threading.Thread):$/;"	c
 P2P_WAIT_PEER_CONNECT	src/p2p/p2p_i.h	/^		P2P_WAIT_PEER_CONNECT,$/;"	e	enum:p2p_data::p2p_state
 P2P_WAIT_PEER_IDLE	src/p2p/p2p_i.h	/^		P2P_WAIT_PEER_IDLE,$/;"	e	enum:p2p_data::p2p_state
-P2P_WILDCARD_SSID	src/common/ieee802_11_defs.h	1108;"	d
-P2P_WILDCARD_SSID_LEN	src/common/ieee802_11_defs.h	1109;"	d
+P2P_WILDCARD_SSID	src/common/ieee802_11_defs.h	1113;"	d
+P2P_WILDCARD_SSID_LEN	src/common/ieee802_11_defs.h	1114;"	d
 PACKET_TX_TIMESTAMP	src/drivers/linux_defines.h	29;"	d
 PAC_OPAQUE_TYPE_IDENTITY	src/eap_server/eap_server_fast.c	29;"	d	file:
 PAC_OPAQUE_TYPE_KEY	src/eap_server/eap_server_fast.c	27;"	d	file:
@@ -5868,28 +5868,28 @@ TS_DIR_IDX_COUNT	wpa_supplicant/wmm_ac.h	/^	TS_DIR_IDX_COUNT$/;"	e	enum:ts_dir_i
 TS_DIR_IDX_DOWNLINK	wpa_supplicant/wmm_ac.h	/^	TS_DIR_IDX_DOWNLINK,$/;"	e	enum:ts_dir_idx
 TS_DIR_IDX_UPLINK	wpa_supplicant/wmm_ac.h	/^	TS_DIR_IDX_UPLINK,$/;"	e	enum:ts_dir_idx
 TS_UNACCEPTABLE	src/eap_common/ikev2_common.h	/^	TS_UNACCEPTABLE = 38,$/;"	e	enum:__anon176
-TX_BF_CAP_CALIBRATION_MASK	src/common/ieee802_11_defs.h	746;"	d
-TX_BF_CAP_CALIB_OFFSET	src/common/ieee802_11_defs.h	747;"	d
-TX_BF_CAP_CHANNEL_ESTIMATION_CAP_MASK	src/common/ieee802_11_defs.h	760;"	d
-TX_BF_CAP_CHANNEL_ESTIMATION_CAP_OFFSET	src/common/ieee802_11_defs.h	761;"	d
-TX_BF_CAP_COMPRESSED_STEERING_MATRIX_BEAMFORMER_ANT_OFFSET	src/common/ieee802_11_defs.h	758;"	d
-TX_BF_CAP_CSI_NUM_BEAMFORMER_ANT_OFFSET	src/common/ieee802_11_defs.h	756;"	d
-TX_BF_CAP_EXPLICIT_BF_CSI_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	752;"	d
-TX_BF_CAP_EXPLICIT_COMPRESSED_STEERING_MATRIX_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	754;"	d
-TX_BF_CAP_EXPLICIT_COMPR_STEERING_CAP	src/common/ieee802_11_defs.h	750;"	d
-TX_BF_CAP_EXPLICIT_CSI_TXBF_CAP	src/common/ieee802_11_defs.h	748;"	d
-TX_BF_CAP_EXPLICIT_NONCOMPR_STEERING_CAP	src/common/ieee802_11_defs.h	749;"	d
-TX_BF_CAP_EXPLICIT_TX_BF_CSI_FEEDBACK_MASK	src/common/ieee802_11_defs.h	751;"	d
-TX_BF_CAP_EXPLICIT_UNCOMPR_STEERING_MATRIX_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	753;"	d
-TX_BF_CAP_IMPLICIT_TXBF_RX_CAP	src/common/ieee802_11_defs.h	740;"	d
-TX_BF_CAP_IMPLICIT_TX_BF_CAP	src/common/ieee802_11_defs.h	745;"	d
-TX_BF_CAP_MINIMAL_GROUPING_OFFSET	src/common/ieee802_11_defs.h	755;"	d
-TX_BF_CAP_RX_NDP_CAP	src/common/ieee802_11_defs.h	743;"	d
-TX_BF_CAP_RX_STAGGERED_SOUNDING_CAP	src/common/ieee802_11_defs.h	741;"	d
-TX_BF_CAP_SCI_MAX_OF_ROWS_BEANFORMER_SUPPORTED_OFFSET	src/common/ieee802_11_defs.h	759;"	d
-TX_BF_CAP_TX_NDP_CAP	src/common/ieee802_11_defs.h	744;"	d
-TX_BF_CAP_TX_STAGGERED_SOUNDING_CAP	src/common/ieee802_11_defs.h	742;"	d
-TX_BF_CAP_UNCOMPRESSED_STEERING_MATRIX_BEAMFORMER_ANT_OFFSET	src/common/ieee802_11_defs.h	757;"	d
+TX_BF_CAP_CALIBRATION_MASK	src/common/ieee802_11_defs.h	751;"	d
+TX_BF_CAP_CALIB_OFFSET	src/common/ieee802_11_defs.h	752;"	d
+TX_BF_CAP_CHANNEL_ESTIMATION_CAP_MASK	src/common/ieee802_11_defs.h	765;"	d
+TX_BF_CAP_CHANNEL_ESTIMATION_CAP_OFFSET	src/common/ieee802_11_defs.h	766;"	d
+TX_BF_CAP_COMPRESSED_STEERING_MATRIX_BEAMFORMER_ANT_OFFSET	src/common/ieee802_11_defs.h	763;"	d
+TX_BF_CAP_CSI_NUM_BEAMFORMER_ANT_OFFSET	src/common/ieee802_11_defs.h	761;"	d
+TX_BF_CAP_EXPLICIT_BF_CSI_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	757;"	d
+TX_BF_CAP_EXPLICIT_COMPRESSED_STEERING_MATRIX_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	759;"	d
+TX_BF_CAP_EXPLICIT_COMPR_STEERING_CAP	src/common/ieee802_11_defs.h	755;"	d
+TX_BF_CAP_EXPLICIT_CSI_TXBF_CAP	src/common/ieee802_11_defs.h	753;"	d
+TX_BF_CAP_EXPLICIT_NONCOMPR_STEERING_CAP	src/common/ieee802_11_defs.h	754;"	d
+TX_BF_CAP_EXPLICIT_TX_BF_CSI_FEEDBACK_MASK	src/common/ieee802_11_defs.h	756;"	d
+TX_BF_CAP_EXPLICIT_UNCOMPR_STEERING_MATRIX_FEEDBACK_OFFSET	src/common/ieee802_11_defs.h	758;"	d
+TX_BF_CAP_IMPLICIT_TXBF_RX_CAP	src/common/ieee802_11_defs.h	745;"	d
+TX_BF_CAP_IMPLICIT_TX_BF_CAP	src/common/ieee802_11_defs.h	750;"	d
+TX_BF_CAP_MINIMAL_GROUPING_OFFSET	src/common/ieee802_11_defs.h	760;"	d
+TX_BF_CAP_RX_NDP_CAP	src/common/ieee802_11_defs.h	748;"	d
+TX_BF_CAP_RX_STAGGERED_SOUNDING_CAP	src/common/ieee802_11_defs.h	746;"	d
+TX_BF_CAP_SCI_MAX_OF_ROWS_BEANFORMER_SUPPORTED_OFFSET	src/common/ieee802_11_defs.h	764;"	d
+TX_BF_CAP_TX_NDP_CAP	src/common/ieee802_11_defs.h	749;"	d
+TX_BF_CAP_TX_STAGGERED_SOUNDING_CAP	src/common/ieee802_11_defs.h	747;"	d
+TX_BF_CAP_UNCOMPRESSED_STEERING_MATRIX_BEAMFORMER_ANT_OFFSET	src/common/ieee802_11_defs.h	762;"	d
 Td0	src/crypto/aes-internal.c	/^const u32 Td0[256] = {$/;"	v
 Td1	src/crypto/aes-internal.c	/^const u32 Td1[256] = {$/;"	v
 Td2	src/crypto/aes-internal.c	/^const u32 Td2[256] = {$/;"	v
@@ -5970,67 +5970,67 @@ VENDOR_ELEM_P2P_PD_RESP	src/common/wpa_ctrl.h	/^	VENDOR_ELEM_P2P_PD_RESP = 5,$/;
 VENDOR_ELEM_PROBE_REQ_P2P	src/common/wpa_ctrl.h	/^	VENDOR_ELEM_PROBE_REQ_P2P = 0,$/;"	e	enum:wpa_vendor_elem_frame
 VENDOR_ELEM_PROBE_RESP_P2P	src/common/wpa_ctrl.h	/^	VENDOR_ELEM_PROBE_RESP_P2P = 1,$/;"	e	enum:wpa_vendor_elem_frame
 VENDOR_ELEM_PROBE_RESP_P2P_GO	src/common/wpa_ctrl.h	/^	VENDOR_ELEM_PROBE_RESP_P2P_GO = 2,$/;"	e	enum:wpa_vendor_elem_frame
-VENDOR_HT_CAPAB_OUI_TYPE	src/common/ieee802_11_defs.h	1182;"	d
-VENDOR_VHT_SUBTYPE	src/common/ieee802_11_defs.h	1179;"	d
-VENDOR_VHT_SUBTYPE2	src/common/ieee802_11_defs.h	1180;"	d
-VENDOR_VHT_TYPE	src/common/ieee802_11_defs.h	1178;"	d
+VENDOR_HT_CAPAB_OUI_TYPE	src/common/ieee802_11_defs.h	1187;"	d
+VENDOR_VHT_SUBTYPE	src/common/ieee802_11_defs.h	1184;"	d
+VENDOR_VHT_SUBTYPE2	src/common/ieee802_11_defs.h	1185;"	d
+VENDOR_VHT_TYPE	src/common/ieee802_11_defs.h	1183;"	d
 VERSION	debian/rules	/^VERSION                       := $(shell dpkg-parsechangelog | sed -ne 's,^Version: *\\([0-9]*:\\)\\?\\(.*\\)$$,\\2,p')$/;"	m
 VERSION_H	src/common/version.h	2;"	d
 VERSION_STR	src/common/version.h	8;"	d
 VERSION_STR_POSTFIX	src/common/version.h	5;"	d
-VHT_CAP_BEAMFORMEE_STS_MAX	src/common/ieee802_11_defs.h	829;"	d
-VHT_CAP_BEAMFORMEE_STS_MAX_SHIFT	src/common/ieee802_11_defs.h	831;"	d
-VHT_CAP_BEAMFORMEE_STS_OFFSET	src/common/ieee802_11_defs.h	832;"	d
+VHT_CAP_BEAMFORMEE_STS_MAX	src/common/ieee802_11_defs.h	834;"	d
+VHT_CAP_BEAMFORMEE_STS_MAX_SHIFT	src/common/ieee802_11_defs.h	836;"	d
+VHT_CAP_BEAMFORMEE_STS_OFFSET	src/common/ieee802_11_defs.h	837;"	d
 VHT_CAP_CHECK	src/ap/hw_features.c	669;"	d	file:
 VHT_CAP_CHECK	src/ap/hw_features.c	704;"	d	file:
 VHT_CAP_CHECK_MAX	src/ap/hw_features.c	675;"	d	file:
 VHT_CAP_CHECK_MAX	src/ap/hw_features.c	705;"	d	file:
-VHT_CAP_HTC_VHT	src/common/ieee802_11_defs.h	840;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_1	src/common/ieee802_11_defs.h	842;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_2	src/common/ieee802_11_defs.h	843;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_3	src/common/ieee802_11_defs.h	844;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_4	src/common/ieee802_11_defs.h	845;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_5	src/common/ieee802_11_defs.h	846;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_6	src/common/ieee802_11_defs.h	847;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MAX	src/common/ieee802_11_defs.h	848;"	d
-VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MAX_SHIFT	src/common/ieee802_11_defs.h	850;"	d
-VHT_CAP_MAX_MPDU_LENGTH_11454	src/common/ieee802_11_defs.h	810;"	d
-VHT_CAP_MAX_MPDU_LENGTH_7991	src/common/ieee802_11_defs.h	809;"	d
-VHT_CAP_MAX_MPDU_LENGTH_MASK	src/common/ieee802_11_defs.h	811;"	d
-VHT_CAP_MAX_MPDU_LENGTH_MASK_SHIFT	src/common/ieee802_11_defs.h	812;"	d
-VHT_CAP_MU_BEAMFORMEE_CAPABLE	src/common/ieee802_11_defs.h	838;"	d
-VHT_CAP_MU_BEAMFORMER_CAPABLE	src/common/ieee802_11_defs.h	837;"	d
-VHT_CAP_RXLDPC	src/common/ieee802_11_defs.h	816;"	d
-VHT_CAP_RXSTBC_1	src/common/ieee802_11_defs.h	820;"	d
-VHT_CAP_RXSTBC_2	src/common/ieee802_11_defs.h	821;"	d
-VHT_CAP_RXSTBC_3	src/common/ieee802_11_defs.h	822;"	d
-VHT_CAP_RXSTBC_4	src/common/ieee802_11_defs.h	823;"	d
-VHT_CAP_RXSTBC_MASK	src/common/ieee802_11_defs.h	824;"	d
-VHT_CAP_RXSTBC_MASK_SHIFT	src/common/ieee802_11_defs.h	826;"	d
-VHT_CAP_RX_ANTENNA_PATTERN	src/common/ieee802_11_defs.h	853;"	d
-VHT_CAP_SHORT_GI_160	src/common/ieee802_11_defs.h	818;"	d
-VHT_CAP_SHORT_GI_80	src/common/ieee802_11_defs.h	817;"	d
-VHT_CAP_SOUNDING_DIMENSION_MAX	src/common/ieee802_11_defs.h	833;"	d
-VHT_CAP_SOUNDING_DIMENSION_MAX_SHIFT	src/common/ieee802_11_defs.h	835;"	d
-VHT_CAP_SOUNDING_DIMENSION_OFFSET	src/common/ieee802_11_defs.h	836;"	d
-VHT_CAP_SUPP_CHAN_WIDTH_160MHZ	src/common/ieee802_11_defs.h	813;"	d
-VHT_CAP_SUPP_CHAN_WIDTH_160_80PLUS80MHZ	src/common/ieee802_11_defs.h	814;"	d
-VHT_CAP_SUPP_CHAN_WIDTH_MASK	src/common/ieee802_11_defs.h	815;"	d
-VHT_CAP_SU_BEAMFORMEE_CAPABLE	src/common/ieee802_11_defs.h	828;"	d
-VHT_CAP_SU_BEAMFORMER_CAPABLE	src/common/ieee802_11_defs.h	827;"	d
-VHT_CAP_TXSTBC	src/common/ieee802_11_defs.h	819;"	d
-VHT_CAP_TX_ANTENNA_PATTERN	src/common/ieee802_11_defs.h	854;"	d
-VHT_CAP_VHT_LINK_ADAPTATION_VHT_MRQ_MFB	src/common/ieee802_11_defs.h	852;"	d
-VHT_CAP_VHT_LINK_ADAPTATION_VHT_UNSOL_MFB	src/common/ieee802_11_defs.h	851;"	d
-VHT_CAP_VHT_TXOP_PS	src/common/ieee802_11_defs.h	839;"	d
-VHT_CHANWIDTH_160MHZ	src/common/ieee802_11_defs.h	866;"	d
-VHT_CHANWIDTH_80MHZ	src/common/ieee802_11_defs.h	865;"	d
-VHT_CHANWIDTH_80P80MHZ	src/common/ieee802_11_defs.h	867;"	d
-VHT_CHANWIDTH_USE_HT	src/common/ieee802_11_defs.h	864;"	d
-VHT_OPMODE_CHANNEL_RxNSS_MASK	src/common/ieee802_11_defs.h	857;"	d
-VHT_OPMODE_CHANNEL_WIDTH_MASK	src/common/ieee802_11_defs.h	856;"	d
-VHT_OPMODE_NOTIF_RX_NSS_SHIFT	src/common/ieee802_11_defs.h	859;"	d
-VHT_RX_NSS_MAX_STREAMS	src/common/ieee802_11_defs.h	861;"	d
+VHT_CAP_HTC_VHT	src/common/ieee802_11_defs.h	845;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_1	src/common/ieee802_11_defs.h	847;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_2	src/common/ieee802_11_defs.h	848;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_3	src/common/ieee802_11_defs.h	849;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_4	src/common/ieee802_11_defs.h	850;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_5	src/common/ieee802_11_defs.h	851;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_6	src/common/ieee802_11_defs.h	852;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MAX	src/common/ieee802_11_defs.h	853;"	d
+VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MAX_SHIFT	src/common/ieee802_11_defs.h	855;"	d
+VHT_CAP_MAX_MPDU_LENGTH_11454	src/common/ieee802_11_defs.h	815;"	d
+VHT_CAP_MAX_MPDU_LENGTH_7991	src/common/ieee802_11_defs.h	814;"	d
+VHT_CAP_MAX_MPDU_LENGTH_MASK	src/common/ieee802_11_defs.h	816;"	d
+VHT_CAP_MAX_MPDU_LENGTH_MASK_SHIFT	src/common/ieee802_11_defs.h	817;"	d
+VHT_CAP_MU_BEAMFORMEE_CAPABLE	src/common/ieee802_11_defs.h	843;"	d
+VHT_CAP_MU_BEAMFORMER_CAPABLE	src/common/ieee802_11_defs.h	842;"	d
+VHT_CAP_RXLDPC	src/common/ieee802_11_defs.h	821;"	d
+VHT_CAP_RXSTBC_1	src/common/ieee802_11_defs.h	825;"	d
+VHT_CAP_RXSTBC_2	src/common/ieee802_11_defs.h	826;"	d
+VHT_CAP_RXSTBC_3	src/common/ieee802_11_defs.h	827;"	d
+VHT_CAP_RXSTBC_4	src/common/ieee802_11_defs.h	828;"	d
+VHT_CAP_RXSTBC_MASK	src/common/ieee802_11_defs.h	829;"	d
+VHT_CAP_RXSTBC_MASK_SHIFT	src/common/ieee802_11_defs.h	831;"	d
+VHT_CAP_RX_ANTENNA_PATTERN	src/common/ieee802_11_defs.h	858;"	d
+VHT_CAP_SHORT_GI_160	src/common/ieee802_11_defs.h	823;"	d
+VHT_CAP_SHORT_GI_80	src/common/ieee802_11_defs.h	822;"	d
+VHT_CAP_SOUNDING_DIMENSION_MAX	src/common/ieee802_11_defs.h	838;"	d
+VHT_CAP_SOUNDING_DIMENSION_MAX_SHIFT	src/common/ieee802_11_defs.h	840;"	d
+VHT_CAP_SOUNDING_DIMENSION_OFFSET	src/common/ieee802_11_defs.h	841;"	d
+VHT_CAP_SUPP_CHAN_WIDTH_160MHZ	src/common/ieee802_11_defs.h	818;"	d
+VHT_CAP_SUPP_CHAN_WIDTH_160_80PLUS80MHZ	src/common/ieee802_11_defs.h	819;"	d
+VHT_CAP_SUPP_CHAN_WIDTH_MASK	src/common/ieee802_11_defs.h	820;"	d
+VHT_CAP_SU_BEAMFORMEE_CAPABLE	src/common/ieee802_11_defs.h	833;"	d
+VHT_CAP_SU_BEAMFORMER_CAPABLE	src/common/ieee802_11_defs.h	832;"	d
+VHT_CAP_TXSTBC	src/common/ieee802_11_defs.h	824;"	d
+VHT_CAP_TX_ANTENNA_PATTERN	src/common/ieee802_11_defs.h	859;"	d
+VHT_CAP_VHT_LINK_ADAPTATION_VHT_MRQ_MFB	src/common/ieee802_11_defs.h	857;"	d
+VHT_CAP_VHT_LINK_ADAPTATION_VHT_UNSOL_MFB	src/common/ieee802_11_defs.h	856;"	d
+VHT_CAP_VHT_TXOP_PS	src/common/ieee802_11_defs.h	844;"	d
+VHT_CHANWIDTH_160MHZ	src/common/ieee802_11_defs.h	871;"	d
+VHT_CHANWIDTH_80MHZ	src/common/ieee802_11_defs.h	870;"	d
+VHT_CHANWIDTH_80P80MHZ	src/common/ieee802_11_defs.h	872;"	d
+VHT_CHANWIDTH_USE_HT	src/common/ieee802_11_defs.h	869;"	d
+VHT_OPMODE_CHANNEL_RxNSS_MASK	src/common/ieee802_11_defs.h	862;"	d
+VHT_OPMODE_CHANNEL_WIDTH_MASK	src/common/ieee802_11_defs.h	861;"	d
+VHT_OPMODE_NOTIF_RX_NSS_SHIFT	src/common/ieee802_11_defs.h	864;"	d
+VHT_RX_NSS_MAX_STREAMS	src/common/ieee802_11_defs.h	866;"	d
 VLAN_ID_WILDCARD	src/ap/ap_config.h	111;"	d
 VLAN_INIT_H	src/ap/vlan_init.h	11;"	d
 VLAN_UTIL_H	src/ap/vlan_util.h	10;"	d
@@ -6080,8 +6080,8 @@ WFA_ELEM_SETTINGS_DELAY_TIME	src/wps/wps_defs.h	/^	WFA_ELEM_SETTINGS_DELAY_TIME 
 WFA_ELEM_VERSION2	src/wps/wps_defs.h	/^	WFA_ELEM_VERSION2 = 0x00,$/;"	e	enum:__anon109
 WFA_KEY_DATA_IP_ADDR_ALLOC	src/common/wpa_common.h	112;"	d
 WFA_KEY_DATA_IP_ADDR_REQ	src/common/wpa_common.h	111;"	d
-WFD_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	876;"	d
-WFD_OUI_TYPE	src/common/ieee802_11_defs.h	877;"	d
+WFD_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	881;"	d
+WFD_OUI_TYPE	src/common/ieee802_11_defs.h	882;"	d
 WFD_SUBELEM_3D_VIDEO_FORMATS	src/common/ieee802_11_defs.h	/^	WFD_SUBELEM_3D_VIDEO_FORMATS = 4,$/;"	e	enum:wifi_display_subelem
 WFD_SUBELEM_ASSOCIATED_BSSID	src/common/ieee802_11_defs.h	/^	WFD_SUBELEM_ASSOCIATED_BSSID = 1,$/;"	e	enum:wifi_display_subelem
 WFD_SUBELEM_AUDIO_FORMATS	src/common/ieee802_11_defs.h	/^	WFD_SUBELEM_AUDIO_FORMATS = 2,$/;"	e	enum:wifi_display_subelem
@@ -6102,11 +6102,11 @@ WIPUSHSOCKNAME	wpa_supplicant/bk_wpa_not_disp.c	/^static const char WIPUSHSOCKNA
 WIPUSHSOCKNAME	wpa_supplicant/bk_wpa_not_disp.c	/^static const char WIPUSHSOCKNAME[] = "wpa_wipush";$/;"	v	file:
 WIPUSHSOCKNAME	wpa_supplicant/wpa_not_disp.c	/^static const char WIPUSHSOCKNAME[] = "@android:wpa_wipush";$/;"	v	file:
 WIPUSHSOCKNAME	wpa_supplicant/wpa_not_disp.c	/^static const char WIPUSHSOCKNAME[] = "wpa_wipush";$/;"	v	file:
-WLAN_20_40_BSS_COEX_20MHZ_WIDTH_REQ	src/common/ieee802_11_defs.h	1293;"	d
-WLAN_20_40_BSS_COEX_40MHZ_INTOL	src/common/ieee802_11_defs.h	1292;"	d
-WLAN_20_40_BSS_COEX_INFO_REQ	src/common/ieee802_11_defs.h	1291;"	d
-WLAN_20_40_BSS_COEX_OBSS_EXEMPT_GRNT	src/common/ieee802_11_defs.h	1295;"	d
-WLAN_20_40_BSS_COEX_OBSS_EXEMPT_REQ	src/common/ieee802_11_defs.h	1294;"	d
+WLAN_20_40_BSS_COEX_20MHZ_WIDTH_REQ	src/common/ieee802_11_defs.h	1298;"	d
+WLAN_20_40_BSS_COEX_40MHZ_INTOL	src/common/ieee802_11_defs.h	1297;"	d
+WLAN_20_40_BSS_COEX_INFO_REQ	src/common/ieee802_11_defs.h	1296;"	d
+WLAN_20_40_BSS_COEX_OBSS_EXEMPT_GRNT	src/common/ieee802_11_defs.h	1300;"	d
+WLAN_20_40_BSS_COEX_OBSS_EXEMPT_REQ	src/common/ieee802_11_defs.h	1299;"	d
 WLAN_ACTION_BLOCK_ACK	src/common/ieee802_11_defs.h	289;"	d
 WLAN_ACTION_DLS	src/common/ieee802_11_defs.h	288;"	d
 WLAN_ACTION_FT	src/common/ieee802_11_defs.h	292;"	d
@@ -6125,16 +6125,16 @@ WLAN_ACTION_UNPROTECTED_WNM	src/common/ieee802_11_defs.h	297;"	d
 WLAN_ACTION_VENDOR_SPECIFIC	src/common/ieee802_11_defs.h	301;"	d
 WLAN_ACTION_WMM	src/common/ieee802_11_defs.h	300;"	d
 WLAN_ACTION_WNM	src/common/ieee802_11_defs.h	296;"	d
-WLAN_AKM_SUITE_8021X	src/common/ieee802_11_defs.h	1208;"	d
-WLAN_AKM_SUITE_8021X_SHA256	src/common/ieee802_11_defs.h	1212;"	d
-WLAN_AKM_SUITE_8021X_SUITE_B	src/common/ieee802_11_defs.h	1214;"	d
-WLAN_AKM_SUITE_8021X_SUITE_B_192	src/common/ieee802_11_defs.h	1215;"	d
-WLAN_AKM_SUITE_CCKM	src/common/ieee802_11_defs.h	1216;"	d
-WLAN_AKM_SUITE_FT_8021X	src/common/ieee802_11_defs.h	1210;"	d
-WLAN_AKM_SUITE_FT_PSK	src/common/ieee802_11_defs.h	1211;"	d
-WLAN_AKM_SUITE_OSEN	src/common/ieee802_11_defs.h	1217;"	d
-WLAN_AKM_SUITE_PSK	src/common/ieee802_11_defs.h	1209;"	d
-WLAN_AKM_SUITE_PSK_SHA256	src/common/ieee802_11_defs.h	1213;"	d
+WLAN_AKM_SUITE_8021X	src/common/ieee802_11_defs.h	1213;"	d
+WLAN_AKM_SUITE_8021X_SHA256	src/common/ieee802_11_defs.h	1217;"	d
+WLAN_AKM_SUITE_8021X_SUITE_B	src/common/ieee802_11_defs.h	1219;"	d
+WLAN_AKM_SUITE_8021X_SUITE_B_192	src/common/ieee802_11_defs.h	1220;"	d
+WLAN_AKM_SUITE_CCKM	src/common/ieee802_11_defs.h	1221;"	d
+WLAN_AKM_SUITE_FT_8021X	src/common/ieee802_11_defs.h	1215;"	d
+WLAN_AKM_SUITE_FT_PSK	src/common/ieee802_11_defs.h	1216;"	d
+WLAN_AKM_SUITE_OSEN	src/common/ieee802_11_defs.h	1222;"	d
+WLAN_AKM_SUITE_PSK	src/common/ieee802_11_defs.h	1214;"	d
+WLAN_AKM_SUITE_PSK_SHA256	src/common/ieee802_11_defs.h	1218;"	d
 WLAN_AUTH_CHALLENGE_LEN	src/common/ieee802_11_defs.h	84;"	d
 WLAN_AUTH_FT	src/common/ieee802_11_defs.h	80;"	d
 WLAN_AUTH_LEAP	src/common/ieee802_11_defs.h	82;"	d
@@ -6152,24 +6152,24 @@ WLAN_CAPABILITY_PRIVACY	src/common/ieee802_11_defs.h	90;"	d
 WLAN_CAPABILITY_SHORT_PREAMBLE	src/common/ieee802_11_defs.h	91;"	d
 WLAN_CAPABILITY_SHORT_SLOT_TIME	src/common/ieee802_11_defs.h	95;"	d
 WLAN_CAPABILITY_SPECTRUM_MGMT	src/common/ieee802_11_defs.h	94;"	d
-WLAN_CIPHER_SUITE_AES_CMAC	src/common/ieee802_11_defs.h	1191;"	d
-WLAN_CIPHER_SUITE_BIP_CMAC_256	src/common/ieee802_11_defs.h	1198;"	d
-WLAN_CIPHER_SUITE_BIP_GMAC_128	src/common/ieee802_11_defs.h	1196;"	d
-WLAN_CIPHER_SUITE_BIP_GMAC_256	src/common/ieee802_11_defs.h	1197;"	d
-WLAN_CIPHER_SUITE_CCMP	src/common/ieee802_11_defs.h	1189;"	d
-WLAN_CIPHER_SUITE_CCMP_256	src/common/ieee802_11_defs.h	1195;"	d
-WLAN_CIPHER_SUITE_CKIP	src/common/ieee802_11_defs.h	1202;"	d
-WLAN_CIPHER_SUITE_CKIP_CMIC	src/common/ieee802_11_defs.h	1203;"	d
-WLAN_CIPHER_SUITE_CMIC	src/common/ieee802_11_defs.h	1204;"	d
-WLAN_CIPHER_SUITE_GCMP	src/common/ieee802_11_defs.h	1193;"	d
-WLAN_CIPHER_SUITE_GCMP_256	src/common/ieee802_11_defs.h	1194;"	d
-WLAN_CIPHER_SUITE_KRK	src/common/ieee802_11_defs.h	1205;"	d
-WLAN_CIPHER_SUITE_NO_GROUP_ADDR	src/common/ieee802_11_defs.h	1192;"	d
-WLAN_CIPHER_SUITE_SMS4	src/common/ieee802_11_defs.h	1200;"	d
-WLAN_CIPHER_SUITE_TKIP	src/common/ieee802_11_defs.h	1187;"	d
-WLAN_CIPHER_SUITE_USE_GROUP	src/common/ieee802_11_defs.h	1185;"	d
-WLAN_CIPHER_SUITE_WEP104	src/common/ieee802_11_defs.h	1190;"	d
-WLAN_CIPHER_SUITE_WEP40	src/common/ieee802_11_defs.h	1186;"	d
+WLAN_CIPHER_SUITE_AES_CMAC	src/common/ieee802_11_defs.h	1196;"	d
+WLAN_CIPHER_SUITE_BIP_CMAC_256	src/common/ieee802_11_defs.h	1203;"	d
+WLAN_CIPHER_SUITE_BIP_GMAC_128	src/common/ieee802_11_defs.h	1201;"	d
+WLAN_CIPHER_SUITE_BIP_GMAC_256	src/common/ieee802_11_defs.h	1202;"	d
+WLAN_CIPHER_SUITE_CCMP	src/common/ieee802_11_defs.h	1194;"	d
+WLAN_CIPHER_SUITE_CCMP_256	src/common/ieee802_11_defs.h	1200;"	d
+WLAN_CIPHER_SUITE_CKIP	src/common/ieee802_11_defs.h	1207;"	d
+WLAN_CIPHER_SUITE_CKIP_CMIC	src/common/ieee802_11_defs.h	1208;"	d
+WLAN_CIPHER_SUITE_CMIC	src/common/ieee802_11_defs.h	1209;"	d
+WLAN_CIPHER_SUITE_GCMP	src/common/ieee802_11_defs.h	1198;"	d
+WLAN_CIPHER_SUITE_GCMP_256	src/common/ieee802_11_defs.h	1199;"	d
+WLAN_CIPHER_SUITE_KRK	src/common/ieee802_11_defs.h	1210;"	d
+WLAN_CIPHER_SUITE_NO_GROUP_ADDR	src/common/ieee802_11_defs.h	1197;"	d
+WLAN_CIPHER_SUITE_SMS4	src/common/ieee802_11_defs.h	1205;"	d
+WLAN_CIPHER_SUITE_TKIP	src/common/ieee802_11_defs.h	1192;"	d
+WLAN_CIPHER_SUITE_USE_GROUP	src/common/ieee802_11_defs.h	1190;"	d
+WLAN_CIPHER_SUITE_WEP104	src/common/ieee802_11_defs.h	1195;"	d
+WLAN_CIPHER_SUITE_WEP40	src/common/ieee802_11_defs.h	1191;"	d
 WLAN_EID_20_40_BSS_COEXISTENCE	src/common/ieee802_11_defs.h	250;"	d
 WLAN_EID_20_40_BSS_INTOLERANT	src/common/ieee802_11_defs.h	251;"	d
 WLAN_EID_ADV_PROTO	src/common/ieee802_11_defs.h	262;"	d
@@ -6294,24 +6294,28 @@ WLAN_PA_GAS_COMEBACK_REQ	src/common/ieee802_11_defs.h	308;"	d
 WLAN_PA_GAS_COMEBACK_RESP	src/common/ieee802_11_defs.h	309;"	d
 WLAN_PA_GAS_INITIAL_REQ	src/common/ieee802_11_defs.h	306;"	d
 WLAN_PA_GAS_INITIAL_RESP	src/common/ieee802_11_defs.h	307;"	d
+WLAN_PA_HYPERLOCAL_QUERY	src/common/ieee802_11_defs.h	316;"	d
+WLAN_PA_HYPERLOCAL_RESP	src/common/ieee802_11_defs.h	319;"	d
+WLAN_PA_HYPERLOCAL_TTF_REQ	src/common/ieee802_11_defs.h	317;"	d
+WLAN_PA_HYPERLOCAL_TTF_RESP	src/common/ieee802_11_defs.h	318;"	d
 WLAN_PA_NOTIFICATION	src/common/ieee802_11_defs.h	312;"	d
 WLAN_PA_NOTIFICATION_IND	src/common/ieee802_11_defs.h	315;"	d
 WLAN_PA_NOTIFICATION_REQ	src/common/ieee802_11_defs.h	313;"	d
 WLAN_PA_NOTIFICATION_RESP	src/common/ieee802_11_defs.h	314;"	d
-WLAN_PA_NO_RESP	src/common/ieee802_11_defs.h	318;"	d
+WLAN_PA_NO_RESP	src/common/ieee802_11_defs.h	323;"	d
 WLAN_PA_VENDOR_SPECIFIC	src/common/ieee802_11_defs.h	305;"	d
-WLAN_PA_WAIT_RESP	src/common/ieee802_11_defs.h	319;"	d
-WLAN_PROT_DSE_DEENABLEMENT	src/common/ieee802_11_defs.h	323;"	d
-WLAN_PROT_DSE_ENABLEMENT	src/common/ieee802_11_defs.h	322;"	d
-WLAN_PROT_DSE_POWER_CONSTRAINT	src/common/ieee802_11_defs.h	327;"	d
-WLAN_PROT_EXT_CSA	src/common/ieee802_11_defs.h	324;"	d
-WLAN_PROT_GAS_COMEBACK_REQ	src/common/ieee802_11_defs.h	331;"	d
-WLAN_PROT_GAS_COMEBACK_RESP	src/common/ieee802_11_defs.h	332;"	d
-WLAN_PROT_GAS_INITIAL_REQ	src/common/ieee802_11_defs.h	329;"	d
-WLAN_PROT_GAS_INITIAL_RESP	src/common/ieee802_11_defs.h	330;"	d
-WLAN_PROT_MEASUREMENT_REPORT	src/common/ieee802_11_defs.h	326;"	d
-WLAN_PROT_MEASUREMENT_REQ	src/common/ieee802_11_defs.h	325;"	d
-WLAN_PROT_VENDOR_SPECIFIC	src/common/ieee802_11_defs.h	328;"	d
+WLAN_PA_WAIT_RESP	src/common/ieee802_11_defs.h	324;"	d
+WLAN_PROT_DSE_DEENABLEMENT	src/common/ieee802_11_defs.h	328;"	d
+WLAN_PROT_DSE_ENABLEMENT	src/common/ieee802_11_defs.h	327;"	d
+WLAN_PROT_DSE_POWER_CONSTRAINT	src/common/ieee802_11_defs.h	332;"	d
+WLAN_PROT_EXT_CSA	src/common/ieee802_11_defs.h	329;"	d
+WLAN_PROT_GAS_COMEBACK_REQ	src/common/ieee802_11_defs.h	336;"	d
+WLAN_PROT_GAS_COMEBACK_RESP	src/common/ieee802_11_defs.h	337;"	d
+WLAN_PROT_GAS_INITIAL_REQ	src/common/ieee802_11_defs.h	334;"	d
+WLAN_PROT_GAS_INITIAL_RESP	src/common/ieee802_11_defs.h	335;"	d
+WLAN_PROT_MEASUREMENT_REPORT	src/common/ieee802_11_defs.h	331;"	d
+WLAN_PROT_MEASUREMENT_REQ	src/common/ieee802_11_defs.h	330;"	d
+WLAN_PROT_VENDOR_SPECIFIC	src/common/ieee802_11_defs.h	333;"	d
 WLAN_RATE_11M	src/drivers/driver_hostap.c	633;"	d	file:
 WLAN_RATE_1M	src/drivers/driver_hostap.c	630;"	d	file:
 WLAN_RATE_2M	src/drivers/driver_hostap.c	631;"	d	file:
@@ -6351,17 +6355,17 @@ WLAN_REASON_TDLS_TEARDOWN_UNREACHABLE	src/common/ieee802_11_defs.h	195;"	d
 WLAN_REASON_TDLS_TEARDOWN_UNSPECIFIED	src/common/ieee802_11_defs.h	196;"	d
 WLAN_REASON_UNSPECIFIED	src/common/ieee802_11_defs.h	170;"	d
 WLAN_REASON_UNSUPPORTED_RSN_IE_VERSION	src/common/ieee802_11_defs.h	191;"	d
-WLAN_RRM_CAPS_LINK_MEASUREMENT	src/common/ieee802_11_defs.h	363;"	d
-WLAN_RRM_CAPS_NEIGHBOR_REPORT	src/common/ieee802_11_defs.h	364;"	d
-WLAN_RRM_LINK_MEASUREMENT_REPORT	src/common/ieee802_11_defs.h	357;"	d
-WLAN_RRM_LINK_MEASUREMENT_REQUEST	src/common/ieee802_11_defs.h	356;"	d
-WLAN_RRM_NEIGHBOR_REPORT_REQUEST	src/common/ieee802_11_defs.h	358;"	d
-WLAN_RRM_NEIGHBOR_REPORT_RESPONSE	src/common/ieee802_11_defs.h	359;"	d
-WLAN_RRM_RADIO_MEASUREMENT_REPORT	src/common/ieee802_11_defs.h	355;"	d
-WLAN_RRM_RADIO_MEASUREMENT_REQUEST	src/common/ieee802_11_defs.h	354;"	d
-WLAN_SA_QUERY_REQUEST	src/common/ieee802_11_defs.h	335;"	d
-WLAN_SA_QUERY_RESPONSE	src/common/ieee802_11_defs.h	336;"	d
-WLAN_SA_QUERY_TR_ID_LEN	src/common/ieee802_11_defs.h	338;"	d
+WLAN_RRM_CAPS_LINK_MEASUREMENT	src/common/ieee802_11_defs.h	368;"	d
+WLAN_RRM_CAPS_NEIGHBOR_REPORT	src/common/ieee802_11_defs.h	369;"	d
+WLAN_RRM_LINK_MEASUREMENT_REPORT	src/common/ieee802_11_defs.h	362;"	d
+WLAN_RRM_LINK_MEASUREMENT_REQUEST	src/common/ieee802_11_defs.h	361;"	d
+WLAN_RRM_NEIGHBOR_REPORT_REQUEST	src/common/ieee802_11_defs.h	363;"	d
+WLAN_RRM_NEIGHBOR_REPORT_RESPONSE	src/common/ieee802_11_defs.h	364;"	d
+WLAN_RRM_RADIO_MEASUREMENT_REPORT	src/common/ieee802_11_defs.h	360;"	d
+WLAN_RRM_RADIO_MEASUREMENT_REQUEST	src/common/ieee802_11_defs.h	359;"	d
+WLAN_SA_QUERY_REQUEST	src/common/ieee802_11_defs.h	340;"	d
+WLAN_SA_QUERY_RESPONSE	src/common/ieee802_11_defs.h	341;"	d
+WLAN_SA_QUERY_TR_ID_LEN	src/common/ieee802_11_defs.h	343;"	d
 WLAN_STATUS_ADV_SRV_UNREACHABLE	src/common/ieee802_11_defs.h	159;"	d
 WLAN_STATUS_AKMP_NOT_VALID	src/common/ieee802_11_defs.h	139;"	d
 WLAN_STATUS_ANTI_CLOGGING_TOKEN_REQ	src/common/ieee802_11_defs.h	163;"	d
@@ -6448,40 +6452,40 @@ WLAN_STA_WNM_SLEEP_MODE	src/ap/sta_info.h	36;"	d
 WLAN_STA_WPS	src/ap/sta_info.h	29;"	d
 WLAN_STA_WPS2	src/ap/sta_info.h	33;"	d
 WLAN_SUPP_RATES_MAX	src/ap/sta_info.h	45;"	d
-WLAN_TDLS_CHANNEL_SWITCH_REQUEST	src/common/ieee802_11_defs.h	346;"	d
-WLAN_TDLS_CHANNEL_SWITCH_RESPONSE	src/common/ieee802_11_defs.h	347;"	d
-WLAN_TDLS_DISCOVERY_REQUEST	src/common/ieee802_11_defs.h	351;"	d
+WLAN_TDLS_CHANNEL_SWITCH_REQUEST	src/common/ieee802_11_defs.h	351;"	d
+WLAN_TDLS_CHANNEL_SWITCH_RESPONSE	src/common/ieee802_11_defs.h	352;"	d
+WLAN_TDLS_DISCOVERY_REQUEST	src/common/ieee802_11_defs.h	356;"	d
 WLAN_TDLS_DISCOVERY_RESPONSE	src/common/ieee802_11_defs.h	310;"	d
-WLAN_TDLS_PEER_PSM_REQUEST	src/common/ieee802_11_defs.h	348;"	d
-WLAN_TDLS_PEER_PSM_RESPONSE	src/common/ieee802_11_defs.h	349;"	d
-WLAN_TDLS_PEER_TRAFFIC_INDICATION	src/common/ieee802_11_defs.h	345;"	d
-WLAN_TDLS_PEER_TRAFFIC_RESPONSE	src/common/ieee802_11_defs.h	350;"	d
-WLAN_TDLS_SETUP_CONFIRM	src/common/ieee802_11_defs.h	343;"	d
-WLAN_TDLS_SETUP_REQUEST	src/common/ieee802_11_defs.h	341;"	d
-WLAN_TDLS_SETUP_RESPONSE	src/common/ieee802_11_defs.h	342;"	d
-WLAN_TDLS_TEARDOWN	src/common/ieee802_11_defs.h	344;"	d
-WLAN_TIMEOUT_ASSOC_COMEBACK	src/common/ieee802_11_defs.h	369;"	d
-WLAN_TIMEOUT_KEY_LIFETIME	src/common/ieee802_11_defs.h	368;"	d
-WLAN_TIMEOUT_REASSOC_DEADLINE	src/common/ieee802_11_defs.h	367;"	d
+WLAN_TDLS_PEER_PSM_REQUEST	src/common/ieee802_11_defs.h	353;"	d
+WLAN_TDLS_PEER_PSM_RESPONSE	src/common/ieee802_11_defs.h	354;"	d
+WLAN_TDLS_PEER_TRAFFIC_INDICATION	src/common/ieee802_11_defs.h	350;"	d
+WLAN_TDLS_PEER_TRAFFIC_RESPONSE	src/common/ieee802_11_defs.h	355;"	d
+WLAN_TDLS_SETUP_CONFIRM	src/common/ieee802_11_defs.h	348;"	d
+WLAN_TDLS_SETUP_REQUEST	src/common/ieee802_11_defs.h	346;"	d
+WLAN_TDLS_SETUP_RESPONSE	src/common/ieee802_11_defs.h	347;"	d
+WLAN_TDLS_TEARDOWN	src/common/ieee802_11_defs.h	349;"	d
+WLAN_TIMEOUT_ASSOC_COMEBACK	src/common/ieee802_11_defs.h	374;"	d
+WLAN_TIMEOUT_KEY_LIFETIME	src/common/ieee802_11_defs.h	373;"	d
+WLAN_TIMEOUT_REASSOC_DEADLINE	src/common/ieee802_11_defs.h	372;"	d
 WME_H	src/ap/wmm.h	11;"	d
-WMM_ACTION_CODE_ADDTS_REQ	src/common/ieee802_11_defs.h	887;"	d
-WMM_ACTION_CODE_ADDTS_RESP	src/common/ieee802_11_defs.h	888;"	d
-WMM_ACTION_CODE_DELTS	src/common/ieee802_11_defs.h	889;"	d
+WMM_ACTION_CODE_ADDTS_REQ	src/common/ieee802_11_defs.h	892;"	d
+WMM_ACTION_CODE_ADDTS_RESP	src/common/ieee802_11_defs.h	893;"	d
+WMM_ACTION_CODE_DELTS	src/common/ieee802_11_defs.h	894;"	d
 WMM_AC_ACCESS_POLICY_EDCA	wpa_supplicant/wmm_ac.h	18;"	d
-WMM_AC_ACI_MASK	src/common/ieee802_11_defs.h	927;"	d
-WMM_AC_ACI_SHIFT	src/common/ieee802_11_defs.h	928;"	d
-WMM_AC_ACM	src/common/ieee802_11_defs.h	926;"	d
-WMM_AC_AIFNS_SHIFT	src/common/ieee802_11_defs.h	925;"	d
-WMM_AC_AIFSN_MASK	src/common/ieee802_11_defs.h	924;"	d
+WMM_AC_ACI_MASK	src/common/ieee802_11_defs.h	932;"	d
+WMM_AC_ACI_SHIFT	src/common/ieee802_11_defs.h	933;"	d
+WMM_AC_ACM	src/common/ieee802_11_defs.h	931;"	d
+WMM_AC_AIFNS_SHIFT	src/common/ieee802_11_defs.h	930;"	d
+WMM_AC_AIFSN_MASK	src/common/ieee802_11_defs.h	929;"	d
 WMM_AC_BE	src/common/ieee802_11_defs.h	/^	WMM_AC_BE = 0 \/* Best Effort *\/,$/;"	e	enum:wmm_ac
 WMM_AC_BK	src/common/ieee802_11_defs.h	/^	WMM_AC_BK = 1 \/* Background *\/,$/;"	e	enum:wmm_ac
 WMM_AC_DIR_BIDIRECTIONAL	wpa_supplicant/wmm_ac.h	/^	WMM_AC_DIR_BIDIRECTIONAL = 3$/;"	e	enum:wmm_ac_dir
 WMM_AC_DIR_DOWNLINK	wpa_supplicant/wmm_ac.h	/^	WMM_AC_DIR_DOWNLINK = 1,$/;"	e	enum:wmm_ac_dir
 WMM_AC_DIR_UPLINK	wpa_supplicant/wmm_ac.h	/^	WMM_AC_DIR_UPLINK = 0,$/;"	e	enum:wmm_ac_dir
-WMM_AC_ECWMAX_MASK	src/common/ieee802_11_defs.h	932;"	d
-WMM_AC_ECWMAX_SHIFT	src/common/ieee802_11_defs.h	933;"	d
-WMM_AC_ECWMIN_MASK	src/common/ieee802_11_defs.h	930;"	d
-WMM_AC_ECWMIN_SHIFT	src/common/ieee802_11_defs.h	931;"	d
+WMM_AC_ECWMAX_MASK	src/common/ieee802_11_defs.h	937;"	d
+WMM_AC_ECWMAX_SHIFT	src/common/ieee802_11_defs.h	938;"	d
+WMM_AC_ECWMIN_MASK	src/common/ieee802_11_defs.h	935;"	d
+WMM_AC_ECWMIN_SHIFT	src/common/ieee802_11_defs.h	936;"	d
 WMM_AC_EVENT_TSPEC_ADDED	src/common/wpa_ctrl.h	135;"	d
 WMM_AC_EVENT_TSPEC_REMOVED	src/common/wpa_ctrl.h	136;"	d
 WMM_AC_EVENT_TSPEC_REQ_FAILED	src/common/wpa_ctrl.h	137;"	d
@@ -6494,23 +6498,23 @@ WMM_AC_MIN_SBA_UNITY	wpa_supplicant/wmm_ac.h	23;"	d
 WMM_AC_NUM	src/common/ieee802_11_defs.h	/^	WMM_AC_NUM = 4$/;"	e	enum:wmm_ac
 WMM_AC_VI	src/common/ieee802_11_defs.h	/^	WMM_AC_VI = 2 \/* Video *\/,$/;"	e	enum:wmm_ac
 WMM_AC_VO	src/common/ieee802_11_defs.h	/^	WMM_AC_VO = 3 \/* Voice *\/,$/;"	e	enum:wmm_ac
-WMM_ADDTS_STATUS_ADMISSION_ACCEPTED	src/common/ieee802_11_defs.h	891;"	d
-WMM_ADDTS_STATUS_INVALID_PARAMETERS	src/common/ieee802_11_defs.h	892;"	d
-WMM_ADDTS_STATUS_REFUSED	src/common/ieee802_11_defs.h	894;"	d
-WMM_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	872;"	d
-WMM_OUI_SUBTYPE_INFORMATION_ELEMENT	src/common/ieee802_11_defs.h	882;"	d
-WMM_OUI_SUBTYPE_PARAMETER_ELEMENT	src/common/ieee802_11_defs.h	883;"	d
-WMM_OUI_SUBTYPE_TSPEC_ELEMENT	src/common/ieee802_11_defs.h	884;"	d
-WMM_OUI_TYPE	src/common/ieee802_11_defs.h	881;"	d
+WMM_ADDTS_STATUS_ADMISSION_ACCEPTED	src/common/ieee802_11_defs.h	896;"	d
+WMM_ADDTS_STATUS_INVALID_PARAMETERS	src/common/ieee802_11_defs.h	897;"	d
+WMM_ADDTS_STATUS_REFUSED	src/common/ieee802_11_defs.h	899;"	d
+WMM_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	877;"	d
+WMM_OUI_SUBTYPE_INFORMATION_ELEMENT	src/common/ieee802_11_defs.h	887;"	d
+WMM_OUI_SUBTYPE_PARAMETER_ELEMENT	src/common/ieee802_11_defs.h	888;"	d
+WMM_OUI_SUBTYPE_TSPEC_ELEMENT	src/common/ieee802_11_defs.h	889;"	d
+WMM_OUI_TYPE	src/common/ieee802_11_defs.h	886;"	d
 WMM_PARAMS_UAPSD_QUEUES_INFO	src/drivers/driver.h	/^	WMM_PARAMS_UAPSD_QUEUES_INFO = BIT(0),$/;"	e	enum:wmm_params_valid_info
-WMM_QOSINFO_AP_UAPSD	src/common/ieee802_11_defs.h	918;"	d
-WMM_QOSINFO_STA_AC_MASK	src/common/ieee802_11_defs.h	920;"	d
-WMM_QOSINFO_STA_SP_MASK	src/common/ieee802_11_defs.h	921;"	d
-WMM_QOSINFO_STA_SP_SHIFT	src/common/ieee802_11_defs.h	922;"	d
-WMM_TSPEC_DIRECTION_BI_DIRECTIONAL	src/common/ieee802_11_defs.h	901;"	d
-WMM_TSPEC_DIRECTION_DOWNLINK	src/common/ieee802_11_defs.h	899;"	d
-WMM_TSPEC_DIRECTION_UPLINK	src/common/ieee802_11_defs.h	898;"	d
-WMM_VERSION	src/common/ieee802_11_defs.h	885;"	d
+WMM_QOSINFO_AP_UAPSD	src/common/ieee802_11_defs.h	923;"	d
+WMM_QOSINFO_STA_AC_MASK	src/common/ieee802_11_defs.h	925;"	d
+WMM_QOSINFO_STA_SP_MASK	src/common/ieee802_11_defs.h	926;"	d
+WMM_QOSINFO_STA_SP_SHIFT	src/common/ieee802_11_defs.h	927;"	d
+WMM_TSPEC_DIRECTION_BI_DIRECTIONAL	src/common/ieee802_11_defs.h	906;"	d
+WMM_TSPEC_DIRECTION_DOWNLINK	src/common/ieee802_11_defs.h	904;"	d
+WMM_TSPEC_DIRECTION_UPLINK	src/common/ieee802_11_defs.h	903;"	d
+WMM_VERSION	src/common/ieee802_11_defs.h	890;"	d
 WNM_AP_H	src/ap/wnm_ap.h	10;"	d
 WNM_BSS_TM_ACCEPT	src/common/ieee802_11_defs.h	/^	WNM_BSS_TM_ACCEPT = 0,$/;"	e	enum:bss_trans_mgmt_status_code
 WNM_BSS_TM_REJECT_DELAY_REQUEST	src/common/ieee802_11_defs.h	/^	WNM_BSS_TM_REJECT_DELAY_REQUEST = 5,$/;"	e	enum:bss_trans_mgmt_status_code
@@ -6521,11 +6525,11 @@ WNM_BSS_TM_REJECT_NO_SUITABLE_CANDIDATES	src/common/ieee802_11_defs.h	/^	WNM_BSS
 WNM_BSS_TM_REJECT_STA_CANDIDATE_LIST_PROVIDED	src/common/ieee802_11_defs.h	/^	WNM_BSS_TM_REJECT_STA_CANDIDATE_LIST_PROVIDED = 6,$/;"	e	enum:bss_trans_mgmt_status_code
 WNM_BSS_TM_REJECT_UNDESIRED	src/common/ieee802_11_defs.h	/^	WNM_BSS_TM_REJECT_UNDESIRED = 4,$/;"	e	enum:bss_trans_mgmt_status_code
 WNM_BSS_TM_REJECT_UNSPECIFIED	src/common/ieee802_11_defs.h	/^	WNM_BSS_TM_REJECT_UNSPECIFIED = 1,$/;"	e	enum:bss_trans_mgmt_status_code
-WNM_BSS_TM_REQ_ABRIDGED	src/common/ieee802_11_defs.h	1254;"	d
-WNM_BSS_TM_REQ_BSS_TERMINATION_INCLUDED	src/common/ieee802_11_defs.h	1256;"	d
-WNM_BSS_TM_REQ_DISASSOC_IMMINENT	src/common/ieee802_11_defs.h	1255;"	d
-WNM_BSS_TM_REQ_ESS_DISASSOC_IMMINENT	src/common/ieee802_11_defs.h	1257;"	d
-WNM_BSS_TM_REQ_PREF_CAND_LIST_INCLUDED	src/common/ieee802_11_defs.h	1253;"	d
+WNM_BSS_TM_REQ_ABRIDGED	src/common/ieee802_11_defs.h	1259;"	d
+WNM_BSS_TM_REQ_BSS_TERMINATION_INCLUDED	src/common/ieee802_11_defs.h	1261;"	d
+WNM_BSS_TM_REQ_DISASSOC_IMMINENT	src/common/ieee802_11_defs.h	1260;"	d
+WNM_BSS_TM_REQ_ESS_DISASSOC_IMMINENT	src/common/ieee802_11_defs.h	1262;"	d
+WNM_BSS_TM_REQ_PREF_CAND_LIST_INCLUDED	src/common/ieee802_11_defs.h	1258;"	d
 WNM_BSS_TRANS_MGMT_QUERY	src/common/ieee802_11_defs.h	/^	WNM_BSS_TRANS_MGMT_QUERY = 6,$/;"	e	enum:wnm_action
 WNM_BSS_TRANS_MGMT_REQ	src/common/ieee802_11_defs.h	/^	WNM_BSS_TRANS_MGMT_REQ = 7,$/;"	e	enum:wnm_action
 WNM_BSS_TRANS_MGMT_RESP	src/common/ieee802_11_defs.h	/^	WNM_BSS_TRANS_MGMT_RESP = 8,$/;"	e	enum:wnm_action
@@ -6544,14 +6548,14 @@ WNM_FMS_RESP	src/common/ieee802_11_defs.h	/^	WNM_FMS_RESP = 10,$/;"	e	enum:wnm_a
 WNM_LOCATION_CFG_REQ	src/common/ieee802_11_defs.h	/^	WNM_LOCATION_CFG_REQ = 4,$/;"	e	enum:wnm_action
 WNM_LOCATION_CFG_RESP	src/common/ieee802_11_defs.h	/^	WNM_LOCATION_CFG_RESP = 5,$/;"	e	enum:wnm_action
 WNM_MAX_NEIGHBOR_REPORT	wpa_supplicant/wnm_sta.c	25;"	d	file:
-WNM_NEIGHBOR_BEARING	src/common/ieee802_11_defs.h	1276;"	d
-WNM_NEIGHBOR_BSS_TERMINATION_DURATION	src/common/ieee802_11_defs.h	1275;"	d
-WNM_NEIGHBOR_BSS_TRANSITION_CANDIDATE	src/common/ieee802_11_defs.h	1274;"	d
-WNM_NEIGHBOR_CONDENSED_COUNTRY_STRING	src/common/ieee802_11_defs.h	1273;"	d
-WNM_NEIGHBOR_MEASUREMENT_PILOT	src/common/ieee802_11_defs.h	1277;"	d
-WNM_NEIGHBOR_MULTIPLE_BSSID	src/common/ieee802_11_defs.h	1279;"	d
-WNM_NEIGHBOR_RRM_ENABLED_CAPABILITIES	src/common/ieee802_11_defs.h	1278;"	d
-WNM_NEIGHBOR_TSF	src/common/ieee802_11_defs.h	1272;"	d
+WNM_NEIGHBOR_BEARING	src/common/ieee802_11_defs.h	1281;"	d
+WNM_NEIGHBOR_BSS_TERMINATION_DURATION	src/common/ieee802_11_defs.h	1280;"	d
+WNM_NEIGHBOR_BSS_TRANSITION_CANDIDATE	src/common/ieee802_11_defs.h	1279;"	d
+WNM_NEIGHBOR_CONDENSED_COUNTRY_STRING	src/common/ieee802_11_defs.h	1278;"	d
+WNM_NEIGHBOR_MEASUREMENT_PILOT	src/common/ieee802_11_defs.h	1282;"	d
+WNM_NEIGHBOR_MULTIPLE_BSSID	src/common/ieee802_11_defs.h	1284;"	d
+WNM_NEIGHBOR_RRM_ENABLED_CAPABILITIES	src/common/ieee802_11_defs.h	1283;"	d
+WNM_NEIGHBOR_TSF	src/common/ieee802_11_defs.h	1277;"	d
 WNM_NOTIFICATION_REQ	src/common/ieee802_11_defs.h	/^	WNM_NOTIFICATION_REQ = 26,$/;"	e	enum:wnm_action
 WNM_NOTIFICATION_RESP	src/common/ieee802_11_defs.h	/^	WNM_NOTIFICATION_RESP = 27$/;"	e	enum:wnm_action
 WNM_OPER_SLEEP	src/drivers/driver.h	/^			WNM_OPER_SLEEP,$/;"	e	enum:wpa_event_data::wnm::__anon42
@@ -6562,8 +6566,8 @@ WNM_SLEEP_ENTER_FAIL	src/drivers/driver.h	/^	WNM_SLEEP_ENTER_FAIL,$/;"	e	enum:wn
 WNM_SLEEP_EXIT	src/drivers/driver.h	/^			WNM_SLEEP_EXIT$/;"	e	enum:wpa_event_data::wnm::__anon43
 WNM_SLEEP_EXIT_CONFIRM	src/drivers/driver.h	/^	WNM_SLEEP_EXIT_CONFIRM,$/;"	e	enum:wnm_oper
 WNM_SLEEP_EXIT_FAIL	src/drivers/driver.h	/^	WNM_SLEEP_EXIT_FAIL,$/;"	e	enum:wnm_oper
-WNM_SLEEP_MODE_ENTER	src/common/ieee802_11_defs.h	1319;"	d
-WNM_SLEEP_MODE_EXIT	src/common/ieee802_11_defs.h	1320;"	d
+WNM_SLEEP_MODE_ENTER	src/common/ieee802_11_defs.h	1324;"	d
+WNM_SLEEP_MODE_EXIT	src/common/ieee802_11_defs.h	1325;"	d
 WNM_SLEEP_MODE_REQ	src/common/ieee802_11_defs.h	/^	WNM_SLEEP_MODE_REQ = 16,$/;"	e	enum:wnm_action
 WNM_SLEEP_MODE_RESP	src/common/ieee802_11_defs.h	/^	WNM_SLEEP_MODE_RESP = 17,$/;"	e	enum:wnm_action
 WNM_SLEEP_SUBELEM_GTK	src/common/ieee802_11_defs.h	/^	WNM_SLEEP_SUBELEM_GTK = 0,$/;"	e	enum:wnm_sleep_mode_subelement_id
@@ -7010,7 +7014,7 @@ WPA_H	src/rsn_supp/wpa.h	10;"	d
 WPA_HELPERS_H	src/common/wpa_helpers.h	11;"	d
 WPA_IE_H	src/rsn_supp/wpa_ie.h	10;"	d
 WPA_IE_OK	src/ap/wpa_auth.h	/^	WPA_IE_OK, WPA_INVALID_IE, WPA_INVALID_GROUP, WPA_INVALID_PAIRWISE,$/;"	e	enum:__anon133
-WPA_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	871;"	d
+WPA_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	876;"	d
 WPA_IF_AP_BSS	src/drivers/driver.h	/^	WPA_IF_AP_BSS,$/;"	e	enum:wpa_driver_if_type
 WPA_IF_AP_VLAN	src/drivers/driver.h	/^	WPA_IF_AP_VLAN,$/;"	e	enum:wpa_driver_if_type
 WPA_IF_MESH	src/drivers/driver.h	/^	WPA_IF_MESH,$/;"	e	enum:wpa_driver_if_type
@@ -7356,7 +7360,7 @@ WPS_FINISHED	src/wps/wps_i.h	/^		RECV_M8, RECEIVED_M2D, WPS_MSG_DONE, RECV_ACK, 
 WPS_H	src/wps/wps.h	10;"	d
 WPS_HASH_LEN	src/wps/wps_defs.h	36;"	d
 WPS_HOSTAPD_H	src/ap/wps_hostapd.h	10;"	d
-WPS_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	873;"	d
+WPS_IE_VENDOR_TYPE	src/common/ieee802_11_defs.h	878;"	d
 WPS_I_H	src/wps/wps_i.h	10;"	d
 WPS_KEYWRAPKEY_LEN	src/wps/wps_defs.h	32;"	d
 WPS_KWA_LEN	src/wps/wps_defs.h	37;"	d
@@ -7846,10 +7850,10 @@ action_ctrl_dst	wpa_supplicant/action_handler.c	/^struct action_ctrl_dst{$/;"	s	
 action_file	wpa_supplicant/hostapd_cli.c	/^static const char *action_file = NULL;$/;"	v	file:
 action_file	wpa_supplicant/wpa_cli.c	/^static const char *action_file = NULL;$/;"	v	file:
 action_handle	wpa_supplicant/action_handler.c	/^struct action_handle {$/;"	s	file:
+action_hyperlocal_query_dispatcher	wpa_supplicant/action_handler.c	/^static int action_hyperlocal_query_dispatcher(struct wpa_supplicant *wpa_s, struct action_pending *not, const char *payload, size_t paylen)$/;"	f	file:
 action_init	wpa_supplicant/action_handler.c	/^int action_init(struct wpa_supplicant *wpa_s) {$/;"	f
 action_length	src/ap/wpa_auth.h	/^	le16 action_length; \/* little endian length of action_frame *\/$/;"	m	struct:ft_rrb_frame
 action_notification_add_indication	wpa_supplicant/action_handler.c	/^void action_notification_add_indication(struct wpabuf *buf, int pps_mo_id) {$/;"	f
-action_notification_dispatcher	wpa_supplicant/action_handler.c	/^static int action_notification_dispatcher(struct wpa_supplicant *wpa_s, struct action_pending *not, const char *payload, size_t paylen)$/;"	f	file:
 action_notification_req_dispatcher	wpa_supplicant/action_handler.c	/^static void action_notification_req_dispatcher(struct wpa_supplicant *wpa_s,$/;"	f	file:
 action_pending	wpa_supplicant/action_handler.c	/^struct action_pending {$/;"	s	file:
 action_rx	wpa_supplicant/action_handler.c	/^int action_rx(struct wpa_supplicant *wpa_s, const u8 *da, const u8 *sa,$/;"	f
@@ -15518,7 +15522,7 @@ length1	src/pae/ieee802_1x_kay_i.h	/^	u32 length1:8;$/;"	m	struct:ieee802_1x_mka
 level	src/drivers/driver.h	/^	int level;$/;"	m	struct:wpa_scan_res
 level	src/p2p/p2p.h	/^	int level;$/;"	m	struct:p2p_peer_info
 level	wpa_supplicant/bss.h	/^	int level;$/;"	m	struct:wpa_bss
-lib	wpa_supplicant/pystub.py	/^lib = cdll.LoadLibrary('.\/wpa_not.so')$/;"	v
+lib	wpa_supplicant/pystub_sta.py	/^lib = cdll.LoadLibrary('.\/wpa_not.so')$/;"	v
 license	wpa_supplicant/main.c	/^static void license(void)$/;"	f	file:
 lifetime	src/ap/wpa_auth_ie.h	/^	const u8 *lifetime;$/;"	m	struct:wpa_eapol_ie_parse
 lifetime	src/rsn_supp/peerkey.h	/^	u32 lifetime;$/;"	m	struct:wpa_peerkey
@@ -15843,7 +15847,7 @@ maxStart	src/eapol_supp/eapol_supp_sm.c	/^	unsigned int maxStart; \/* dot1xSuppM
 max_acl_mac_addrs	src/drivers/driver.h	/^	unsigned int max_acl_mac_addrs;$/;"	m	struct:wpa_driver_capa
 max_args	wpa_supplicant/hostapd_cli.c	1201;"	d	file:
 max_args	wpa_supplicant/notifier.c	799;"	d	file:
-max_args	wpa_supplicant/wpa_cli.c	3606;"	d	file:
+max_args	wpa_supplicant/wpa_cli.c	3607;"	d	file:
 max_bits	src/utils/bitfield.c	/^	size_t max_bits;$/;"	m	struct:bitfield	file:
 max_bss_load	wpa_supplicant/config.h	/^	unsigned int max_bss_load;$/;"	m	struct:wpa_cred
 max_bssid_indicator	wpa_supplicant/wnm_sta.h	/^	u8 max_bssid_indicator;$/;"	m	struct:multiple_bssid
@@ -16002,7 +16006,7 @@ meshid	src/ap/ap_config.h	/^	u8 meshid[32];$/;"	m	struct:mesh_conf
 meshid	src/drivers/driver.h	/^	const u8 *meshid;$/;"	m	struct:wpa_driver_mesh_join_params
 meshid_len	src/ap/ap_config.h	/^	u8 meshid_len;$/;"	m	struct:mesh_conf
 meshid_len	src/drivers/driver.h	/^	int meshid_len;$/;"	m	struct:wpa_driver_mesh_join_params
-message	wpa_supplicant/pystub.py	/^message = "prob_req"$/;"	v
+message	wpa_supplicant/pystub_sta.py	/^message = "hl_query"$/;"	v
 message_handler	wpa_supplicant/dbus/dbus_new_helpers.c	/^static DBusHandlerResult message_handler(DBusConnection *connection,$/;"	f	file:
 message_id	src/eap_common/ikev2_common.h	/^	u8 message_id[4];$/;"	m	struct:ikev2_hdr
 method	src/ap/ap_config.h	/^		u32 method;$/;"	m	struct:hostapd_eap_user::__anon135
@@ -16939,7 +16943,6 @@ not_commands	wpa_supplicant/wpa_not_disp.c	/^static struct not_cmd not_commands[
 not_conn	wpa_supplicant/notifier.c	/^static struct wpa_ctrl *not_conn;$/;"	v	typeref:struct:wpa_ctrl	file:
 not_disable_fast_delivery	wpa_supplicant/notifier.c	/^static int not_disable_fast_delivery(struct wpa_ctrl *ctrl, int argc, char *argv[]){$/;"	f	file:
 not_disp	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp(void)$/;"	f	file:
-not_disp	wpa_supplicant/wpa_not_disp.c	/^static void not_disp(void)$/;"	f	file:
 not_disp_attached	wpa_supplicant/bk_wpa_not_disp.c	/^static int not_disp_attached = 0;$/;"	v	file:
 not_disp_attached	wpa_supplicant/wpa_not_disp.c	/^static int not_disp_attached = 0;$/;"	v	file:
 not_disp_cleanup	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_cleanup(void)$/;"	f	file:
@@ -16947,7 +16950,6 @@ not_disp_cleanup	wpa_supplicant/wpa_not_disp.c	/^static void not_disp_cleanup(vo
 not_disp_close_connection	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_close_connection(void) \/* Mallesh: predicted the func name based on errors. *\/$/;"	f	file:
 not_disp_close_connection	wpa_supplicant/wpa_not_disp.c	/^static void not_disp_close_connection(void) \/* Mallesh: predicted the func name based on errors. *\/$/;"	f	file:
 not_disp_command	wpa_supplicant/bk_wpa_not_disp.c	/^static int not_disp_command(struct wpa_ctrl *ctrl, char *cmd, int print)$/;"	f	file:
-not_disp_command	wpa_supplicant/wpa_not_disp.c	/^static int not_disp_command(struct wpa_ctrl *ctrl, char *cmd, int print)$/;"	f	file:
 not_disp_edit_cmd_cb	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_edit_cmd_cb(void *ctx, char *cmd)$/;"	f	file:
 not_disp_edit_eof_cb	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_edit_eof_cb(void *ctx)$/;"	f	file:
 not_disp_end	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_end(void *eloop_ctx, void *timeout_ctx){$/;"	f	file:
@@ -16955,7 +16957,6 @@ not_disp_end	wpa_supplicant/wpa_not_disp.c	/^static void not_disp_end(void *eloo
 not_disp_mon_receive	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_mon_receive(int sock, void *eloop_ctx, void *sock_ctx)$/;"	f	file:
 not_disp_mon_receive	wpa_supplicant/wpa_not_disp.c	/^static void not_disp_mon_receive(int sock, void *eloop_ctx, void *sock_ctx)$/;"	f	file:
 not_disp_msg_cb	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_msg_cb(char *msg, size_t len)$/;"	f	file:
-not_disp_msg_cb	wpa_supplicant/wpa_not_disp.c	/^static void not_disp_msg_cb(char *msg, size_t len)$/;"	f	file:
 not_disp_open_connection	wpa_supplicant/bk_wpa_not_disp.c	/^static int not_disp_open_connection()$/;"	f	file:
 not_disp_ping	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_ping(void *eloop_ctx, void *timeout_ctx)$/;"	f	file:
 not_disp_reconnect	wpa_supplicant/bk_wpa_not_disp.c	/^static void not_disp_reconnect(void)$/;"	f	file:
@@ -18552,7 +18553,6 @@ ping_interval	wpa_supplicant/bk_wpa_not_disp.c	/^static int ping_interval = 5;$/
 ping_interval	wpa_supplicant/hostapd_cli.c	/^static int ping_interval = 5;$/;"	v	file:
 ping_interval	wpa_supplicant/notifier.c	/^static int ping_interval = 5;$/;"	v	file:
 ping_interval	wpa_supplicant/wpa_cli.c	/^static int ping_interval = 5;$/;"	v	file:
-ping_interval	wpa_supplicant/wpa_not_disp.c	/^static int ping_interval = 5;$/;"	v	file:
 pingsToStatusUpdate	wpa_supplicant/wpa_gui-qt4/wpagui.h	/^	int pingsToStatusUpdate;$/;"	m	class:WpaGui
 pins	src/wps/wps_registrar.c	/^	struct dl_list pins;$/;"	m	struct:wps_registrar	typeref:struct:wps_registrar::dl_list	file:
 pipe	src/common/wpa_ctrl.c	/^	HANDLE pipe;$/;"	m	struct:wpa_ctrl	file:
@@ -21807,7 +21807,6 @@ trunc_nl	src/utils/edit_readline.c	/^static void trunc_nl(char *str)$/;"	f	file:
 trusted_certs	src/tls/tlsv1_cred.h	/^	struct x509_certificate *trusted_certs;$/;"	m	struct:tlsv1_credentials	typeref:struct:tlsv1_credentials::x509_certificate
 try_connection	wpa_supplicant/bk_wpa_not_disp.c	/^static void try_connection(void *eloop_ctx, void *timeout_ctx)$/;"	f	file:
 try_connection	wpa_supplicant/wpa_cli.c	/^static void try_connection(void *eloop_ctx, void *timeout_ctx)$/;"	f	file:
-try_connection	wpa_supplicant/wpa_not_disp.c	/^static void try_connection(void *eloop_ctx, void *timeout_ctx)$/;"	f	file:
 try_initiate_reauth	src/eap_server/eap_i.h	/^	Boolean try_initiate_reauth;$/;"	m	struct:eap_sm
 ts_dir_idx	wpa_supplicant/wmm_ac.h	/^enum ts_dir_idx {$/;"	g
 ts_info	src/common/ieee802_11_defs.h	/^	u8 ts_info[3];$/;"	m	struct:wmm_tspec_element
@@ -23745,7 +23744,7 @@ wpa_msg_register_cb	src/utils/wpa_debug.h	167;"	d
 wpa_msg_register_ifname_cb	src/utils/wpa_debug.c	/^void wpa_msg_register_ifname_cb(wpa_msg_get_ifname_func func)$/;"	f
 wpa_msg_register_ifname_cb	src/utils/wpa_debug.h	168;"	d
 wpa_not_cmd_handler	wpa_supplicant/wpa_not_disp.c	/^static void wpa_not_cmd_handler(int argc, char *argv[])$/;"	f	file:
-wpa_not_cmd_prob_req	wpa_supplicant/wpa_not_disp.c	/^static int wpa_not_cmd_prob_req(struct wpa_ctrl *ctrl, int argc,$/;"	f	file:
+wpa_not_cmd_hl_query	wpa_supplicant/wpa_not_disp.c	/^static int wpa_not_cmd_hl_query(struct wpa_ctrl *ctrl, int argc,$/;"	f	file:
 wpa_not_deinit	wpa_supplicant/wpa_not_disp.c	/^int wpa_not_deinit()$/;"	f
 wpa_not_init	wpa_supplicant/wpa_not_disp.c	/^int wpa_not_init(char *msg)$/;"	f
 wpa_not_process_command	wpa_supplicant/wpa_not_disp.c	/^int wpa_not_process_command(char *msg)$/;"	f
