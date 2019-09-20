@@ -368,14 +368,14 @@ static void resolve_hyperlocal_query_for_sta(struct hostapd_data *hapd, const u8
 	//}
 
 
-	buflen = os_snprintf(buf, sizeof(buf), "Addr:" MACSTR "MID:%u-", MAC2STR(sa), mid);
+	buflen = os_snprintf(buf, sizeof(buf), MACSTR"%d", MAC2STR(sa), mid);
 	if(slen + buflen > 4096)
 		return;
 
 	os_memcpy(buf+buflen, pos, slen);
 	buf[buflen + slen] = '\0';
 
-	wpa_printf(MSG_DEBUG, "Sending hyperlocal query for handling");
+	wpa_printf(MSG_DEBUG, "Sending hyperlocal query upstream for handling");
 
 	hapd_not_iface_send(hapd, cmd, res, buf, buflen+slen);
 
@@ -508,11 +508,12 @@ u8 * hostapd_eid_afn_indication(struct hostapd_data *hapd, u8 *eid)
 	*pos++ = WLAN_EID_NOT_INDICATOR;
 	*pos++ = 2;
 
-	WPA_PUT_LE16(pos, hapd->mtout);
+	//WPA_PUT_LE16(pos, hapd->mtout);
+	WPA_PUT_LE16(pos, 1000);
 
 	pos += 2;
 
-	wpa_printf(MSG_DEBUG, "action handler: afn indication\n");
+	wpa_printf(MSG_DEBUG, "Mallesh: action handler: afn indication\n");
 	return pos;
 }
 

@@ -6,7 +6,7 @@ from thread import *
 
 lib = cdll.LoadLibrary('./notifier.so')
 
-message = "PUSH a0:51:0b:ee:2c:4e 0 I am good, thank you! :ENDNOT:"
+message = "PUSH 00:e0:4c:7d:f1:ac 0 I am good, thank you! :ENDNOT:"
 
 def start_pystub_listener(p):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -23,16 +23,12 @@ def start_pystub_listener(p):
         data = conn.recv(1024)
         if len(data) > 0:
             print "Data received: ", data
+            print "MAC ID: ", data[:17]
+            print "Query ID: ", data[17]
+            print "Payload: ", data[18:]
             time.sleep(0.5)
             lib.not_process_command(message)
 
 start_new_thread(start_pystub_listener, (0,))
 
 lib.wpa_not_init(0, 0)
-
-time.sleep(1)
-
-while (1):
-    time.sleep(10)
-
-lib.wpa_not_deinit()

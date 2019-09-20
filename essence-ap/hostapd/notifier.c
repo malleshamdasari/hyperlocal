@@ -241,7 +241,6 @@ static int _wpa_ctrl_command(struct wpa_ctrl *ctrl, const char *cmd, int print)
 		return -1;
 	}
 	len = sizeof(buf) - 1;
-	printf("Right before going into hostapd: %s\n",cmd);
 	ret = wpa_ctrl_request(ctrl, cmd, strlen(cmd), buf, &len,
 			       hostapd_cli_msg_cb);
 	if (ret == -2) {
@@ -1896,8 +1895,7 @@ static void hostapd_cli_recv_pending(struct wpa_ctrl *ctrl, int in_read,
 				if (in_read && first)
 					printf("\n");
 				first = 0;
-				printf("Hostapd_cli: %s\n", buf);
-				write(*pystub_sockfd, buf, len);
+				write(*pystub_sockfd, buf+8, len-8);
 			}
 		} else {
 			printf("Could not read pending message.\n");
